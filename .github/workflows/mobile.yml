@@ -27,9 +27,10 @@ permissions:
   contents: write
 
 env:
-  # Where the installed apps read live figures from: your GitHub Pages site.
-  # Override with a repository variable named DATA_URL if you use a custom domain.
-  DATA_URL: ${{ vars.DATA_URL || format('https://{0}.github.io/{1}/data/inflation.json', github.repository_owner, github.event.repository.name) }}
+  # Where the installed apps read live figures from: the data file in this repo, served straight from GitHub.
+  # It changes as soon as the updater commits, and works whether or not GitHub Pages is switched on.
+  # Override with a repository variable named DATA_URL if you want to use another address.
+  DATA_URL: ${{ vars.DATA_URL || format('https://raw.githubusercontent.com/{0}/main/data/inflation.json', github.repository) }}
   RELEASE_TAG: phone-apps
 
 jobs:

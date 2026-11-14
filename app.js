@@ -2,7 +2,8 @@
 (() => {
   'use strict';
   // Web build reads data next to the page; the phone apps read it from the published site (set in config.js).
-  const DATA_URL = window.ATS_DATA_URL || 'data/inflation.json';
+  const BUNDLED = 'data/inflation.json';
+  const DATA_URL = window.ATS_DATA_URL || BUNDLED;
   const CAP = window.Capacitor;
   const NATIVE = !!(CAP && CAP.isNativePlatform && CAP.isNativePlatform());
   const LN = NATIVE && CAP.Plugins ? CAP.Plugins.LocalNotifications : null;
@@ -61,6 +62,13 @@
       else if (manual) toast('Up to date. No new releases.');
     } catch (e) {
       lastOk = 0;
+      // First launch with no connection: fall back to the figures bundled inside the app.
+      if (!doc && DATA_URL !== BUNDLED) {
+        try {
+          const b = await fetch(BUNDLED, { cache: 'no-store' });
+          if (b.ok) { doc = await b.json(); store.set('ats:doc', doc); }
+        } catch { /* nothing bundled */ }
+      }
       if (doc) render([]);
       if (manual) toast('Offline. Showing saved figures.');
     } finally {

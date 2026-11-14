@@ -44,9 +44,15 @@ jobs:
           git commit -m "CPI update $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
           git push
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      # Publishing the website is optional: the phone apps read the data file straight from the repo.
+      # These steps only succeed once Settings -> Pages -> Source is set to "GitHub Actions".
+      - id: pages
+        uses: actions/configure-pages@v5
+        continue-on-error: true
+      - if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .
       - id: deploy
+        if: steps.pages.outcome == 'success'
         uses: actions/deploy-pages@v4
