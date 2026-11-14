@@ -1,12 +1,9 @@
 {
  "updated_at": "2026-11-14T21:49:52Z",
- "checked_at": "2026-11-14T21:49:52Z",
+ "checked_at": "2026-11-14T21:57:26Z",
  "feeds_ok": 8,
- "feeds_total": 10,
- "problems": [
-  "FXStreet: https://www.fxstreet.com/rss/news: HTTP Error 403: Forbidden",
-  "Yahoo Finance: https://finance.yahoo.com/news/rssindex: HTTP Error 404: Not Found"
- ],
+ "feeds_total": 8,
+ "problems": [],
  "items": [
   {
    "title": "US Treasury bought nearly $500mn in yen during joint July forex intervention",
