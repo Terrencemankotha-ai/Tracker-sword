@@ -210,3 +210,19 @@ html[data-theme=aurora] .card, html[data-theme=aurora] .panel { backdrop-filter:
 html[data-theme=aurora] .big, html[data-theme=aurora] .next-cd { background: linear-gradient(90deg, #5fe3f0, #b18cff); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 400; }
 html[data-theme=aurora] .btn:not(.ghost) { background: linear-gradient(90deg, #5fe3f0, #b18cff); }
 html[data-theme=aurora] .tv, html[data-theme=aurora] .set-row select { background: rgba(0,0,0,.25); }
+
+/* ---------- gold */
+:root { --metal: #d4af37; }
+html[data-theme=forge] { --metal: #f2c14e; }
+html[data-theme=signal] { --metal: #ffd23d; }
+html[data-theme=ledger] { --metal: #a8841c; }
+html[data-theme=aurora] { --metal: #ffd37a; }
+@media (prefers-color-scheme: light) { :root:not([data-theme]) { --metal: #a8841c; } }
+.gold-card { border-color: color-mix(in srgb, var(--metal) 55%, var(--line)); background: linear-gradient(160deg, color-mix(in srgb, var(--metal) 13%, var(--panel)), var(--panel) 60%); }
+.gold-card .code { color: var(--metal); }
+.gold-card .quote { min-height: 64px; margin: 0 -6px; }
+.gold-card .quote .note { margin: 14px 6px; }
+.gold-card .btn.small { margin: 6px 0 0; justify-self: start; }
+#pair-chips button:first-child { border-color: var(--metal); }
+#pair-chips button:first-child[aria-pressed=true] { background: var(--metal); }
+[hidden] { display: none !important; }

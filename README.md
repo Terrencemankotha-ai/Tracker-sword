@@ -94,6 +94,7 @@ Download **AbrahamSwordTracker-unsigned.ipa** from the release. Install it with 
 
 * **Currency cards:** headline and core CPI, distance from target, policy rate and real rate.
 * **Pair view:** pick any of the 10 pairs (EUR/USD, GBP/JPY…) to see a live TradingView price chart, a bar chart comparing the two currencies (CPI, core, policy rate, real rate) and the inflation spread over 12 months.
+* **Gold:** a live XAU/USD price card next to the currency cards, XAU/USD in the pair view, the US real rate (gold usually moves opposite to it) and a Gold filter in the news.
 * **Pressure scoreboard:** ranks the currencies by inflation pressure (gap to target for headline and core, plus the latest move) and names the pair with the widest gap.
 * **Real interest rates:** policy rate minus CPI for each currency, ranked.
 * **Countdown:** live countdown to every CPI release and rate decision, shown in your local time.
