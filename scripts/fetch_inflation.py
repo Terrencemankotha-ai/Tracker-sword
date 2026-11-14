@@ -339,8 +339,6 @@ FEEDS = [
     ("MarketWatch", "https://feeds.content.dowjones.io/public/rss/mw_topstories"),
     ("The Guardian", "https://www.theguardian.com/business/economics/rss"),
     ("Financial Times", "https://www.ft.com/global-economy?format=rss"),
-    ("FXStreet", "https://www.fxstreet.com/rss/news"),
-    ("Yahoo Finance", "https://finance.yahoo.com/news/rssindex"),
     ("Nikkei Asia", "https://asia.nikkei.com/rss/feed/nar"),
     ("ABC News (AU)", "https://www.abc.net.au/news/feed/51892/rss.xml"),
 ]
@@ -350,6 +348,7 @@ STRONG = {
     "EUR": [r"\becb\b", r"european central bank", r"\blagarde\b", r"\beuro ?zone\b", r"\beuro area\b", r"\beurostat\b", r"\bhicp\b", r"\beur/?usd\b"],
     "JPY": [r"bank of japan", r"\bboj\b", r"\bueda\b", r"\byen\b", r"\busd/?jpy\b", r"\bjgbs?\b"],
     "GBP": [r"bank of england", r"\bboe\b", r"\bbailey\b", r"\bsterling\b", r"\bgbp/?usd\b", r"\bgilts?\b", r"\buk (cpi|inflation)\b", r"\bons\b"],
+    "XAU": [r"\bgold (price|prices|futures|rall\w*|hits|falls|rises|slips|jumps|climbs|record)", r"\bbullion\b", r"\bxau", r"precious metals?", r"\bspot gold\b"],
     "AUD": [r"reserve bank of australia", r"\brba\b", r"\bbullock\b", r"\baussie\b", r"australian dollar", r"\baud/?usd\b"],
 }
 WEAK = {
@@ -358,6 +357,7 @@ WEAK = {
     "JPY": [r"\bjapan(ese)?\b", r"\btokyo\b"],
     "GBP": [r"\bbritain\b", r"\bbritish\b", r"\bu\.?k\.?\b", r"\bpound\b"],
     "AUD": [r"\baustralia(n)?\b"],
+    "XAU": [r"\bgold\b"],
 }
 ECON = r"inflation|\bcpi\b|prices|interest rate|\brates?\b|central bank|hike|\bcut\b|yields?|economy|currency|forex|\bfx\b|bond|wage|jobs|gdp|recession|tariff"
 
@@ -414,10 +414,10 @@ def tag_codes(text: str) -> list[str]:
     codes = []
     for m in re.finditer(r"\b(usd|eur|jpy|gbp|aud)/?(usd|eur|jpy|gbp|aud)\b", t):  # e.g. EUR/USD, gbpjpy
         codes += [m.group(1).upper(), m.group(2).upper()]
-    for c in ("USD", "EUR", "JPY", "GBP", "AUD"):
+    for c in ("USD", "EUR", "JPY", "GBP", "AUD", "XAU"):
         if any(re.search(p, t) for p in STRONG[c]) or (econ and any(re.search(p, t) for p in WEAK[c])):
             codes.append(c)
-    return [c for c in ("USD", "EUR", "JPY", "GBP", "AUD") if c in codes]
+    return [c for c in ("USD", "EUR", "JPY", "GBP", "AUD", "XAU") if c in codes]
 
 
 def update_news(path: str) -> bool:
@@ -525,6 +525,16 @@ def main() -> int:
                     got = fetch_oecd(code)
                 except Exception as e2:
                     problems.append(f"{code} OECD fallback: {e2}")
+        # A source can answer but lag behind (e.g. a discontinued series): try OECD too.
+        cur = next(r for r in doc["latest"] if r["code"] == code)["period"]
+        if got and got["period"] < cur and code != "JPY":
+            try:
+                alt = fetch_oecd(code)
+                if alt["period"] > got["period"]:
+                    problems.append(f"{code} primary is behind ({got['period']}); using OECD ({alt['period']})")
+                    got = alt
+            except Exception as e3:
+                problems.append(f"{code} primary is behind ({got['period']}); OECD fallback: {e3}")
         if got:
             changed |= merge(doc, code, got, log)
 

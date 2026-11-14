@@ -11,7 +11,10 @@
   const POLL_MS = 60 * 1000;          // check every minute while the app is open
   const STALE_MIN = 90;               // updater runs every 30 min; warn if quiet for longer
   const CODES = ['USD', 'EUR', 'JPY', 'GBP', 'AUD'];
-  const COLORS = { USD: 'var(--c1)', EUR: 'var(--c2)', JPY: 'var(--c3)', GBP: 'var(--c4)', AUD: 'var(--c5)' };
+  const COLORS = { USD: 'var(--c1)', EUR: 'var(--c2)', JPY: 'var(--c3)', GBP: 'var(--c4)', AUD: 'var(--c5)', XAU: 'var(--metal)' };
+  const GOLD = ['XAU', 'USD'];
+  const isGold = (p) => p[0] === 'XAU';
+  const tvSymbol = (p) => isGold(p) ? 'OANDA:XAUUSD' : 'FX:' + p[0] + p[1];
   const NEWS_URL = DATA_URL.replace(/inflation\.json$/, 'news.json');
   // Official release times (local wall-clock time of each statistics office).
   const CPI_TIME = { USD: ['08:30', 'America/New_York'], EUR: ['11:00', 'Europe/Brussels'], JPY: ['08:30', 'Asia/Tokyo'],
@@ -22,6 +25,7 @@
   const PAIRS = [];
   CODES.forEach((a, i) => CODES.slice(i + 1).forEach((b) => PAIRS.push(RANK[a] < RANK[b] ? [a, b] : [b, a])));
   PAIRS.sort((x, y) => (RANK[x[0]] - RANK[y[0]]) || (RANK[x[1]] - RANK[y[1]]));
+  PAIRS.unshift(GOLD);
   const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const $ = (id) => document.getElementById(id);
   const store = {
@@ -264,6 +268,7 @@
       c.append(dl);
       wrap.append(c);
     }
+    wrap.append(goldCard());
   }
 
 
@@ -280,6 +285,38 @@
     return { score: r1(0.5 * head + 0.5 * core + mom), head: r1(head), core: r1(core), mom: r1(mom) };
   }
 
+  // ---------- gold
+  let goldKey = '', goldEl = null;
+  function goldCard() {
+    const key = theme + (isLight() ? 'l' : 'd') + (navigator.onLine ? '1' : '0');
+    const us = row('USD'); const rv = us ? realRate(us) : null;
+    if (!goldEl) { goldEl = el('article', 'card gold-card'); goldEl.id = 'gold-card'; }
+    if (goldKey !== key) {
+      goldKey = key; goldEl.replaceChildren();
+      const top = el('div', 'card-top'); top.append(el('span', 'code', 'XAU'), el('span', 'econ', 'Gold · live')); goldEl.append(top);
+      const q = el('div', 'quote');
+      if (navigator.onLine) {
+        const w = el('div', 'tradingview-widget-container'); const inner = el('div', 'tradingview-widget-container__widget');
+        const sc = document.createElement('script'); sc.async = true;
+        sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js';
+        sc.textContent = JSON.stringify({ symbol: 'OANDA:XAUUSD', width: '100%', isTransparent: true, colorTheme: isLight() ? 'light' : 'dark', locale: 'en' });
+        w.append(inner, sc); q.append(w);
+      } else q.append(el('div', 'note', 'Live gold price needs a connection.'));
+      const dl = el('dl'); dl.className = 'gold-dl';
+      const btn = el('button', 'btn ghost small', 'Open XAU/USD chart'); btn.type = 'button';
+      btn.onclick = () => { pair = GOLD; store.set('ats:pair', pair); renderPairs(); if (newsFilter === 'pair') renderNews(); $('pairs').scrollIntoView({ behavior: 'smooth' }); };
+      goldEl.append(q, dl, btn);
+    }
+    const dl = goldEl.querySelector('.gold-dl'); dl.replaceChildren();
+    if (us && rv !== null) {
+      const rd = el('dd', rv > 0 ? 'pos' : rv < 0 ? 'neg' : '', sgn(rv));
+      dl.append(el('dt', '', 'US real rate'), rd, el('dt', '', 'US CPI'), el('dd', '', pct(us.headline)), el('dt', '', 'Fed rate'), el('dd', '', policyText(policy('USD'))));
+      const ev = events().find((e) => e.code === 'USD' && e.ts > Date.now());
+      if (ev) { const d = el('dd', '', countdown(ev.ts)); d.dataset.ts = ev.ts; dl.append(el('dt', '', ev.kind === 'cpi' ? 'Next US CPI' : 'Next Fed'), d); }
+    }
+    return goldEl;
+  }
+
   // ---------- pair view
   function renderPairs() {
     const chips = $('pair-chips'); chips.replaceChildren();
@@ -289,10 +326,19 @@
       b.onclick = () => { pair = p; store.set('ats:pair', pair); renderPairs(); if (newsFilter === 'pair') renderNews(); };
       chips.append(b);
     }
-    const A = row(pair[0]), B = row(pair[1]);
-    if (!A || !B) return;
     const sum = $('pair-sum'); sum.replaceChildren();
     const bb = (t) => el('b', '', t);
+    $('pair-two').hidden = isGold(pair);
+    if (isGold(pair)) {
+      const us = row('USD'); const rv = us ? realRate(us) : null;
+      sum.append(bb('XAU/USD'), ': gold priced in US dollars.');
+      if (rv !== null) sum.append(' US real rate is ', bb(sgn(rv)), ' (Fed ', bb(policyText(policy('USD'))), ' minus CPI ', bb(pct(us.headline)), '). ',
+        rv < 0 ? 'Negative real rates lower the cost of holding gold, which usually supports it.' : 'Positive real rates raise the cost of holding gold, which usually weighs on it.');
+      renderTV();
+      return;
+    }
+    const A = row(pair[0]), B = row(pair[1]);
+    if (!A || !B) return;
     const d = r1(A.headline - B.headline);
     const ra = realRate(A), rb = realRate(B);
     sum.append(bb(pairName(pair)), ': ', A.code + ' inflation ', bb(pct(A.headline)), ' vs ' + B.code + ' ', bb(pct(B.headline)),
@@ -318,7 +364,7 @@
     const sc = document.createElement('script');
     sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js'; sc.async = true;
     sc.textContent = JSON.stringify({
-      autosize: true, symbol: 'FX:' + pair[0] + pair[1], interval: '15',
+      autosize: true, symbol: tvSymbol(pair), interval: '15',
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Etc/UTC',
       theme: key.endsWith('l') ? 'light' : 'dark', style: '1', locale: 'en',
       hide_side_toolbar: true, allow_symbol_change: false, save_image: false, calendar: false,
@@ -583,7 +629,7 @@
   // ---------- news
   function renderNews() {
     const chips = $('news-chips'); chips.replaceChildren();
-    const opts = [['all', 'All'], ['pair', pairName(pair)], ...CODES.map((c) => [c, c])];
+    const opts = [['all', 'All'], ['pair', pairName(pair)], ...CODES.map((c) => [c, c]), ['XAU', 'Gold']];
     for (const [k, label] of opts) {
       const b = el('button', '', label); b.type = 'button'; b.setAttribute('aria-pressed', String(newsFilter === k));
       b.onclick = () => { newsFilter = k; store.set('ats:newsFilter', k); renderNews(); };
@@ -606,7 +652,7 @@
       const a = el('a', '', it.title); a.href = it.link; a.target = '_blank'; a.rel = 'noopener noreferrer';
       const meta = el('div', 'meta');
       if (seenAt && it.published > seenAt) meta.append(el('span', 'tag new', 'NEW'));
-      it.codes.forEach((c) => { const t = el('span', 'tag', c); t.style.borderColor = COLORS[c]; t.style.color = COLORS[c]; meta.append(t); });
+      it.codes.forEach((c) => { const t = el('span', 'tag', c === 'XAU' ? 'GOLD' : c); t.style.borderColor = COLORS[c]; t.style.color = COLORS[c]; meta.append(t); });
       meta.append(el('span', '', it.source + ' · ' + ago(it.published)));
       li.append(a, meta);
       if (it.summary) li.append(el('p', '', it.summary));
@@ -752,7 +798,7 @@
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { load(false); markSeenLater(); } });
   window.addEventListener('online', () => load(false));
   window.addEventListener('offline', () => { lastOk = 0; status(); });
-  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (doc) { renderChart(); const A = row(pair[0]), B = row(pair[1]); if (A && B) { renderPairBars(A, B); renderSpread(A, B); } rows5().length && renderReal(rows5()); } }, 150); });
+  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (doc) { renderChart(); const A = row(pair[0]), B = row(pair[1]); if (A && B && !isGold(pair)) { renderPairBars(A, B); renderSpread(A, B); } rows5().length && renderReal(rows5()); } }, 150); });
   const rows5 = () => CODES.map((c) => row(c)).filter(Boolean);
   matchMedia('(prefers-color-scheme: light)').addEventListener?.('change', () => doc && renderTV());
   window.addEventListener('online', () => doc && renderTV());
