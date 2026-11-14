@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Abraham Tracker Sword - live CPI updater.
+"""Abraham Sword Tracker - live CPI updater.
 
 Pulls the latest headline / core inflation for USD, EUR, JPY, GBP and AUD
 straight from official sources and merges it into data/inflation.json.
@@ -23,6 +23,9 @@ from __future__ import annotations
 
 import argparse
 import csv
+import email.utils
+import html
+import re
 import datetime as dt
 import io
 import json
@@ -31,10 +34,13 @@ import sys
 import time
 import urllib.error
 import urllib.request
+import xml.etree.ElementTree as ET
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "inflation.json")
-UA = "AbrahamTrackerSword/1.0 (CPI tracker; GitHub Actions)"
+NEWS_MAX = 60          # headlines kept in data/news.json
+NEWS_MAX_AGE_DAYS = 7
+UA = "AbrahamSwordTracker/1.0 (CPI tracker; GitHub Actions)"
 HISTORY_MONTHS = 13
 MONTHS = {m: i for i, m in enumerate(
     ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"], 1)}
@@ -128,7 +134,8 @@ def result(series: dict[str, float], core: dict[str, float] | None = None, **ext
     months = sorted(series)
     last = months[-1]
     prev = series.get(add_month(last, -1))
-    out = {"period": last, "headline": series[last], "history": {m: series[m] for m in months[-HISTORY_MONTHS:]}}
+    first = add_month(last, -(HISTORY_MONTHS - 1))
+    out = {"period": last, "headline": series[last], "history": {m: series[m] for m in months if m >= first}}
     if prev is not None:
         out["previous"] = prev
     if core and core.get(last) is not None:
@@ -245,7 +252,7 @@ def fetch_aud() -> dict:
     head, core = {}, {}
     for r in rows:
         text = " | ".join(str(v) for k, v in r.items() if k not in (tcol, vcol)).lower()
-        if "corresponding month of previous year" not in text:
+        if not re.search(r"corresponding month of (the )?previous year", text):
             continue
         if "seasonally adjusted" in text and "trimmed" not in text:
             continue  # headline uses original series
@@ -321,6 +328,138 @@ def next_release_after(row: dict, calendar: dict) -> tuple[str, bool]:
         y, m = est.year + (est.month // 12), est.month % 12 + 1
         est = dt.date(y, m, min(est.day, 28))
     return est.isoformat(), True
+
+
+# ----------------------------------------------------------------- news
+# Headlines only (title, link, outlet, time, a short teaser), always linking to the full story.
+FEEDS = [
+    ("BBC News", "https://feeds.bbci.co.uk/news/business/rss.xml"),
+    ("CNBC", "https://www.cnbc.com/id/20910258/device/rss/rss.html"),
+    ("CNBC", "https://www.cnbc.com/id/10000664/device/rss/rss.html"),
+    ("MarketWatch", "https://feeds.content.dowjones.io/public/rss/mw_topstories"),
+    ("The Guardian", "https://www.theguardian.com/business/economics/rss"),
+    ("Financial Times", "https://www.ft.com/global-economy?format=rss"),
+    ("FXStreet", "https://www.fxstreet.com/rss/news"),
+    ("Yahoo Finance", "https://finance.yahoo.com/news/rssindex"),
+    ("Nikkei Asia", "https://asia.nikkei.com/rss/feed/nar"),
+    ("ABC News (AU)", "https://www.abc.net.au/news/feed/51892/rss.xml"),
+]
+# Strong words tag a story on their own; weak ones need an economics word too.
+STRONG = {
+    "USD": [r"federal reserve", r"\bfed\b", r"\bfomc\b", r"\bwarsh\b", r"\bu\.?s\.? (cpi|inflation|consumer prices)", r"\bbls\b", r"\bdollar index\b", r"\bdxy\b", r"\btreasury yields?\b"],
+    "EUR": [r"\becb\b", r"european central bank", r"\blagarde\b", r"\beuro ?zone\b", r"\beuro area\b", r"\beurostat\b", r"\bhicp\b", r"\beur/?usd\b"],
+    "JPY": [r"bank of japan", r"\bboj\b", r"\bueda\b", r"\byen\b", r"\busd/?jpy\b", r"\bjgbs?\b"],
+    "GBP": [r"bank of england", r"\bboe\b", r"\bbailey\b", r"\bsterling\b", r"\bgbp/?usd\b", r"\bgilts?\b", r"\buk (cpi|inflation)\b", r"\bons\b"],
+    "AUD": [r"reserve bank of australia", r"\brba\b", r"\bbullock\b", r"\baussie\b", r"australian dollar", r"\baud/?usd\b"],
+}
+WEAK = {
+    "USD": [r"\bdollar\b", r"\bu\.?s\.? economy\b", r"\bwall street\b"],
+    "EUR": [r"\beuro\b", r"\bgermany\b", r"\bfrance\b"],
+    "JPY": [r"\bjapan(ese)?\b", r"\btokyo\b"],
+    "GBP": [r"\bbritain\b", r"\bbritish\b", r"\bu\.?k\.?\b", r"\bpound\b"],
+    "AUD": [r"\baustralia(n)?\b"],
+}
+ECON = r"inflation|\bcpi\b|prices|interest rate|\brates?\b|central bank|hike|\bcut\b|yields?|economy|currency|forex|\bfx\b|bond|wage|jobs|gdp|recession|tariff"
+
+
+def _strip(t: str) -> str:
+    t = re.sub(r"<[^>]+>", " ", html.unescape(t or ""))
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def _when(s: str) -> str | None:
+    s = (s or "").strip()
+    if not s:
+        return None
+    try:
+        d = email.utils.parsedate_to_datetime(s)
+    except (TypeError, ValueError):
+        try:
+            d = dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+    if d.tzinfo is None:
+        d = d.replace(tzinfo=dt.timezone.utc)
+    return d.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def parse_feed(xml: str) -> list[dict]:
+    """RSS 2.0 or Atom -> [{title, link, published, summary}]."""
+    root = ET.fromstring(xml.encode("utf-8"))
+    local = lambda tag: tag.rsplit("}", 1)[-1]
+    out = []
+    for item in root.iter():
+        if local(item.tag) not in ("item", "entry"):
+            continue
+        f = {}
+        for ch in item:
+            k = local(ch.tag)
+            if k == "link":
+                f.setdefault("link", (ch.text or "").strip() or ch.attrib.get("href", ""))
+            elif k in ("title", "pubDate", "published", "updated", "date", "description", "summary"):
+                f.setdefault(k, ch.text or "")
+        title = _strip(f.get("title"))
+        link = (f.get("link") or "").strip()
+        if not title or not link.startswith("http"):
+            continue
+        out.append({"title": title, "link": link,
+                    "published": _when(f.get("pubDate") or f.get("published") or f.get("updated") or f.get("date")),
+                    "summary": _strip(f.get("description") or f.get("summary"))})
+    return out
+
+
+def tag_codes(text: str) -> list[str]:
+    t = text.lower()
+    econ = re.search(ECON, t) is not None
+    codes = []
+    for m in re.finditer(r"\b(usd|eur|jpy|gbp|aud)/?(usd|eur|jpy|gbp|aud)\b", t):  # e.g. EUR/USD, gbpjpy
+        codes += [m.group(1).upper(), m.group(2).upper()]
+    for c in ("USD", "EUR", "JPY", "GBP", "AUD"):
+        if any(re.search(p, t) for p in STRONG[c]) or (econ and any(re.search(p, t) for p in WEAK[c])):
+            codes.append(c)
+    return [c for c in ("USD", "EUR", "JPY", "GBP", "AUD") if c in codes]
+
+
+def update_news(path: str) -> bool:
+    old = json.load(open(path, encoding="utf-8")) if os.path.exists(path) else {"items": []}
+    items = {it["link"]: it for it in old.get("items", [])}
+    problems, ok = [], 0
+    for i, (outlet, url) in enumerate(FEEDS):
+        try:
+            entries = parse_feed(http(url, headers={"Accept": "application/rss+xml, application/xml, text/xml"},
+                                      fixture=f"feed{i}.xml", tries=2))
+            ok += 1
+        except Exception as e:  # fail-soft per outlet
+            problems.append(f"{outlet}: {str(e)[:160]}")
+            continue
+        for e in entries:
+            codes = tag_codes(e["title"] + " " + e["summary"])
+            if not codes or e["link"] in items:
+                continue
+            summary = e["summary"]
+            if len(summary) > 220:
+                summary = summary[:217].rsplit(" ", 1)[0] + "…"
+            items[e["link"]] = {"title": e["title"], "link": e["link"], "source": outlet,
+                                "published": e["published"] or now_utc(), "codes": codes, "summary": summary}
+    cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=NEWS_MAX_AGE_DAYS)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    seen_titles, keep = set(), []
+    for it in sorted(items.values(), key=lambda x: x["published"], reverse=True):
+        key = re.sub(r"\W+", "", it["title"].lower())
+        if it["published"] < cutoff or key in seen_titles:
+            continue
+        seen_titles.add(key)
+        keep.append(it)
+    keep = keep[:NEWS_MAX]
+    changed = [x["link"] for x in keep] != [x["link"] for x in old.get("items", [])]
+    doc = {"updated_at": now_utc() if changed else old.get("updated_at", now_utc()),
+           "checked_at": now_utc(), "feeds_ok": ok, "feeds_total": len(FEEDS), "problems": problems, "items": keep}
+    if changed or problems != old.get("problems") or ok != old.get("feeds_ok"):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(doc, f, indent=1, ensure_ascii=False)
+            f.write("\n")
+    for p in problems:
+        print("WARN news", p, file=sys.stderr)
+    return changed or problems != old.get("problems")
 
 
 # ----------------------------------------------------------------- merge
@@ -401,10 +540,25 @@ def main() -> int:
                 row["next_release"], row["next_release_estimated"] = d, False
                 changed = True
 
-    # Trim history to the last 13 months per currency.
+    # Trim history to the 13 months ending at each currency's latest figure
+    # (this also drops stray old months a source sometimes returns, e.g. OECD Japan 2021).
     for code, h in doc["history"].items():
-        for m in sorted(h)[:-HISTORY_MONTHS]:
-            del h[m]
+        row = next((r for r in doc["latest"] if r["code"] == code), None)
+        end = row["period"] if row else max(h)
+        first = add_month(end, -(HISTORY_MONTHS - 1))
+        for m in list(h):
+            if m < first or m > end:
+                del h[m]
+                changed = True
+
+    # Central bank policy rates (hand-maintained in data/policy_rates.json).
+    pol_path = os.path.join(os.path.dirname(a.data), "policy_rates.json")
+    if os.path.exists(pol_path):
+        pol = json.load(open(pol_path, encoding="utf-8"))
+        pol = {k: v for k, v in pol.items() if not k.startswith("_")}
+        if doc.get("policy") != pol:
+            doc["policy"] = pol
+            changed = True
 
     doc["log"] = log[-30:]
     doc["checked_at"] = now_utc()
@@ -415,6 +569,9 @@ def main() -> int:
     with open(a.data, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=1, ensure_ascii=False)
         f.write("\n")
+
+    news_changed = update_news(os.path.join(os.path.dirname(a.data), "news.json"))
+    changed = changed or news_changed
 
     print("changed" if changed else "no change")
     for p in problems:

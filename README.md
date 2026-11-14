@@ -1,4 +1,4 @@
-# Abraham Tracker Sword: phone app
+# Abraham Sword Tracker: phone app
 
 This is a live inflation tracker for USD, EUR, JPY, GBP and AUD. You install it on your phone's home screen, it opens full-screen like a native app, and it still works offline using the last figures it saved.
 
@@ -50,11 +50,11 @@ The same tracker is also built as real Android and iOS apps with Capacitor. GitH
 **Build them:** first finish "Set it up" above. Then go to *Actions → "Build phone apps" → Run workflow*. Android takes about 5 minutes and iPhone about 10. When both are done, open your repo's **Releases → "Phone apps (latest build)"**.
 
 ### Android: install it today
-1. On your phone, open the release page and download **AbrahamTrackerSword.apk**.
+1. On your phone, open the release page and download **AbrahamSwordTracker.apk**.
 2. Open it. If asked, allow your browser to *install unknown apps*, then tap **Install**.
 3. Open the app and tap **Turn on alerts**.
 
-**Google Play (optional):** add these four repository secrets, run the build again, and you also get **AbrahamTrackerSword-play.aab** to upload in the Play Console:
+**Google Play (optional):** add these four repository secrets, run the build again, and you also get **AbrahamSwordTracker-play.aab** to upload in the Play Console:
 * `ANDROID_KEYSTORE_BASE64`
 * `ANDROID_KEYSTORE_PASSWORD`
 * `ANDROID_KEY_ALIAS`
@@ -82,13 +82,27 @@ Apple only lets signed apps onto an iPhone, so there are two routes.
 5. Install **TestFlight** from the App Store on your iPhone. The app appears there after Apple's processing, usually 10–30 minutes. When you're ready, you can submit the same build to the App Store from App Store Connect.
 
 **B. Sideload for free (no developer account)**
-Download **AbrahamTrackerSword-unsigned.ipa** from the release. Install it with **Sideloadly** or **AltStore** on your computer, using your normal Apple ID. With a free Apple ID the app has to be re-installed every 7 days.
+Download **AbrahamSwordTracker-unsigned.ipa** from the release. Install it with **Sideloadly** or **AltStore** on your computer, using your normal Apple ID. With a free Apple ID the app has to be re-installed every 7 days.
 
 ### Things to know about the phone apps
 * **Updates:** figures update live without reinstalling, because the apps read `data/inflation.json` from your Pages site. You only rebuild when the app's design or code changes. If you use a custom domain, set a repository *variable* named `DATA_URL` to the full address of that file.
 * **When it checks:** the apps check every minute while open and again whenever you switch back to them. When a new figure arrives you get a native notification.
 * **Closed apps:** while an app is fully closed, iOS and Android don't let it check by itself. Instant alerts to a closed app would need a push service, which could be added later.
 * **App ID:** both apps use `com.abrahamsword.tracker`. To use your own, change `appId` in `capacitor.config.json` before your first store upload. It can't change after that.
+
+## Features
+
+* **Currency cards:** headline and core CPI, distance from target, policy rate and real rate.
+* **Pair view:** pick any of the 10 pairs (EUR/USD, GBP/JPY…) to see a live TradingView price chart, a bar chart comparing the two currencies (CPI, core, policy rate, real rate) and the inflation spread over 12 months.
+* **Pressure scoreboard:** ranks the currencies by inflation pressure (gap to target for headline and core, plus the latest move) and names the pair with the widest gap.
+* **Real interest rates:** policy rate minus CPI for each currency, ranked.
+* **Countdown:** live countdown to every CPI release and rate decision, shown in your local time.
+* **Alerts:** choose which currencies alert you, plus an optional reminder 15 min, 1 hour or 1 day before a release or rate decision. The phone apps schedule reminders so they arrive even when the app is closed.
+* **Market news:** inflation and central-bank headlines from BBC, CNBC, MarketWatch, The Guardian, FT, FXStreet, Yahoo Finance, Nikkei Asia and ABC. They're tagged by currency, refreshed every 30 minutes, and link to the full story.
+* **Looks:** five built-in styles (Midnight Blade, Ember Forge, Signal Desk, Ivory Ledger, Aurora Glass).
+
+### Keeping policy rates current
+Policy rates are kept in `data/policy_rates.json`. After a central bank decision, change `rate`, `last_decision`, `last_move` and `next_meeting` for that currency (for the Fed, also `low` and `high`). The app picks up the change within 30 minutes.
 
 ## Good to know
 

@@ -151,9 +151,7 @@
    "2026-06": 1.6,
    "2026-07": 1.9,
    "2026-08": 1.9,
-   "2026-09": 2.1,
-   "2021-05": -0.8,
-   "2021-06": -0.5
+   "2026-09": 2.1
   },
   "GBP": {
    "2025-11": 3.2,
@@ -197,5 +195,61 @@
  ],
  "problems": [
   "AUD primary: no observations"
- ]
+ ],
+ "policy": {
+  "as_of": "2026-11-14",
+  "USD": {
+   "bank": "Federal Reserve",
+   "name": "Fed funds target range",
+   "rate": 3.875,
+   "low": 3.75,
+   "high": 4.0,
+   "last_decision": "2026-10-28",
+   "last_move": 0,
+   "next_meeting": "2026-12-09",
+   "time": "14:00",
+   "tz": "America/New_York"
+  },
+  "EUR": {
+   "bank": "European Central Bank",
+   "name": "Deposit facility rate",
+   "rate": 2.5,
+   "last_decision": "2026-10-29",
+   "last_move": 0,
+   "next_meeting": "2026-12-17",
+   "time": "14:15",
+   "tz": "Europe/Berlin"
+  },
+  "JPY": {
+   "bank": "Bank of Japan",
+   "name": "Uncollateralised overnight call rate",
+   "rate": 1.25,
+   "last_decision": "2026-10-30",
+   "last_move": 0,
+   "next_meeting": "2026-12-18",
+   "time": "12:00",
+   "tz": "Asia/Tokyo",
+   "time_approx": true
+  },
+  "GBP": {
+   "bank": "Bank of England",
+   "name": "Bank Rate",
+   "rate": 4.0,
+   "last_decision": "2026-11-05",
+   "last_move": 0.25,
+   "next_meeting": "2026-12-17",
+   "time": "12:00",
+   "tz": "Europe/London"
+  },
+  "AUD": {
+   "bank": "Reserve Bank of Australia",
+   "name": "Cash rate target",
+   "rate": 4.85,
+   "last_decision": "2026-11-03",
+   "last_move": 0.25,
+   "next_meeting": "2026-12-08",
+   "time": "14:30",
+   "tz": "Australia/Sydney"
+  }
+ }
 }

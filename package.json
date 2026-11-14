@@ -1,8 +1,8 @@
 {
-  "name": "abraham-tracker-sword",
+  "name": "abraham-sword-tracker",
   "version": "1.0.0",
   "private": true,
-  "description": "Abraham Tracker Sword - live inflation tracker (web, Android, iOS)",
+  "description": "Abraham Sword Tracker - live inflation tracker (web, Android, iOS)",
   "scripts": {
     "www": "node mobile/prepare-www.mjs",
     "icons": "capacitor-assets generate --assetPath mobile/assets --iconBackgroundColor '#0f1115' --iconBackgroundColorDark '#0f1115' --splashBackgroundColor '#0f1115' --splashBackgroundColorDark '#0f1115'"
