@@ -11,6 +11,17 @@ on:
         default: false
   push:
     tags: ["v*"]
+    branches: [main]
+    paths:            # rebuild when the app itself changes (not on routine data updates)
+      - "index.html"
+      - "app.js"
+      - "styles.css"
+      - "config.js"
+      - "icons/**"
+      - "mobile/**"
+      - "package.json"
+      - "capacitor.config.json"
+      - ".github/workflows/mobile.yml"
 
 permissions:
   contents: write
