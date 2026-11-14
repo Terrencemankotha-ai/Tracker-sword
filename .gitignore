@@ -6,3 +6,4 @@ build/
 *.ipa
 *.apk
 *.aab
+__pycache__/

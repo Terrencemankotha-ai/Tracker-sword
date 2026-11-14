@@ -40,6 +40,20 @@ MONTHS = {m: i for i, m in enumerate(
     ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"], 1)}
 
 FIXTURES: str | None = None
+DEBUG_CHANGED = False
+
+
+def save_debug(name: str, text: str) -> None:
+    """Keep a small sample of a response that couldn't be parsed, so the parser can be fixed."""
+    global DEBUG_CHANGED
+    d = os.path.join(ROOT, "data", "_debug")
+    os.makedirs(d, exist_ok=True)
+    path = os.path.join(d, name)
+    old = open(path, encoding="utf-8").read() if os.path.exists(path) else None
+    if old != text:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(text)
+        DEBUG_CHANGED = True
 
 
 # ----------------------------------------------------------------- helpers
@@ -221,8 +235,10 @@ def fetch_aud() -> dict:
     flow = os.environ.get("ABS_DATAFLOW", "ABS,CPI_M")
     start = add_month(ym(today().year, today().month), -(HISTORY_MONTHS + 2))
     url = f"https://data.api.abs.gov.au/rest/data/{flow}/all?startPeriod={start}&format=csvfilewithlabels"
-    rows = list(csv.DictReader(io.StringIO(http(url, headers={"Accept": "text/csv"}, fixture="abs.csv"))))
+    raw = http(url, headers={"Accept": "text/csv"}, fixture="abs.csv")
+    rows = list(csv.DictReader(io.StringIO(raw)))
     if not rows:
+        save_debug("abs.txt", f"URL: {url}\n\n" + raw[:4000])
         raise RuntimeError("ABS: empty")
     tcol = next(c for c in rows[0] if c.split(":")[0].strip().upper() == "TIME_PERIOD")
     vcol = next(c for c in rows[0] if c.split(":")[0].strip().upper() == "OBS_VALUE")
@@ -243,6 +259,9 @@ def fetch_aud() -> dict:
             core[p] = r1(v)
         elif "all groups cpi" in text and "excluding" not in text and "original" in text:
             head[p] = r1(v)
+    if not head:
+        cols = {c: sorted({str(r[c]) for r in rows})[:25] for c in rows[0] if c not in (tcol, vcol)}
+        save_debug("abs.txt", f"URL: {url}\nrows: {len(rows)}\n\n" + json.dumps(cols, indent=1, ensure_ascii=False)[:12000])
     return result(head, core, status="Final")
 
 
@@ -392,6 +411,7 @@ def main() -> int:
     doc["problems"] = problems
     if changed:
         doc["updated_at"] = doc["checked_at"]
+    changed = changed or DEBUG_CHANGED
     with open(a.data, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=1, ensure_ascii=False)
         f.write("\n")
