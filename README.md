@@ -98,7 +98,7 @@ Download **AbrahamSwordTracker-unsigned.ipa** from the release. Install it with 
 * **Real interest rates:** policy rate minus CPI for each currency, ranked.
 * **Countdown:** live countdown to every CPI release and rate decision, shown in your local time.
 * **Alerts:** choose which currencies alert you, plus an optional reminder 15 min, 1 hour or 1 day before a release or rate decision. The phone apps schedule reminders so they arrive even when the app is closed.
-* **Market news:** inflation and central-bank headlines from BBC, CNBC, MarketWatch, The Guardian, FT, FXStreet, Yahoo Finance, Nikkei Asia and ABC. They're tagged by currency, refreshed every 30 minutes, and link to the full story.
+* **Market news:** inflation and central-bank headlines from BBC, CNBC, MarketWatch, The Guardian, FT, Nikkei Asia and ABC. They're tagged by currency, refreshed every 30 minutes, and link to the full story.
 * **Looks:** five built-in styles (Midnight Blade, Ember Forge, Signal Desk, Ivory Ledger, Aurora Glass).
 
 ### Keeping policy rates current

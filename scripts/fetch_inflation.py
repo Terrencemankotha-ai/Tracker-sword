@@ -339,8 +339,6 @@ FEEDS = [
     ("MarketWatch", "https://feeds.content.dowjones.io/public/rss/mw_topstories"),
     ("The Guardian", "https://www.theguardian.com/business/economics/rss"),
     ("Financial Times", "https://www.ft.com/global-economy?format=rss"),
-    ("FXStreet", "https://www.fxstreet.com/rss/news"),
-    ("Yahoo Finance", "https://finance.yahoo.com/news/rssindex"),
     ("Nikkei Asia", "https://asia.nikkei.com/rss/feed/nar"),
     ("ABC News (AU)", "https://www.abc.net.au/news/feed/51892/rss.xml"),
 ]
@@ -525,6 +523,16 @@ def main() -> int:
                     got = fetch_oecd(code)
                 except Exception as e2:
                     problems.append(f"{code} OECD fallback: {e2}")
+        # A source can answer but lag behind (e.g. a discontinued series): try OECD too.
+        cur = next(r for r in doc["latest"] if r["code"] == code)["period"]
+        if got and got["period"] < cur and code != "JPY":
+            try:
+                alt = fetch_oecd(code)
+                if alt["period"] > got["period"]:
+                    problems.append(f"{code} primary is behind ({got['period']}); using OECD ({alt['period']})")
+                    got = alt
+            except Exception as e3:
+                problems.append(f"{code} primary is behind ({got['period']}); OECD fallback: {e3}")
         if got:
             changed |= merge(doc, code, got, log)
 
