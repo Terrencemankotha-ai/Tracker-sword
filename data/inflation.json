@@ -1,27 +1,28 @@
 {
- "updated_at": "2026-11-08T17:47:29Z",
- "checked_at": "2026-11-08T17:47:29Z",
+ "updated_at": "2026-11-14T16:54:51Z",
+ "checked_at": "2026-11-14T16:54:51Z",
  "latest": [
   {
    "code": "USD",
    "economy": "United States",
    "measure": "CPI-U, all items",
-   "period": "2026-09",
-   "headline": 3.7,
-   "previous": 3.4,
-   "core": 2.6,
+   "period": "2026-10",
+   "headline": 4.0,
+   "previous": 3.7,
+   "core": 2.8,
    "core_label": "Core CPI (ex food & energy)",
    "target_low": 2.0,
    "target_high": 2.0,
    "target_note": "Fed 2% (PCE measure)",
-   "released": "2026-10-14",
-   "next_release": "2026-11-10",
-   "next_period": "2026-10",
+   "released": "2026-11-14",
+   "next_release": "2026-12-14",
+   "next_period": "2026-11",
    "agency": "US Bureau of Labor Statistics",
    "source_url": "https://www.bls.gov/cpi/",
    "status": "Final",
-   "note": "October 2025 was never published (2025 government shutdown).",
-   "source_of_update": "seed"
+   "note": "",
+   "source_of_update": "official",
+   "next_release_estimated": true
   },
   {
    "code": "EUR",
@@ -84,7 +85,7 @@
    "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
    "status": "Final",
    "note": "",
-   "source_of_update": "seed"
+   "source_of_update": "official"
   },
   {
    "code": "AUD",
@@ -105,7 +106,7 @@
    "source_url": "https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/latest-release",
    "status": "Final",
    "note": "",
-   "source_of_update": "seed"
+   "source_of_update": "oecd"
   }
  ],
  "history": {
@@ -120,11 +121,13 @@
    "2026-06": 3.5,
    "2026-07": 3.4,
    "2026-08": 3.4,
-   "2026-09": 3.7
+   "2026-09": 3.7,
+   "2025-09": 3.0,
+   "2026-10": 4.0
   },
   "EUR": {
    "2025-11": 2.1,
-   "2025-12": 2.0,
+   "2025-12": 1.9,
    "2026-01": 1.7,
    "2026-02": 1.9,
    "2026-03": 2.6,
@@ -134,7 +137,8 @@
    "2026-07": 2.9,
    "2026-08": 3.2,
    "2026-09": 3.8,
-   "2026-10": 4.0
+   "2026-10": 4.0,
+   "2025-10": 2.1
   },
   "JPY": {
    "2025-11": 2.9,
@@ -147,7 +151,9 @@
    "2026-06": 1.6,
    "2026-07": 1.9,
    "2026-08": 1.9,
-   "2026-09": 2.1
+   "2026-09": 2.1,
+   "2021-05": -0.8,
+   "2021-06": -0.5
   },
   "GBP": {
    "2025-11": 3.2,
@@ -160,7 +166,9 @@
    "2026-06": 2.6,
    "2026-07": 2.9,
    "2026-08": 3.1,
-   "2026-09": 3.5
+   "2026-09": 3.5,
+   "2025-09": 3.8,
+   "2025-10": 3.6
   },
   "AUD": {
    "2025-11": 3.4,
@@ -173,8 +181,21 @@
    "2026-06": 3.8,
    "2026-07": 3.5,
    "2026-08": 4.0,
-   "2026-09": 4.3
+   "2026-09": 4.3,
+   "2025-09": 3.6,
+   "2025-10": 3.8
   }
  },
- "log": []
+ "log": [
+  {
+   "at": "2026-11-14T16:54:43Z",
+   "code": "USD",
+   "period": "2026-10",
+   "headline": 4.0,
+   "msg": "USD 2026-10: 4.0%"
+  }
+ ],
+ "problems": [
+  "AUD primary: no observations"
+ ]
 }
