@@ -1,0 +1,149 @@
+name: Build phone apps
+
+# Run from the Actions tab ("Run workflow"), or push a tag like v1.0.1.
+# Results appear under Releases -> "Phone apps (latest build)".
+on:
+  workflow_dispatch:
+    inputs:
+      testflight:
+        description: "Also upload the iPhone app to TestFlight (needs the App Store secrets)"
+        type: boolean
+        default: false
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  # Where the installed apps read live figures from: your GitHub Pages site.
+  # Override with a repository variable named DATA_URL if you use a custom domain.
+  DATA_URL: ${{ vars.DATA_URL || format('https://{0}.github.io/{1}/data/inflation.json', github.repository_owner, github.event.repository.name) }}
+  RELEASE_TAG: phone-apps
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21 }
+
+      - name: Prepare app
+        run: |
+          npm install --no-audit --no-fund
+          npm run www
+          npx cap add android
+          npm run icons -- --android
+          npx cap sync android
+
+      - name: Build installable APK
+        run: |
+          cd android && ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk ../AbrahamTrackerSword.apk
+
+      - name: Build signed Play Store bundle (only if keystore secrets are set)
+        if: env.HAS_KEYSTORE == 'true'
+        env:
+          KS: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          echo "$KS" | base64 --decode > "$RUNNER_TEMP/release.jks"
+          sed -i "s/versionCode 1$/versionCode ${{ github.run_number }}/" android/app/build.gradle
+          for TYPE in AAB APK; do
+            npx cap build android --keystorepath "$RUNNER_TEMP/release.jks" --keystorepass "$KS_PASS" \
+              --keystorealias "$KEY_ALIAS" --keystorealiaspass "$KEY_PASS" --androidreleasetype $TYPE
+          done
+          cp "$(find android/app/build/outputs/bundle -name '*.aab' | head -1)" AbrahamTrackerSword-play.aab
+          cp "$(find android/app/build/outputs/apk/release -name '*.apk' | head -1)" AbrahamTrackerSword-release.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android
+          path: |
+            AbrahamTrackerSword*.apk
+            AbrahamTrackerSword*.aab
+
+      - name: Publish to the download page
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh release view "$RELEASE_TAG" >/dev/null 2>&1 || gh release create "$RELEASE_TAG" --prerelease \
+            --title "Phone apps (latest build)" \
+            --notes "Android: download AbrahamTrackerSword.apk on your phone and open it. iPhone: see README (TestFlight, or sideload the unsigned .ipa)." || true
+          gh release upload "$RELEASE_TAG" AbrahamTrackerSword*.apk --clobber
+          ls AbrahamTrackerSword-play.aab >/dev/null 2>&1 && gh release upload "$RELEASE_TAG" AbrahamTrackerSword-play.aab --clobber || true
+
+  ios:
+    runs-on: macos-15
+    env:
+      HAS_ASC: ${{ secrets.ASC_KEY_ID != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+
+      - name: Prepare app
+        run: |
+          npm install --no-audit --no-fund
+          npm run www
+          npx cap add ios
+          npm run icons -- --ios
+          npx cap sync ios
+
+      - name: Build unsigned IPA (for sideloading)
+        run: |
+          cd ios/App
+          if [ -d App.xcworkspace ]; then T="-workspace App.xcworkspace"; else T="-project App.xcodeproj"; fi
+          xcodebuild $T -scheme App -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath "$GITHUB_WORKSPACE/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+          cd "$GITHUB_WORKSPACE"
+          mkdir -p Payload && cp -R build/Build/Products/Release-iphoneos/App.app Payload/
+          zip -qry AbrahamTrackerSword-unsigned.ipa Payload
+
+      - name: Archive and upload to TestFlight (only if App Store secrets are set)
+        if: env.HAS_ASC == 'true' && (inputs.testflight || startsWith(github.ref, 'refs/tags/v'))
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          KEY="$RUNNER_TEMP/AuthKey_$ASC_KEY_ID.p8"
+          printf '%s' "$ASC_KEY_P8" > "$KEY"
+          AUTH=(-allowProvisioningUpdates -authenticationKeyPath "$KEY" -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID")
+          cd ios/App
+          if [ -d App.xcworkspace ]; then T=(-workspace App.xcworkspace); else T=(-project App.xcodeproj); fi
+          xcodebuild "${T[@]}" -scheme App -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" DEVELOPMENT_TEAM="$TEAM_ID" CODE_SIGN_STYLE=Automatic \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} "${AUTH[@]}" archive
+          cat > "$RUNNER_TEMP/export.plist" <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyLists/PLIST-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/App.xcarchive" -exportOptionsPlist "$RUNNER_TEMP/export.plist" \
+            -exportPath "$RUNNER_TEMP/export" "${AUTH[@]}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ios
+          path: AbrahamTrackerSword-unsigned.ipa
+
+      - name: Publish to the download page
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh release view "$RELEASE_TAG" >/dev/null 2>&1 || gh release create "$RELEASE_TAG" --prerelease \
+            --title "Phone apps (latest build)" \
+            --notes "Android: download AbrahamTrackerSword.apk on your phone and open it. iPhone: see README (TestFlight, or sideload the unsigned .ipa)." || true
+          gh release upload "$RELEASE_TAG" AbrahamTrackerSword-unsigned.ipa --clobber

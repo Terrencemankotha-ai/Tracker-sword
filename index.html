@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abraham Tracker Sword</title>
+<meta name="description" content="Live headline and core inflation for USD, EUR, JPY, GBP and AUD from official statistics offices.">
+<meta name="theme-color" content="#0f1115">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tracker Sword">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="bar">
+  <div class="brand">
+    <img src="icons/icon-192.png" alt="" width="28" height="28">
+    <span>Abraham Tracker Sword</span>
+  </div>
+  <button id="refresh" class="icon-btn" aria-label="Check for new figures now" title="Check now">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 4a8 8 0 0 1 7.75 6h-2.1A6 6 0 1 0 18 14h2.05A8 8 0 1 1 12 4Zm5 0h4v4l-1.5-1.5L17 4Z"/></svg>
+  </button>
+</header>
+
+<main>
+  <div class="live" id="live"><span class="dot"></span><span id="live-text">Connecting…</span></div>
+
+  <section class="take" id="take">
+    <p id="take-text">Loading the latest official figures…</p>
+  </section>
+
+  <section class="cards" id="cards" aria-label="Latest inflation by currency"></section>
+
+  <section class="panel" id="trend">
+    <div class="panel-head">
+      <h2>Last 12 months</h2>
+      <div class="legend" id="legend" role="group" aria-label="Show or hide currencies"></div>
+    </div>
+    <p class="note">Headline inflation, year on year. Tap or drag across the chart for values. Dashed line: 2% target.</p>
+    <div class="chart" id="chart"></div>
+  </section>
+
+  <section class="panel" id="calendar">
+    <h2>Release calendar</h2>
+    <p class="note">When each statistics office publishes next. The app picks up a new figure within about 30 minutes of release.</p>
+    <table class="table">
+      <thead><tr><th>Currency</th><th>Next release</th><th>Covers</th><th class="wide">Published by</th></tr></thead>
+      <tbody id="cal"></tbody>
+    </table>
+  </section>
+
+  <section class="panel" id="activity">
+    <h2>Recent updates</h2>
+    <ul class="log" id="log"></ul>
+  </section>
+
+  <section class="panel settings">
+    <h2>Alerts</h2>
+    <p class="note" id="notify-note">Get a notification when a new CPI figure lands.</p>
+    <button id="notify" class="btn">Turn on alerts</button>
+    <button id="install" class="btn ghost" hidden>Install app</button>
+  </section>
+
+  <details class="sources">
+    <summary>Sources and notes</summary>
+    <ul>
+      <li>United States: BLS CPI-U, not seasonally adjusted. The Fed's 2% target is defined on PCE.</li>
+      <li>Euro area: HICP via the ECB Data Portal (Eurostat data). The newest month is often a flash estimate.</li>
+      <li>Japan: CPI via OECD (follows the Statistics Bureau of Japan release by a few days). Core excludes fresh food.</li>
+      <li>United Kingdom: ONS CPI annual rate (D7G7); core is DKO8.</li>
+      <li>Australia: ABS monthly CPI; core is the trimmed mean.</li>
+    </ul>
+    <ul id="notes"></ul>
+  </details>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

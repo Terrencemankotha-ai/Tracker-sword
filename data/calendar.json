@@ -1,0 +1,8 @@
+{
+ "_note": "Optional: upcoming CPI release dates (YYYY-MM-DD) per currency. The updater uses the earliest future date here; otherwise it estimates one month on and the app marks it 'est.'",
+ "USD": ["2026-11-10"],
+ "EUR": ["2026-11-18"],
+ "JPY": ["2026-11-20"],
+ "GBP": ["2026-11-18"],
+ "AUD": ["2026-11-25"]
+}

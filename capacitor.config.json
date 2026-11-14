@@ -1,0 +1,11 @@
+{
+  "appId": "com.abrahamsword.tracker",
+  "appName": "Abraham Tracker Sword",
+  "webDir": "www",
+  "backgroundColor": "#0f1115",
+  "ios": { "contentInset": "never", "backgroundColor": "#0f1115" },
+  "android": { "backgroundColor": "#0f1115" },
+  "plugins": {
+    "LocalNotifications": { "iconColor": "#d8b45a" }
+  }
+}
