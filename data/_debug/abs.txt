@@ -1,0 +1,139 @@
+URL: https://data.api.abs.gov.au/rest/data/ABS,CPI_M/all?startPeriod=2025-08&format=csvfilewithlabels
+rows: 142
+
+{
+ "STRUCTURE": [
+  "DATAFLOW"
+ ],
+ "STRUCTURE_ID": [
+  "ABS:CPI_M(1.2.0)"
+ ],
+ "STRUCTURE_NAME": [
+  "Monthly Consumer Price Index (CPI) indicator"
+ ],
+ "ACTION": [
+  "I"
+ ],
+ "MEASURE": [
+  "1",
+  "3"
+ ],
+ "Measure": [
+  "Index Numbers",
+  "Percentage Change from Corresponding Month of the Previous Year"
+ ],
+ "INDEX": [
+  "10001",
+  "102675",
+  "102676",
+  "104101",
+  "104104",
+  "104122",
+  "114120",
+  "115486",
+  "115488",
+  "115489",
+  "115493",
+  "115522",
+  "115524",
+  "126670",
+  "131179",
+  "131180",
+  "131181",
+  "131186",
+  "20001",
+  "20002",
+  "20003",
+  "20004",
+  "20005",
+  "20006",
+  "30001"
+ ],
+ "Index": [
+  "Alcohol and tobacco",
+  "Alcoholic beverages",
+  "All groups CPI",
+  "All groups CPI excluding 'volatile items'",
+  "All groups CPI, seasonally adjusted",
+  "All groups excluding volatile items and holiday travel",
+  "All groups, goods component",
+  "All groups, services component",
+  "Annual trimmed mean",
+  "Automotive fuel",
+  "Bread and cereal products",
+  "Clothing and footwear",
+  "Communication",
+  "Dairy and related products",
+  "Education",
+  "Electricity",
+  "Food and non-alcoholic beverages",
+  "Food products n.e.c.",
+  "Fruit and vegetables",
+  "Furnishings, household equipment and services",
+  "Garments",
+  "Gas and other household fuels",
+  "Health",
+  "Holiday travel and accommodation",
+  "Housing"
+ ],
+ "TSEST": [
+  "10",
+  "20"
+ ],
+ "Adjustment Type": [
+  "Original",
+  "Seasonally Adjusted"
+ ],
+ "REGION": [
+  "50"
+ ],
+ "Region": [
+  "Weighted average of eight capital cities"
+ ],
+ "FREQ": [
+  "M"
+ ],
+ "Frequency": [
+  "Monthly"
+ ],
+ "Time Period": [
+  ""
+ ],
+ "Observation Value": [
+  ""
+ ],
+ "UNIT_MEASURE": [
+  "IN",
+  "PCT"
+ ],
+ "Unit of Measure": [
+  "Index Numbers",
+  "Percent"
+ ],
+ "OBS_STATUS": [
+  "",
+  "r"
+ ],
+ "Observation Status": [
+  "",
+  "revised"
+ ],
+ "DECIMALS": [
+  "1"
+ ],
+ "Decimals": [
+  "One"
+ ],
+ "OBS_COMMENT": [
+  ""
+ ],
+ "Observation Comment": [
+  ""
+ ],
+ "BASE_PERIOD": [
+  "17"
+ ],
+ "Reference Base Period": [
+  "September 2017 = 100.0"
+ ]
+}
