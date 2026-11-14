@@ -1,4 +1,4 @@
-/* Abraham Tracker Sword - service worker
+/* Abraham Sword Tracker - service worker
    App shell: cache-first (works offline). Data: network-first, falls back to the last saved copy. */
 const VERSION = 'ats-v3';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest',

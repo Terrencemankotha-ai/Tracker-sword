@@ -1,6 +1,6 @@
 {
   "appId": "com.abrahamsword.tracker",
-  "appName": "Abraham Tracker Sword",
+  "appName": "Abraham Sword Tracker",
   "webDir": "www",
   "backgroundColor": "#0f1115",
   "ios": { "contentInset": "never", "backgroundColor": "#0f1115" },

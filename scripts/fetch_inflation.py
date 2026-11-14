@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Abraham Tracker Sword - live CPI updater.
+"""Abraham Sword Tracker - live CPI updater.
 
 Pulls the latest headline / core inflation for USD, EUR, JPY, GBP and AUD
 straight from official sources and merges it into data/inflation.json.
@@ -40,7 +40,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "inflation.json")
 NEWS_MAX = 60          # headlines kept in data/news.json
 NEWS_MAX_AGE_DAYS = 7
-UA = "AbrahamTrackerSword/1.0 (CPI tracker; GitHub Actions)"
+UA = "AbrahamSwordTracker/1.0 (CPI tracker; GitHub Actions)"
 HISTORY_MONTHS = 13
 MONTHS = {m: i for i, m in enumerate(
     ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"], 1)}

@@ -56,7 +56,7 @@ jobs:
       - name: Build installable APK
         run: |
           cd android && ./gradlew assembleDebug --no-daemon
-          cp app/build/outputs/apk/debug/app-debug.apk ../AbrahamTrackerSword.apk
+          cp app/build/outputs/apk/debug/app-debug.apk ../AbrahamSwordTracker.apk
 
       - name: Build signed Play Store bundle (only if keystore secrets are set)
         if: env.HAS_KEYSTORE == 'true'
@@ -72,24 +72,24 @@ jobs:
             npx cap build android --keystorepath "$RUNNER_TEMP/release.jks" --keystorepass "$KS_PASS" \
               --keystorealias "$KEY_ALIAS" --keystorealiaspass "$KEY_PASS" --androidreleasetype $TYPE
           done
-          cp "$(find android/app/build/outputs/bundle -name '*.aab' | head -1)" AbrahamTrackerSword-play.aab
-          cp "$(find android/app/build/outputs/apk/release -name '*.apk' | head -1)" AbrahamTrackerSword-release.apk
+          cp "$(find android/app/build/outputs/bundle -name '*.aab' | head -1)" AbrahamSwordTracker-play.aab
+          cp "$(find android/app/build/outputs/apk/release -name '*.apk' | head -1)" AbrahamSwordTracker-release.apk
 
       - uses: actions/upload-artifact@v4
         with:
           name: android
           path: |
-            AbrahamTrackerSword*.apk
-            AbrahamTrackerSword*.aab
+            AbrahamSwordTracker*.apk
+            AbrahamSwordTracker*.aab
 
       - name: Publish to the download page
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           gh release view "$RELEASE_TAG" >/dev/null 2>&1 || gh release create "$RELEASE_TAG" --prerelease \
             --title "Phone apps (latest build)" \
-            --notes "Android: download AbrahamTrackerSword.apk on your phone and open it. iPhone: see README (TestFlight, or sideload the unsigned .ipa)." || true
-          gh release upload "$RELEASE_TAG" AbrahamTrackerSword*.apk --clobber
-          ls AbrahamTrackerSword-play.aab >/dev/null 2>&1 && gh release upload "$RELEASE_TAG" AbrahamTrackerSword-play.aab --clobber || true
+            --notes "Android: download AbrahamSwordTracker.apk on your phone and open it. iPhone: see README (TestFlight, or sideload the unsigned .ipa)." || true
+          gh release upload "$RELEASE_TAG" AbrahamSwordTracker*.apk --clobber
+          ls AbrahamSwordTracker-play.aab >/dev/null 2>&1 && gh release upload "$RELEASE_TAG" AbrahamSwordTracker-play.aab --clobber || true
 
   ios:
     runs-on: macos-15
@@ -116,7 +116,7 @@ jobs:
             -derivedDataPath "$GITHUB_WORKSPACE/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
           cd "$GITHUB_WORKSPACE"
           mkdir -p Payload && cp -R build/Build/Products/Release-iphoneos/App.app Payload/
-          zip -qry AbrahamTrackerSword-unsigned.ipa Payload
+          zip -qry AbrahamSwordTracker-unsigned.ipa Payload
 
       - name: Archive and upload to TestFlight (only if App Store secrets are set)
         if: env.HAS_ASC == 'true' && (inputs.testflight || startsWith(github.ref, 'refs/tags/v'))
@@ -150,12 +150,12 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ios
-          path: AbrahamTrackerSword-unsigned.ipa
+          path: AbrahamSwordTracker-unsigned.ipa
 
       - name: Publish to the download page
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           gh release view "$RELEASE_TAG" >/dev/null 2>&1 || gh release create "$RELEASE_TAG" --prerelease \
             --title "Phone apps (latest build)" \
-            --notes "Android: download AbrahamTrackerSword.apk on your phone and open it. iPhone: see README (TestFlight, or sideload the unsigned .ipa)." || true
-          gh release upload "$RELEASE_TAG" AbrahamTrackerSword-unsigned.ipa --clobber
+            --notes "Android: download AbrahamSwordTracker.apk on your phone and open it. iPhone: see README (TestFlight, or sideload the unsigned .ipa)." || true
+          gh release upload "$RELEASE_TAG" AbrahamSwordTracker-unsigned.ipa --clobber

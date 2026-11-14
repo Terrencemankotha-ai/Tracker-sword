@@ -1,4 +1,4 @@
-/* Abraham Tracker Sword - phone app */
+/* Abraham Sword Tracker - phone app */
 (() => {
   'use strict';
   // Web build reads data next to the page; the phone apps read it from the published site (set in config.js).
@@ -707,7 +707,7 @@
     const btn = $('notify'), note = $('notify-note');
     if (LN) {
       const on = () => { btn.disabled = true; btn.textContent = 'Alerts are on'; note.textContent = 'You will be notified when a new CPI figure lands when you open the app or switch back to it.'; };
-      const off = () => { btn.disabled = true; btn.textContent = 'Alerts blocked'; note.textContent = 'Allow notifications for Abraham Tracker Sword in your phone settings to turn alerts on.'; };
+      const off = () => { btn.disabled = true; btn.textContent = 'Alerts blocked'; note.textContent = 'Allow notifications for Abraham Sword Tracker in your phone settings to turn alerts on.'; };
       const sync = (st) => { if (st.display === 'granted') { on(); scheduleReminders(); } else if (st.display === 'denied') off(); };
       LN.checkPermissions().then(sync).catch(() => {});
       btn.onclick = () => LN.requestPermissions().then(sync).catch(() => {});
