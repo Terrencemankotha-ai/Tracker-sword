@@ -1,8 +1,313 @@
 {
- "updated_at": null,
- "checked_at": null,
- "feeds_ok": 0,
+ "updated_at": "2026-11-14T21:49:52Z",
+ "checked_at": "2026-11-14T21:49:52Z",
+ "feeds_ok": 8,
  "feeds_total": 10,
- "problems": [],
- "items": []
+ "problems": [
+  "FXStreet: https://www.fxstreet.com/rss/news: HTTP Error 403: Forbidden",
+  "Yahoo Finance: https://finance.yahoo.com/news/rssindex: HTTP Error 404: Not Found"
+ ],
+ "items": [
+  {
+   "title": "US Treasury bought nearly $500mn in yen during joint July forex intervention",
+   "link": "https://asia.nikkei.com/business/markets/currencies/us-treasury-bought-nearly-500mn-in-yen-during-joint-july-forex-intervention",
+   "source": "Nikkei Asia",
+   "published": "2026-11-14T21:49:52Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
+  {
+   "title": "A rapid interest rate rise seems inevitable – and households are expected to pick up the tab",
+   "link": "https://www.theguardian.com/business/2026/nov/14/interest-rate-rise-phillip-inman-inflation-economy",
+   "source": "The Guardian",
+   "published": "2026-11-14T16:00:48Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Raising borrowing costs too far risks laying waste to whatever growth there is in the economy A head of steam is building up behind the Bank of England raising interest rates again. With the latest forecasts by the…"
+  },
+  {
+   "title": "Interest rate rises likely in coming months, Bank of England’s chief economist says",
+   "link": "https://www.theguardian.com/business/2026/nov/14/interest-rate-rises-inflation-bank-of-england-chief-economist",
+   "source": "The Guardian",
+   "published": "2026-11-14T14:42:27Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "‘We have further to go,’ says Huw Pill after increase to 4% this month as Bank seeks to tackle rising inflation The Bank of England will probably need to raise interest rates next month and again in early 2027 to…"
+  },
+  {
+   "title": "Hawkward timing",
+   "link": "https://www.ft.com/content/8c2639dc-e5d5-430d-a641-11776ac26f9c",
+   "source": "Financial Times",
+   "published": "2026-11-14T10:05:05Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Federal Reserve policymakers have floated the idea of a bigger rate increase in December following strong jobs, growth and inflation data"
+  },
+  {
+   "title": "Transcript of an interview with Huw Pill",
+   "link": "https://www.ft.com/content/014fae08-ab39-4fa2-b9d3-f0c961a6710f",
+   "source": "Financial Times",
+   "published": "2026-11-14T05:00:46Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Bank of England chief economist talks to the FT"
+  },
+  {
+   "title": "BoE chief economist says further rate rises needed to combat inflation",
+   "link": "https://www.ft.com/content/806b0158-41c5-4db2-ac33-93621f72297b?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-14T05:00:46Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Huw Pill calls last week’s quarter-point increase to 4% a ‘significant step’ but that there was ‘further to go’ with borrowing costs"
+  },
+  {
+   "title": "US Treasuries record worst week since Trump’s ‘liberation day’",
+   "link": "https://www.ft.com/content/7bebace2-dc87-410a-ae29-ffd9f3176def?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-13T22:12:03Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Higher than expected inflation and hawkish remarks by Fed officials have stung investors who bet a global bond rout was over"
+  },
+  {
+   "title": "AI risks are the biggest threat to the financial system, Fed survey finds",
+   "link": "https://www.cnbc.com/2026/11/13/ai-risks-financial-system-federal-reserve.html",
+   "source": "CNBC",
+   "published": "2026-11-13T21:18:30Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The report comes with Wall Street on edge over high-flying AI hyperscalers, while communities are on alert for the rapid spread of data centers."
+  },
+  {
+   "title": "Trump to rule on tariffs for Australian lamb after trade commissioners disagree",
+   "link": "https://www.abc.net.au/news/2026-11-14/us-trade-investigation-into-lamb-imports-decision-handed-down/107385510",
+   "source": "ABC News (AU)",
+   "published": "2026-11-13T20:07:43Z",
+   "codes": [
+    "AUD"
+   ],
+   "summary": "A US trade panel reviewing lamb imports is unable to agree on whether Australian meat imports have hurt the American industry, leaving Donald Trump to rule on tariffs."
+  },
+  {
+   "title": "German coalition disagreements hold up ECB jobs deal",
+   "link": "https://www.ft.com/content/bcfa33cc-535a-4692-ae5f-39e144b78799?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-13T16:15:25Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "Chancellor and his finance minister have yet to agree on a candidate for one of three central bank executive board vacancies"
+  },
+  {
+   "title": "Chicago Fed's Goolsbee says central bank 'has definitely got work to do' on inflation",
+   "link": "https://www.cnbc.com/2026/11/13/chicago-feds-goolsbee-says-central-bank-has-definitely-got-work-to-do-on-inflation.html",
+   "source": "CNBC",
+   "published": "2026-11-13T14:22:07Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The policymaker expressed concern about the latest inflation data, telling CNBC that the central bank likely will need to take action."
+  },
+  {
+   "title": "In a policy switch, the Fed says its October 2027 meeting will not see a vote on interest rates",
+   "link": "https://www.cnbc.com/2026/11/12/in-policy-switch-fed-says-its-october-2027-meeting-will-not-see-a-vote-on-interest-rates.html",
+   "source": "CNBC",
+   "published": "2026-11-12T19:05:25Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "There will be seven voting meetings next year, with the October session set up as extra time for policy deliberation without a formal vote or post-meeting statement."
+  },
+  {
+   "title": "Faisal Islam: Why the UK economy is surprisingly resilient",
+   "link": "https://www.bbc.co.uk/news/articles/cj62p32k90wyo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "published": "2026-11-12T13:27:09Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "The UK is seeing impressive growth, but will it last?"
+  },
+  {
+   "title": "AI helped UK defy expectations – but will economy’s resilience fizzle out?",
+   "link": "https://www.theguardian.com/business/2026/nov/12/ai-uk-economy-john-healey",
+   "source": "The Guardian",
+   "published": "2026-11-12T13:08:12Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Despite John Healey’s defiance, the economy faces threats from a tech slowdown and energy bills this winter AI helps UK economy grow at fastest pace for more than two years The forecasters were clear when John Healey…"
+  },
+  {
+   "title": "UK economy grows at fastest rate for more than two years",
+   "link": "https://www.bbc.co.uk/news/articles/ck3rgd429zd5o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "published": "2026-11-12T11:20:25Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "﻿The UK economy grew by 0.7% in the three months to September, according to official figures."
+  },
+  {
+   "title": "FirstFT: Nvidia board weighs Jensen Huang’s future as scandal deepens",
+   "link": "https://www.ft.com/content/64198d59-7a03-4f1c-89c6-81ed8bdc5448?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-12T11:17:46Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "Also in today’s newsletter: Jamie Raskin interview and the race for ECB president"
+  },
+  {
+   "title": "AI helps UK economy grow at fastest pace for more than two years",
+   "link": "https://www.theguardian.com/business/2026/nov/12/uk-economy-grows-third-quarter-oil-price-ons-gdp",
+   "source": "The Guardian",
+   "published": "2026-11-12T09:12:52Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "GDP ‘grew robustly’ by 0.7% in third quarter and by 0.2% month on month in September despite high oil prices AI helped the UK defy expectations – but will Britain’s resilience fizzle out? The UK economy grew by 0.7%…"
+  },
+  {
+   "title": "Solid UK growth will not by itself push BoE to move in December",
+   "link": "https://www.ft.com/content/f92f05b4-0d1a-4bdb-8759-4d71f1cf58af",
+   "source": "Financial Times",
+   "published": "2026-11-12T08:43:32Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Third-quarter growth figures showed a tentative economic rebound under way as AI trends pick up"
+  },
+  {
+   "title": "UK economy expanded by 0.7% in third quarter",
+   "link": "https://www.ft.com/content/94f3ad1c-a186-4893-ae97-5f129690d121?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-12T08:23:17Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Figure underscores resilience despite surging energy prices and rising borrowing costs."
+  },
+  {
+   "title": "UK economy expands 0.7% in third quarter as AI provides 'extra engine of growth'",
+   "link": "https://www.cnbc.com/2026/11/12/uk-gdp-third-quarter-2026.html",
+   "source": "CNBC",
+   "published": "2026-11-12T08:02:15Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "The U.K. economy grew 0.7% in the third quarter of the year, in line with estimates."
+  },
+  {
+   "title": "France signals support for Spain’s ECB presidential candidate",
+   "link": "https://www.ft.com/content/b0d03a62-a75d-41f9-bac3-1518cefe400a?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-12T05:00:21Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "Pablo Hernández de Cos’s bid gains momentum as Paris and Berlin eye package deal on central bank leadership"
+  },
+  {
+   "title": "Surging US economy defies worries over turbulent Trump",
+   "link": "https://www.ft.com/content/51fb0811-982a-4c7b-8d87-f85cd9008f3b?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-12T01:00:02Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "World’s largest economy fires on all cylinders — but technology sell-off underlines precarious nature of AI-driven boom"
+  },
+  {
+   "title": "Fed's Goolsbee calls inflation report 'borderline disturbing' as central bank weighs more hikes",
+   "link": "https://www.cnbc.com/2026/11/11/goolsbee-october-inflation-fed-rates-disturbing-distressing.html",
+   "source": "CNBC",
+   "published": "2026-11-11T16:49:02Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The consumer price index rose more than expected in October, raising alarm among Federal Reserve officials."
+  },
+  {
+   "title": "Bank of England’s inflation response ‘risks higher interest rates for longer’",
+   "link": "https://www.theguardian.com/business/2026/nov/11/bank-of-england-inflation-response-risks-higher-interest-rates-for-longer",
+   "source": "The Guardian",
+   "published": "2026-11-11T00:01:23Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Thinktank Niesr says timid rate rise last week likely to make inflation more persistent feature of UK economy The Bank of England is risking higher interest rates for longer after a hesitant response to rising…"
+  },
+  {
+   "title": "Consumer prices rose 0.4% in October, more than expected, complicating Fed's inflation fight",
+   "link": "https://www.cnbc.com/2026/11/10/cpi-inflation-report-october-2026.html",
+   "source": "CNBC",
+   "published": "2026-11-10T23:53:58Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The report comes at a critical juncture for the Federal Reserve as it considers its next move regarding interest rates."
+  },
+  {
+   "title": "Fed Governor Waller sees December hike likely, opens door to possible half-point increase",
+   "link": "https://www.cnbc.com/2026/11/10/fed-governor-waller-sees-december-hike-likely.html",
+   "source": "CNBC",
+   "published": "2026-11-10T17:13:44Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The policymaker said he \"is leaning toward\" a rate increase in December and could support a half-point hike depending on inflation data."
+  },
+  {
+   "title": "Inquiry launched into UK budget bank tax leak; Wall Street hit by US inflation data – as it happened",
+   "link": "https://www.theguardian.com/business/live/2026/nov/10/nvidia-shareholder-lawsuit-jensen-huang-relationship-suspected-chinese-spy-fbi-trump-bank-of-england-latest-news-updates",
+   "source": "The Guardian",
+   "published": "2026-11-10T17:12:54Z",
+   "codes": [
+    "USD",
+    "GBP"
+   ],
+   "summary": "Rolling coverage of the latest economic and financial news, including live coverage of the Bank of England Watchers conference in London Young people in UK hit by ‘low-gear economy’, warns Bank of England deputy The…"
+  },
+  {
+   "title": "US inflation rose 0.4% in October as price increases cooled and gas costs dipped",
+   "link": "https://www.theguardian.com/business/2026/nov/10/october-inflation-report",
+   "source": "The Guardian",
+   "published": "2026-11-10T15:38:48Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "New data comes after Republicans’ midterms losses – which were largely seen as a rebuke of the party over high prices US inflation rose 0.4% from September to October, slightly above expectations but still a cooldown…"
+  },
+  {
+   "title": "US inflation higher than expected in October - here's what is happening with prices",
+   "link": "https://www.bbc.co.uk/news/articles/cwy8lx3pg4k2o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "published": "2026-11-10T14:45:46Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Prices rose by 0.4% over the month, driven by increases in shelter, food and energy costs."
+  },
+  {
+   "title": "Young people in UK hit by ‘low-gear economy’, warns Bank of England deputy",
+   "link": "https://www.theguardian.com/business/2026/nov/10/young-people-uk-economy-bank-of-england-clare-lombardelli",
+   "source": "The Guardian",
+   "published": "2026-11-10T06:00:30Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Exclusive: Iran war has fuelled energy price rise and clouded outlook, driving up unemployment, says Clare Lombardelli Young people in Britain are bearing the brunt of a “low-gear economy” as employers hold back from…"
+  }
+ ]
 }
