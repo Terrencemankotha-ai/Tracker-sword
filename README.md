@@ -90,6 +90,20 @@ Download **AbrahamTrackerSword-unsigned.ipa** from the release. Install it with 
 * **Closed apps:** while an app is fully closed, iOS and Android don't let it check by itself. Instant alerts to a closed app would need a push service, which could be added later.
 * **App ID:** both apps use `com.abrahamsword.tracker`. To use your own, change `appId` in `capacitor.config.json` before your first store upload. It can't change after that.
 
+## Features
+
+* **Currency cards:** headline and core CPI, distance from target, policy rate and real rate.
+* **Pair view:** pick any of the 10 pairs (EUR/USD, GBP/JPY…) to see a live TradingView price chart, a bar chart comparing the two currencies (CPI, core, policy rate, real rate) and the inflation spread over 12 months.
+* **Pressure scoreboard:** ranks the currencies by inflation pressure (gap to target for headline and core, plus the latest move) and names the pair with the widest gap.
+* **Real interest rates:** policy rate minus CPI for each currency, ranked.
+* **Countdown:** live countdown to every CPI release and rate decision, shown in your local time.
+* **Alerts:** choose which currencies alert you, plus an optional reminder 15 min, 1 hour or 1 day before a release or rate decision. The phone apps schedule reminders so they arrive even when the app is closed.
+* **Market news:** inflation and central-bank headlines from BBC, CNBC, MarketWatch, The Guardian, FT, FXStreet, Yahoo Finance, Nikkei Asia and ABC. They're tagged by currency, refreshed every 30 minutes, and link to the full story.
+* **Looks:** five built-in styles (Midnight Blade, Ember Forge, Signal Desk, Ivory Ledger, Aurora Glass).
+
+### Keeping policy rates current
+Policy rates are kept in `data/policy_rates.json`. After a central bank decision, change `rate`, `last_decision`, `last_move` and `next_meeting` for that currency (for the Fed, also `low` and `high`). The app picks up the change within 30 minutes.
+
 ## Good to know
 
 * **CPI comes out once a month per country.** "Real time" here means a new figure reaches your phone within about 30 minutes of the statistics office publishing it. Between releases the numbers don't change, but the green **Live** dot shows the sources are still being checked.

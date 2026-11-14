@@ -1,6 +1,6 @@
 /* Abraham Tracker Sword - service worker
    App shell: cache-first (works offline). Data: network-first, falls back to the last saved copy. */
-const VERSION = 'ats-v2';
+const VERSION = 'ats-v3';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/badge-96.png', 'icons/apple-touch-icon.png'];
 const DATA = 'data/inflation.json';
@@ -17,11 +17,12 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
-  if (url.pathname.endsWith('/' + DATA)) {
+  const live = [DATA, 'data/news.json'].find((d) => url.pathname.endsWith('/' + d));
+  if (live) {
     e.respondWith(fetch(e.request, { cache: 'no-store' }).then((r) => {
-      if (r.ok) { const copy = r.clone(); caches.open(VERSION).then((c) => c.put(DATA, copy)); }
+      if (r.ok) { const copy = r.clone(); caches.open(VERSION).then((c) => c.put(live, copy)); }
       return r;
-    }).catch(() => caches.match(DATA).then((r) => r || Response.error())));
+    }).catch(() => caches.match(live).then((r) => r || Response.error())));
     return;
   }
   e.respondWith(caches.match(e.request, { ignoreSearch: true }).then((hit) => {

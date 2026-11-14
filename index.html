@@ -14,6 +14,7 @@
 <link rel="icon" href="icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
+<script>try{var t=JSON.parse(localStorage.getItem('ats:theme'));if(t&&t!=='blade')document.documentElement.dataset.theme=t;}catch(e){}</script>
 </head>
 <body>
 <header class="bar">
@@ -33,7 +34,51 @@
     <p id="take-text">Loading the latest official figures…</p>
   </section>
 
+  <nav class="jump" aria-label="Sections">
+    <a href="#pairs">Pairs</a><a href="#score">Scoreboard</a><a href="#real">Real rates</a><a href="#countdown">Countdown</a><a href="#news">News</a><a href="#look">Look</a><a href="#alerts">Alerts</a>
+  </nav>
+
   <section class="cards" id="cards" aria-label="Latest inflation by currency"></section>
+
+  <section class="panel" id="pairs">
+    <div class="panel-head">
+      <h2>Pair view</h2>
+      <div class="chips" id="pair-chips" role="group" aria-label="Choose a currency pair"></div>
+    </div>
+    <p class="pair-sum" id="pair-sum"></p>
+    <div class="tv-wrap">
+      <div class="tv" id="tv"></div>
+      <p class="note tv-note" id="tv-note">Live price chart by TradingView. Change the timeframe at the top of the chart.</p>
+    </div>
+    <div class="two">
+      <div>
+        <h3>Side by side</h3>
+        <div class="chart" id="pair-bars"></div>
+      </div>
+      <div>
+        <h3>Inflation spread, last 12 months</h3>
+        <p class="note" id="spread-note"></p>
+        <div class="chart" id="pair-spread"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="score">
+    <h2>Pressure scoreboard</h2>
+    <p class="note">Ranks inflation pressure: how far headline and core sit above the central bank's target, plus the direction of the latest move. More pressure usually means a central bank leaning towards hikes. This is a summary of the data, not trading advice.</p>
+    <ol class="score" id="score-list"></ol>
+    <div class="watch" id="watch"></div>
+  </section>
+
+  <section class="panel" id="real">
+    <h2>Real interest rates</h2>
+    <p class="note" id="real-note">Policy rate minus headline inflation. Positive means policy is tight in real terms; negative means it is loose.</p>
+    <div class="chart" id="real-chart"></div>
+    <table class="table">
+      <thead><tr><th>Currency</th><th>Policy rate</th><th>CPI</th><th>Real</th><th class="wide">Last decision</th></tr></thead>
+      <tbody id="real-table"></tbody>
+    </table>
+  </section>
 
   <section class="panel" id="trend">
     <div class="panel-head">
@@ -44,13 +89,23 @@
     <div class="chart" id="chart"></div>
   </section>
 
-  <section class="panel" id="calendar">
-    <h2>Release calendar</h2>
-    <p class="note">When each statistics office publishes next. The app picks up a new figure within about 30 minutes of release.</p>
+  <section class="panel" id="countdown">
+    <h2>Countdown</h2>
+    <p class="note">Upcoming CPI releases and rate decisions, in your local time. Estimated dates are marked <i>est.</i></p>
+    <div class="next" id="next-up"></div>
     <table class="table">
-      <thead><tr><th>Currency</th><th>Next release</th><th>Covers</th><th class="wide">Published by</th></tr></thead>
+      <thead><tr><th>Event</th><th>When</th><th>In</th></tr></thead>
       <tbody id="cal"></tbody>
     </table>
+  </section>
+
+  <section class="panel" id="news">
+    <div class="panel-head">
+      <h2>Market news</h2>
+      <div class="chips" id="news-chips" role="group" aria-label="Filter headlines"></div>
+    </div>
+    <p class="note" id="news-note">Inflation and central-bank headlines from major outlets. Tap a headline to read the full story.</p>
+    <ul class="news" id="news-list"></ul>
   </section>
 
   <section class="panel" id="activity">
@@ -58,10 +113,26 @@
     <ul class="log" id="log"></ul>
   </section>
 
-  <section class="panel settings">
+  <section class="panel settings" id="look">
+    <h2>Look</h2>
+    <p class="note">Pick the style of the app. Your choice is saved on this phone.</p>
+    <div class="looks" id="looks" role="group" aria-label="App look"></div>
+  </section>
+
+  <section class="panel settings" id="alerts">
     <h2>Alerts</h2>
     <p class="note" id="notify-note">Get a notification when a new CPI figure lands.</p>
     <button id="notify" class="btn">Turn on alerts</button>
+    <div class="set-row">
+      <span>Alert me for</span>
+      <div class="chips" id="alert-chips" role="group" aria-label="Currencies to alert for"></div>
+    </div>
+    <label class="set-row" for="remind">
+      <span>Reminder before a release</span>
+      <select id="remind"><option value="0">Off</option><option value="15">15 min before</option><option value="60">1 hour before</option><option value="1440">1 day before</option></select>
+    </label>
+    <label class="set-row check"><input type="checkbox" id="remind-cb"> <span>Also remind me before rate decisions</span></label>
+    <p class="note" id="remind-note"></p>
     <button id="install" class="btn ghost" hidden>Install app</button>
   </section>
 
@@ -73,6 +144,8 @@
       <li>Japan: CPI via OECD (follows the Statistics Bureau of Japan release by a few days). Core excludes fresh food.</li>
       <li>United Kingdom: ONS CPI annual rate (D7G7); core is DKO8.</li>
       <li>Australia: ABS monthly CPI; core is the trimmed mean.</li>
+      <li>Policy rates: Federal Reserve (middle of the target range), ECB deposit rate, Bank of Japan, Bank of England, RBA. Kept in <code>data/policy_rates.json</code>.</li>
+      <li>Live prices: TradingView. Headlines: each outlet's public news feed, checked every 30 minutes.</li>
     </ul>
     <ul id="notes"></ul>
   </details>

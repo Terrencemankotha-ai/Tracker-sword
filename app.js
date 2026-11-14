@@ -12,6 +12,16 @@
   const STALE_MIN = 90;               // updater runs every 30 min; warn if quiet for longer
   const CODES = ['USD', 'EUR', 'JPY', 'GBP', 'AUD'];
   const COLORS = { USD: 'var(--c1)', EUR: 'var(--c2)', JPY: 'var(--c3)', GBP: 'var(--c4)', AUD: 'var(--c5)' };
+  const NEWS_URL = DATA_URL.replace(/inflation\.json$/, 'news.json');
+  // Official release times (local wall-clock time of each statistics office).
+  const CPI_TIME = { USD: ['08:30', 'America/New_York'], EUR: ['11:00', 'Europe/Brussels'], JPY: ['08:30', 'Asia/Tokyo'],
+    GBP: ['07:00', 'Europe/London'], AUD: ['11:30', 'Australia/Sydney'] };
+  const BANK = { USD: 'Fed', EUR: 'ECB', JPY: 'BoJ', GBP: 'BoE', AUD: 'RBA' };
+  // Market order for naming pairs (EUR/USD, GBP/JPY, AUD/USD…).
+  const RANK = { EUR: 0, GBP: 1, AUD: 2, USD: 3, JPY: 4 };
+  const PAIRS = [];
+  CODES.forEach((a, i) => CODES.slice(i + 1).forEach((b) => PAIRS.push(RANK[a] < RANK[b] ? [a, b] : [b, a])));
+  PAIRS.sort((x, y) => (RANK[x[0]] - RANK[y[0]]) || (RANK[x[1]] - RANK[y[1]]));
   const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const $ = (id) => document.getElementById(id);
   const store = {
@@ -23,6 +33,23 @@
   let lastOk = 0;
   let hidden = new Set(store.get('ats:hidden', []));
   let timer = null;
+  let news = store.get('ats:news', null);
+  let pair = store.get('ats:pair', ['EUR', 'USD']);
+  if (!PAIRS.some((p) => p[0] === pair[0] && p[1] === pair[1])) pair = ['EUR', 'USD'];
+  let newsFilter = store.get('ats:newsFilter', 'all');
+  let alertCodes = new Set(store.get('ats:alertCodes', CODES));
+  let remindMin = store.get('ats:remind', 0);
+  let remindRates = store.get('ats:remindRates', true);
+  let tvKey = '';
+  const THEMES = [
+    { id: 'blade', name: 'Midnight Blade', note: 'Dark steel and gold', sw: ['#0f1115', '#d8b45a', '#6aa9ff', '#4fc28a'], fg: '#d8b45a', bg: '#0f1115' },
+    { id: 'forge', name: 'Ember Forge', note: 'Copper on iron, serif', sw: ['#15100d', '#e3823f', '#f0c27a', '#8fc56a'], fg: '#e3823f', bg: '#15100d', serif: true },
+    { id: 'signal', name: 'Signal Desk', note: 'Terminal green, mono', sw: ['#050807', '#35e08c', '#ffc23d', '#ff5d73'], fg: '#35e08c', bg: '#050807', mono: true },
+    { id: 'ledger', name: 'Ivory Ledger', note: 'Light paper and ink', sw: ['#f3eee3', '#9b2335', '#1f4e8c', '#1d2433'], fg: '#1d2433', bg: '#f3eee3', serif: true, light: true },
+    { id: 'aurora', name: 'Aurora Glass', note: 'Night sky, frosted', sw: ['#0b1030', '#5fe3f0', '#b18cff', '#ff7aa8'], fg: '#5fe3f0', bg: '#070b1a' },
+  ];
+  let theme = store.get('ats:theme', 'blade');
+  const isLight = () => theme === 'ledger' || (theme === 'blade' && matchMedia('(prefers-color-scheme: light)').matches);
 
   // ---------- formatting
   const pct = (v) => (v === null || v === undefined || isNaN(v)) ? '—' : (+v).toFixed(1) + '%';
@@ -44,6 +71,29 @@
     if (s < 86400) return Math.round(s / 3600) + ' h ago';
     return Math.round(s / 86400) + ' d ago';
   };
+  const sgn = (v) => (v === null || v === undefined || isNaN(v)) ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toFixed(2).replace(/0$/, '') + '%';
+  const r1 = (v) => Math.round(v * 10) / 10;
+  const pairName = (p) => p[0] + '/' + p[1];
+  // Convert a local wall-clock time in a time zone to a UTC timestamp (handles daylight saving).
+  const tzOff = (ts, tz) => {
+    const f = new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const p = {}; f.formatToParts(new Date(ts)).forEach((x) => { p[x.type] = x.value; });
+    return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute, +p.second) - ts;
+  };
+  const zoned = (day, hhmm, tz) => {
+    const [y, m, d] = day.split('-').map(Number); const [h, mi] = hhmm.split(':').map(Number);
+    const guess = Date.UTC(y, m - 1, d, h, mi);
+    try { let t = guess - tzOff(guess, tz); t = guess - tzOff(t, tz); return t; } catch { return guess; }
+  };
+  const fLocal = (ts) => new Date(ts).toLocaleString([], { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const countdown = (ts) => {
+    let s = Math.round((ts - Date.now()) / 1000);
+    if (s <= 0) return 'now';
+    const d = Math.floor(s / 86400); s -= d * 86400; const h = Math.floor(s / 3600); s -= h * 3600; const m = Math.floor(s / 60); s -= m * 60;
+    if (d > 0) return d + 'd ' + h + 'h ' + m + 'm';
+    if (h > 0) return h + 'h ' + m + 'm ' + String(s).padStart(2, '0') + 's';
+    return m + 'm ' + String(s).padStart(2, '0') + 's';
+  };
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
 
   // ---------- data
@@ -60,6 +110,7 @@
       render(fresh);
       if (fresh.length) announce(fresh);
       else if (manual) toast('Up to date. No new releases.');
+      loadNews();
     } catch (e) {
       lastOk = 0;
       // First launch with no connection: fall back to the figures bundled inside the app.
@@ -75,6 +126,19 @@
       btn.classList.remove('spin');
       status();
     }
+  }
+
+  async function loadNews() {
+    try {
+      const r = await fetch(NEWS_URL + '?t=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      news = await r.json(); store.set('ats:news', news);
+    } catch {
+      if (!news && NEWS_URL !== 'data/news.json') {
+        try { const b = await fetch('data/news.json'); if (b.ok) news = await b.json(); } catch { /* none */ }
+      }
+    }
+    renderNews();
   }
 
   function diff(prev, next) {
@@ -97,17 +161,24 @@
     store.set('ats:seen', seen);
   }
 
-  function announce(rows) {
-    const msg = rows.map((r) => `${r.code} ${fMonth(r.period)}: ${pct(r.headline)}`).join(' · ');
-    toast('New CPI ▸ ' + msg);
-    if (navigator.vibrate) navigator.vibrate([60, 40, 60]);
+  function notify(title, body, tag) {
     if (LN) {
-      LN.schedule({ notifications: [{ id: Date.now() % 2147483647, title: 'New inflation figure', body: msg }] }).catch(() => {});
+      LN.schedule({ notifications: [{ id: Date.now() % 2147483647, title, body }] }).catch(() => {});
     } else if ('Notification' in window && Notification.permission === 'granted' && navigator.serviceWorker) {
-      navigator.serviceWorker.ready.then((reg) => reg.showNotification('New inflation figure', {
-        body: msg, icon: 'icons/icon-192.png', badge: 'icons/badge-96.png', tag: 'cpi', renotify: true,
+      navigator.serviceWorker.ready.then((reg) => reg.showNotification(title, {
+        body, icon: 'icons/icon-192.png', badge: 'icons/badge-96.png', tag: tag || 'cpi', renotify: true,
       })).catch(() => {});
     }
+  }
+
+  function announce(all) {
+    const msgAll = all.map((r) => `${r.code} ${fMonth(r.period)}: ${pct(r.headline)}`).join(' · ');
+    toast('New CPI ▸ ' + msgAll);
+    const rows = all.filter((r) => alertCodes.has(r.code));
+    if (!rows.length) { markSeen(); return; }
+    const msg = rows.map((r) => `${r.code} ${fMonth(r.period)}: ${pct(r.headline)}`).join(' · ');
+    if (navigator.vibrate) navigator.vibrate([60, 40, 60]);
+    notify('New inflation figure', msg, 'cpi');
     markSeen();
   }
 
@@ -129,10 +200,15 @@
     const freshCodes = new Set(fresh.map((r) => r.code));
     renderTake(rows);
     renderCards(rows, freshCodes);
+    renderPairs();
+    renderScore(rows);
+    renderReal(rows);
     renderLegend();
     renderChart();
     renderCalendar(rows);
+    renderNews();
     renderLog();
+    scheduleReminders();
     const notes = $('notes'); notes.replaceChildren();
     rows.filter((r) => r.note).forEach((r) => notes.append(el('li', '', r.code + ': ' + r.note)));
   }
@@ -146,6 +222,11 @@
     const b = (t) => el('b', '', t);
     p.append(b(hot.code), ' is running hottest at ', b(pct(hot.headline)), ' and ', b(cool.code), ' coolest at ', b(pct(cool.headline)), '. ',
       b(String(above)), ` of the ${rows.length} are above their central bank's target, and `, b(String(rising)), ' rose in their latest release.');
+    const rr = rows.map((r) => ({ r, v: realRate(r) })).filter((x) => x.v !== null);
+    if (rr.length > 1) {
+      const hi = rr.reduce((a, c) => (c.v > a.v ? c : a)), lo = rr.reduce((a, c) => (c.v < a.v ? c : a));
+      p.append(' Highest real rate: ', b(hi.r.code + ' ' + sgn(hi.v)), ', lowest: ', b(lo.r.code + ' ' + sgn(lo.v)), '.');
+    }
   }
 
   function renderCards(rows, freshCodes) {
@@ -172,10 +253,366 @@
       if (r.status && r.status !== 'Final') per.append(el('span', 'flash', ' · ' + r.status.toLowerCase()));
       const core = el('dd', '', pct(r.core)); core.title = r.core_label || '';
       const nx = el('dd', '', r.next_release ? fDate(r.next_release) : '—');
-      dl.append(el('dt', '', 'Month'), per, el('dt', '', 'Core'), core, el('dt', '', 'Next'), nx);
+      dl.append(el('dt', '', 'Month'), per, el('dt', '', 'Core'), core);
+      const po = policy(r.code);
+      if (po) {
+        const pr = el('dd', '', policyText(po)); pr.title = po.bank + ': ' + po.name;
+        const rv = realRate(r); const rd = el('dd', rv > 0 ? 'pos' : rv < 0 ? 'neg' : '', sgn(rv));
+        dl.append(el('dt', '', BANK[r.code] + ' rate'), pr, el('dt', '', 'Real rate'), rd);
+      }
+      dl.append(el('dt', '', 'Next CPI'), nx);
       c.append(dl);
       wrap.append(c);
     }
+  }
+
+
+  // ---------- policy & real rates
+  const policy = (c) => (doc && doc.policy && doc.policy[c]) || null;
+  const policyText = (po) => (po.low !== undefined && po.high !== undefined) ? po.low.toFixed(2) + '–' + po.high.toFixed(2) + '%' : (+po.rate).toFixed(2) + '%';
+  const realRate = (r) => { const po = policy(r.code); return po && r.headline != null ? Math.round((po.rate - r.headline) * 100) / 100 : null; };
+  const row = (c) => doc && doc.latest.find((r) => r.code === c);
+  const tgtMid = (r) => (r.target_low + r.target_high) / 2;
+  function pressure(r) {
+    const head = r.headline - tgtMid(r);
+    const core = (r.core != null ? r.core : r.headline) - tgtMid(r);
+    const mom = r.previous != null ? r.headline - r.previous : 0;
+    return { score: r1(0.5 * head + 0.5 * core + mom), head: r1(head), core: r1(core), mom: r1(mom) };
+  }
+
+  // ---------- pair view
+  function renderPairs() {
+    const chips = $('pair-chips'); chips.replaceChildren();
+    for (const p of PAIRS) {
+      const b = el('button', '', pairName(p)); b.type = 'button';
+      b.setAttribute('aria-pressed', String(p[0] === pair[0] && p[1] === pair[1]));
+      b.onclick = () => { pair = p; store.set('ats:pair', pair); renderPairs(); if (newsFilter === 'pair') renderNews(); };
+      chips.append(b);
+    }
+    const A = row(pair[0]), B = row(pair[1]);
+    if (!A || !B) return;
+    const sum = $('pair-sum'); sum.replaceChildren();
+    const bb = (t) => el('b', '', t);
+    const d = r1(A.headline - B.headline);
+    const ra = realRate(A), rb = realRate(B);
+    sum.append(bb(pairName(pair)), ': ', A.code + ' inflation ', bb(pct(A.headline)), ' vs ' + B.code + ' ', bb(pct(B.headline)),
+      ' → spread ', bb((d > 0 ? '+' : d < 0 ? '−' : '') + Math.abs(d).toFixed(1) + ' pts'), '.');
+    if (ra !== null && rb !== null) {
+      const g = Math.round((ra - rb) * 100) / 100;
+      sum.append(' Real-rate gap ', bb(sgn(g).replace('%', ' pts')), ' (', A.code + ' ' + sgn(ra), ', ', B.code + ' ' + sgn(rb), ').');
+    }
+    const pa = pressure(A).score, pb = pressure(B).score;
+    sum.append(' Inflation pressure is ', bb(pa > pb ? 'higher in ' + A.code : pa < pb ? 'higher in ' + B.code : 'level'), '.');
+    renderTV();
+    renderPairBars(A, B);
+    renderSpread(A, B);
+  }
+
+  function renderTV() {
+    const box = $('tv'); const key = pairName(pair) + theme + (isLight() ? 'l' : 'd');
+    if (!navigator.onLine) { box.replaceChildren(el('div', 'tv-off', 'Live chart needs a connection.')); tvKey = ''; return; }
+    if (key === tvKey && box.childElementCount) return;
+    tvKey = key;
+    const wrap = el('div', 'tradingview-widget-container'); wrap.style.height = '100%';
+    const inner = el('div', 'tradingview-widget-container__widget'); inner.style.height = '100%';
+    const sc = document.createElement('script');
+    sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js'; sc.async = true;
+    sc.textContent = JSON.stringify({
+      autosize: true, symbol: 'FX:' + pair[0] + pair[1], interval: '15',
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Etc/UTC',
+      theme: key.endsWith('l') ? 'light' : 'dark', style: '1', locale: 'en',
+      hide_side_toolbar: true, allow_symbol_change: false, save_image: false, calendar: false,
+      backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--panel').trim() || '#171a21',
+      support_host: 'https://www.tradingview.com',
+    });
+    wrap.append(inner, sc); box.replaceChildren(wrap);
+  }
+
+  function renderPairBars(A, B) {
+    const box = $('pair-bars'); box.replaceChildren();
+    const pa = policy(A.code), pb = policy(B.code);
+    const groups = [
+      ['Headline CPI', A.headline, B.headline],
+      ['Core CPI', A.core, B.core],
+      ['Policy rate', pa ? pa.rate : null, pb ? pb.rate : null],
+      ['Real rate', realRate(A), realRate(B)],
+    ];
+    const vals = groups.flatMap((g) => [g[1], g[2]]).filter((v) => v !== null && v !== undefined);
+    const W = Math.max(300, box.clientWidth || 440), H = 230, mt = 22, mb = 34, ml = 30, mr = 6;
+    const lo = Math.min(0, Math.floor(Math.min(...vals))), hi = Math.max(1, Math.ceil(Math.max(...vals) + 0.3));
+    const y = (v) => mt + (1 - (v - lo) / (hi - lo)) * (H - mt - mb);
+    const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': pairName(pair) + ' comparison' }, box);
+    const stepY = hi - lo > 6 ? 2 : 1;
+    for (let t = lo; t <= hi; t += stepY) {
+      s('line', { x1: ml, x2: W - mr, y1: y(t), y2: y(t), stroke: 'var(--line)' }, svg);
+      s('text', { x: ml - 5, y: y(t), dy: '0.32em', 'text-anchor': 'end', 'font-size': 10.5, fill: 'var(--muted)' }, svg).textContent = t + '%';
+    }
+    s('line', { x1: ml, x2: W - mr, y1: y(0), y2: y(0), stroke: 'var(--muted)' }, svg);
+    const gw = (W - ml - mr) / groups.length, bw = Math.min(34, gw * 0.32);
+    groups.forEach((g, i) => {
+      const cx = ml + gw * i + gw / 2;
+      [[g[1], A.code, -1], [g[2], B.code, 1]].forEach(([v, c, side]) => {
+        const x = cx + (side < 0 ? -bw - 2 : 2);
+        if (v === null || v === undefined) { s('text', { x: x + bw / 2, y: y(0) - 4, 'text-anchor': 'middle', 'font-size': 10, fill: 'var(--muted)' }, svg).textContent = 'n/a'; return; }
+        const y0 = y(Math.max(0, v)), h = Math.max(1, Math.abs(y(v) - y(0)));
+        s('rect', { x, y: y0, width: bw, height: h, rx: 3, fill: COLORS[c] }, svg);
+        s('text', { x: x + bw / 2, y: v >= 0 ? y0 - 4 : y0 + h + 11, 'text-anchor': 'middle', 'font-size': 10.5, 'font-weight': 600, fill: 'var(--fg)' }, svg).textContent = (Math.round(v * 100) / 100).toFixed(Math.abs(v * 10 % 1) > 0.001 ? 2 : 1);
+      });
+      s('text', { x: cx, y: H - 10, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--muted)' }, svg).textContent = g[0];
+    });
+    const lg = s('g', {}, svg);
+    [A.code, B.code].forEach((c, i) => {
+      s('rect', { x: ml + 4 + i * 54, y: 4, width: 9, height: 9, rx: 2, fill: COLORS[c] }, lg);
+      s('text', { x: ml + 17 + i * 54, y: 12, 'font-size': 11, fill: 'var(--fg)' }, lg).textContent = c;
+    });
+  }
+
+  function renderSpread(A, B) {
+    const box = $('pair-spread'); box.replaceChildren();
+    const ha = doc.history[A.code] || {}, hb = doc.history[B.code] || {};
+    const months = Object.keys(ha).filter((m) => hb[m] !== undefined).sort();
+    const pts = months.map((m) => ({ m, v: r1(ha[m] - hb[m]) }));
+    const note = $('spread-note');
+    if (pts.length < 2) { note.textContent = 'Not enough shared months yet.'; return; }
+    const first = pts[0], last = pts[pts.length - 1], ch = r1(last.v - first.v);
+    note.textContent = `${A.code} minus ${B.code} headline inflation. ${ch > 0 ? 'Widened' : ch < 0 ? 'Narrowed' : 'Unchanged'} by ${Math.abs(ch).toFixed(1)} pts since ${fMonth(first.m)}.`;
+    const W = Math.max(300, box.clientWidth || 440), H = 190, mt = 12, mb = 24, ml = 34, mr = 12;
+    const vs = pts.map((p) => p.v);
+    const lo = Math.floor(Math.min(0, ...vs) - 0.2), hi = Math.ceil(Math.max(0, ...vs) + 0.2);
+    const x = (i) => ml + i / (pts.length - 1) * (W - ml - mr);
+    const y = (v) => mt + (1 - (v - lo) / (hi - lo || 1)) * (H - mt - mb);
+    const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Inflation spread history' }, box);
+    const step = hi - lo > 6 ? 2 : hi - lo > 3 ? 1 : 0.5;
+    for (let t = lo; t <= hi + 1e-9; t += step) {
+      s('line', { x1: ml, x2: W - mr, y1: y(t), y2: y(t), stroke: 'var(--line)' }, svg);
+      s('text', { x: ml - 5, y: y(t), dy: '0.32em', 'text-anchor': 'end', 'font-size': 10.5, fill: 'var(--muted)' }, svg).textContent = (Math.round(t * 10) / 10) + '';
+    }
+    s('line', { x1: ml, x2: W - mr, y1: y(0), y2: y(0), stroke: 'var(--muted)' }, svg);
+    pts.forEach((p, i) => { if ((pts.length - 1 - i) % 3 === 0) s('text', { x: x(i), y: H - 6, 'text-anchor': 'middle', 'font-size': 10.5, fill: 'var(--muted)' }, svg).textContent = fMonthShort(p.m); });
+    const d = pts.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(p.v).toFixed(1)).join('');
+    s('path', { d: d + `L${x(pts.length - 1)},${y(0)}L${x(0)},${y(0)}Z`, fill: 'var(--gold)', opacity: 0.12 }, svg);
+    s('path', { d, fill: 'none', stroke: 'var(--gold)', 'stroke-width': 2.2, 'stroke-linejoin': 'round' }, svg);
+    pts.forEach((p, i) => s('circle', { cx: x(i), cy: y(p.v), r: i === pts.length - 1 ? 3.5 : 2, fill: 'var(--gold)' }, svg));
+    s('text', { x: x(pts.length - 1) - 4, y: y(last.v) - 8, 'text-anchor': 'end', 'font-size': 11.5, 'font-weight': 650, fill: 'var(--gold)' }, svg).textContent = (last.v > 0 ? '+' : '') + last.v.toFixed(1);
+  }
+
+  // ---------- pressure scoreboard
+  function renderScore(rows) {
+    const list = $('score-list'); list.replaceChildren();
+    const sc = rows.map((r) => ({ r, p: pressure(r) })).sort((a, b) => b.p.score - a.p.score);
+    const max = Math.max(1, ...sc.map((x) => Math.abs(x.p.score)));
+    sc.forEach((x, i) => {
+      const li = el('li');
+      const head = el('div', 'score-head');
+      head.append(el('span', 'rank', String(i + 1)), el('b', '', x.r.code), el('span', 'econ', x.r.economy));
+      const v = el('span', 'score-v ' + (x.p.score > 0 ? 'hot' : 'cool'), (x.p.score > 0 ? '+' : '') + x.p.score.toFixed(1));
+      head.append(v);
+      const bar = el('div', 'meter'); const fill = el('i'); fill.style.width = (Math.abs(x.p.score) / max * 100).toFixed(0) + '%';
+      fill.style.background = COLORS[x.r.code]; bar.append(fill);
+      const why = el('div', 'why',
+        `Headline ${x.p.head >= 0 ? '+' : ''}${x.p.head.toFixed(1)} vs target · core ${x.p.core >= 0 ? '+' : ''}${x.p.core.toFixed(1)} · last move ${x.p.mom > 0 ? '▲' : x.p.mom < 0 ? '▼' : '■'} ${Math.abs(x.p.mom).toFixed(1)}`);
+      li.append(head, bar, why); list.append(li);
+    });
+    const w = $('watch'); w.replaceChildren();
+    if (sc.length > 1) {
+      const top = sc[0].r.code, bot = sc[sc.length - 1].r.code;
+      const p = RANK[top] < RANK[bot] ? [top, bot] : [bot, top];
+      w.append(el('span', '', 'Widest pressure gap: '), el('b', '', pairName(p)),
+        el('span', '', ` (${top} most pressure, ${bot} least).`));
+      const btn = el('button', 'btn ghost small', 'Open in pair view'); btn.type = 'button';
+      btn.onclick = () => { pair = p; store.set('ats:pair', pair); renderPairs(); $('pairs').scrollIntoView({ behavior: 'smooth' }); };
+      w.append(btn);
+    }
+  }
+
+  // ---------- real rates
+  function renderReal(rows) {
+    const tb = $('real-table'); tb.replaceChildren(); const box = $('real-chart'); box.replaceChildren();
+    const rr = rows.map((r) => ({ r, po: policy(r.code), v: realRate(r) })).filter((x) => x.po).sort((a, b) => b.v - a.v);
+    if (!rr.length) { box.textContent = 'Policy rates not loaded yet.'; return; }
+    if (doc.policy && doc.policy.as_of) $('real-note').textContent = 'Policy rate minus headline inflation. Positive means policy is tight in real terms; negative means it is loose. Rates as of ' + fDate(doc.policy.as_of) + '.';
+    const W = Math.max(300, box.clientWidth || 600), rowH = 30, H = rr.length * rowH + 8, ml = 44, lab = 58;
+    const ext = Math.max(0.5, ...rr.map((x) => Math.abs(x.v)));
+    const half = (W - ml - 2 * lab) / 2, x0 = ml + lab + half, sc = half / ext;
+    const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Real interest rates' }, box);
+    s('line', { x1: x0, x2: x0, y1: 0, y2: H, stroke: 'var(--muted)' }, svg);
+    rr.forEach((x, i) => {
+      const yy = 4 + i * rowH;
+      s('text', { x: 0, y: yy + rowH / 2 - 2, dy: '0.32em', 'font-size': 12.5, 'font-weight': 650, fill: 'var(--fg)' }, svg).textContent = x.r.code;
+      const w = Math.max(2, Math.abs(x.v) * sc);
+      s('rect', { x: x.v >= 0 ? x0 : x0 - w, y: yy + 4, width: w, height: rowH - 12, rx: 3, fill: COLORS[x.r.code] }, svg);
+      s('text', { x: x.v >= 0 ? x0 + w + 6 : x0 - w - 6, y: yy + rowH / 2 - 2, dy: '0.32em', 'text-anchor': x.v >= 0 ? 'start' : 'end', 'font-size': 12, 'font-weight': 600, fill: 'var(--fg)' }, svg).textContent = sgn(x.v);
+      const tr = el('tr');
+      const ld = x.po.last_decision ? fDate(x.po.last_decision) + (x.po.last_move ? (x.po.last_move > 0 ? ' · hike ' : ' · cut ') + Math.abs(x.po.last_move * 100).toFixed(0) + 'bp' : ' · hold') : '—';
+      const rv = el('td', x.v > 0 ? 'pos' : x.v < 0 ? 'neg' : '', sgn(x.v));
+      const pc = el('td', '', policyText(x.po)); pc.title = x.po.bank + ': ' + x.po.name;
+      tr.append(el('td', '', x.r.code + ' · ' + BANK[x.r.code]), pc, el('td', '', pct(x.r.headline)), rv, el('td', 'wide', ld));
+      tb.append(tr);
+    });
+  }
+
+  // ---------- events (CPI releases + rate decisions)
+  function events() {
+    if (!doc) return [];
+    const out = [];
+    for (const r of doc.latest) {
+      if (r.next_release) {
+        const [t, tz] = CPI_TIME[r.code] || ['09:00', 'UTC'];
+        out.push({ kind: 'cpi', code: r.code, ts: zoned(r.next_release, t, tz), est: !!r.next_release_estimated,
+          label: r.code + ' CPI' + (r.next_period ? ' (' + fMonth(r.next_period) + ')' : ''), sub: r.agency });
+      }
+      const po = policy(r.code);
+      if (po && po.next_meeting) {
+        out.push({ kind: 'rate', code: r.code, ts: zoned(po.next_meeting, po.time || '12:00', po.tz || 'UTC'), est: false, approx: !!po.time_approx,
+          label: BANK[r.code] + ' rate decision', sub: po.bank + ' · now ' + policyText(po) });
+      }
+    }
+    return out.filter((e) => e.ts > Date.now() - 3 * 3600e3).sort((a, b) => a.ts - b.ts);
+  }
+
+  function renderCalendar() {
+    const tb = $('cal'); tb.replaceChildren();
+    const ev = events();
+    const nx = $('next-up'); nx.replaceChildren();
+    const up = ev.find((e) => e.ts > Date.now());
+    if (up) {
+      const c = el('div', 'next-card');
+      const sw = el('i'); sw.style.background = COLORS[up.code];
+      const t = el('div', 'next-t'); t.append(sw, el('span', '', 'Next: ' + up.label));
+      const big = el('div', 'next-cd', countdown(up.ts)); big.dataset.ts = up.ts;
+      c.append(t, big, el('div', 'next-w', fLocal(up.ts) + (up.est ? ' · est.' : up.approx ? ' · time approx.' : '')));
+      nx.append(c);
+    }
+    for (const e of ev) {
+      const tr = el('tr', e.kind === 'rate' ? 'ev-rate' : '');
+      const n = el('td'); const sw = el('i', 'sw'); sw.style.background = COLORS[e.code];
+      n.append(sw, el('span', '', e.label), el('small', '', e.sub));
+      const w = el('td', '', fLocal(e.ts)); if (e.est) w.append(el('span', 'est', 'est.')); if (e.approx) w.append(el('span', 'est', '≈'));
+      const cd = el('td', 'cd', countdown(e.ts)); cd.dataset.ts = e.ts;
+      if (e.ts - Date.now() < 3 * 864e5) cd.classList.add('soon');
+      tr.append(n, w, cd); tb.append(tr);
+    }
+  }
+
+  function tick() {
+    document.querySelectorAll('[data-ts]').forEach((n) => { n.textContent = countdown(+n.dataset.ts); });
+    checkWebReminders();
+  }
+
+  // ---------- reminders
+  const remindNote = () => {
+    const n = $('remind-note');
+    if (!remindMin) { n.textContent = ''; return; }
+    n.textContent = LN ? 'Reminders are scheduled on your phone, so they arrive even when the app is closed.'
+      : 'Reminders arrive while the app is open or running in the background. The phone apps can remind you even when closed.';
+  };
+  async function scheduleReminders() {
+    if (!LN) return;
+    try {
+      const pend = await LN.getPending();
+      const ours = (pend.notifications || []).filter((n) => n.id >= 7000 && n.id < 7100).map((n) => ({ id: n.id }));
+      if (ours.length) await LN.cancel({ notifications: ours });
+      if (!remindMin) return;
+      const st = await LN.checkPermissions(); if (st.display !== 'granted') return;
+      const list = events().filter((e) => alertCodes.has(e.code) && (e.kind === 'cpi' || remindRates))
+        .map((e) => ({ e, at: e.ts - remindMin * 6e4 })).filter((x) => x.at > Date.now() + 3e4).slice(0, 40);
+      if (!list.length) return;
+      await LN.schedule({ notifications: list.map((x, i) => ({
+        id: 7000 + i, title: x.e.label + ' ' + leadText(),
+        body: fLocal(x.e.ts) + ' · ' + x.e.sub, schedule: { at: new Date(x.at), allowWhileIdle: true },
+      })) });
+    } catch { /* plugin unavailable */ }
+  }
+  const leadText = () => remindMin >= 1440 ? 'tomorrow' : remindMin >= 60 ? 'in 1 hour' : 'in ' + remindMin + ' min';
+  function checkWebReminders() {
+    if (LN || !remindMin || !doc) return;
+    const done = store.get('ats:reminded', {});
+    let dirty = false;
+    for (const e of events()) {
+      if (!alertCodes.has(e.code) || (e.kind === 'rate' && !remindRates)) continue;
+      const at = e.ts - remindMin * 6e4, key = e.kind + e.code + e.ts + ':' + remindMin;
+      if (Date.now() >= at && Date.now() < e.ts && !done[key]) {
+        done[key] = 1; dirty = true;
+        toast('⏰ ' + e.label + ' ' + leadText());
+        notify(e.label + ' ' + leadText(), fLocal(e.ts) + ' · ' + e.sub, 'remind');
+      }
+    }
+    if (dirty) store.set('ats:reminded', done);
+  }
+
+  function setupAlertPrefs() {
+    const chips = $('alert-chips');
+    const draw = () => {
+      chips.replaceChildren();
+      for (const c of CODES) {
+        const b = el('button'); b.type = 'button'; b.setAttribute('aria-pressed', String(alertCodes.has(c)));
+        const sw = el('i'); sw.style.background = COLORS[c]; b.append(sw, c);
+        b.onclick = () => { alertCodes.has(c) ? alertCodes.delete(c) : alertCodes.add(c); store.set('ats:alertCodes', [...alertCodes]); draw(); scheduleReminders(); };
+        chips.append(b);
+      }
+    };
+    draw();
+    const sel = $('remind'); sel.value = String(remindMin);
+    sel.onchange = () => { remindMin = +sel.value; store.set('ats:remind', remindMin); remindNote(); scheduleReminders(); };
+    const cb = $('remind-cb'); cb.checked = remindRates;
+    cb.onchange = () => { remindRates = cb.checked; store.set('ats:remindRates', remindRates); scheduleReminders(); };
+    remindNote();
+  }
+
+  // ---------- looks
+  function applyTheme(id) {
+    theme = THEMES.some((t) => t.id === id) ? id : 'blade'; store.set('ats:theme', theme);
+    if (theme === 'blade') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = theme;
+    const t = THEMES.find((x) => x.id === theme);
+    const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = t.bg;
+    renderLooks();
+    if (doc) render([]);
+  }
+  function renderLooks() {
+    const box = $('looks'); box.replaceChildren();
+    for (const t of THEMES) {
+      const b = el('button', 'look'); b.type = 'button'; b.setAttribute('aria-pressed', String(t.id === theme));
+      const sw = el('div', 'sw4');
+      t.sw.forEach((c, i) => { const i2 = el('i'); i2.style.background = c; if (i === 0) { i2.textContent = '4.0%'; i2.style.color = t.fg; i2.style.fontFamily = t.mono ? 'ui-monospace, Menlo, monospace' : t.serif ? 'Georgia, serif' : 'inherit'; } sw.append(i2); });
+      b.append(sw, el('span', '', t.name), el('small', '', t.note));
+      b.onclick = () => applyTheme(t.id);
+      box.append(b);
+    }
+  }
+
+  // ---------- news
+  function renderNews() {
+    const chips = $('news-chips'); chips.replaceChildren();
+    const opts = [['all', 'All'], ['pair', pairName(pair)], ...CODES.map((c) => [c, c])];
+    for (const [k, label] of opts) {
+      const b = el('button', '', label); b.type = 'button'; b.setAttribute('aria-pressed', String(newsFilter === k));
+      b.onclick = () => { newsFilter = k; store.set('ats:newsFilter', k); renderNews(); };
+      chips.append(b);
+    }
+    const ul = $('news-list'); ul.replaceChildren();
+    const items = (news && news.items) || [];
+    const match = (it) => newsFilter === 'all' ? true : newsFilter === 'pair' ? it.codes.some((c) => pair.includes(c)) : it.codes.includes(newsFilter);
+    const shown = items.filter(match).slice(0, 25);
+    const note = $('news-note');
+    note.textContent = 'Inflation and central-bank headlines from major outlets. Tap a headline to read the full story.' +
+      (news && news.checked_at ? ' Checked ' + ago(news.checked_at) + '.' : '');
+    if (!shown.length) {
+      ul.append(el('li', 'empty', items.length ? 'No recent headlines for this filter.' : 'Headlines appear here after the next update run (every 30 minutes).'));
+      return;
+    }
+    const seenAt = store.get('ats:newsSeen', null);
+    for (const it of shown) {
+      const li = el('li');
+      const a = el('a', '', it.title); a.href = it.link; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      const meta = el('div', 'meta');
+      if (seenAt && it.published > seenAt) meta.append(el('span', 'tag new', 'NEW'));
+      it.codes.forEach((c) => { const t = el('span', 'tag', c); t.style.borderColor = COLORS[c]; t.style.color = COLORS[c]; meta.append(t); });
+      meta.append(el('span', '', it.source + ' · ' + ago(it.published)));
+      li.append(a, meta);
+      if (it.summary) li.append(el('p', '', it.summary));
+      ul.append(li);
+    }
+    clearTimeout(renderNews.t); renderNews.t = setTimeout(() => { if (items[0]) store.set('ats:newsSeen', items[0].published); }, 5000);
   }
 
   function renderLegend() {
@@ -252,19 +689,6 @@
     hit.addEventListener('pointerleave', hide); hit.addEventListener('pointercancel', hide);
   }
 
-  function renderCalendar(rows) {
-    const tb = $('cal'); tb.replaceChildren();
-    [...rows].sort((a, b) => (a.next_release || '').localeCompare(b.next_release || '')).forEach((r) => {
-      const tr = el('tr');
-      tr.append(el('td', '', r.code));
-      const d = el('td', '', r.next_release ? fDate(r.next_release) : '—');
-      if (r.next_release_estimated) d.append(el('span', 'est', 'est.'));
-      const n = daysTo(r.next_release); if (n !== null && n <= 3) d.append(el('span', 'soon', when(r.next_release)));
-      tr.append(d, el('td', '', r.next_period ? fMonth(r.next_period) : '—'), el('td', 'wide', r.agency));
-      tb.append(tr);
-    });
-  }
-
   function renderLog() {
     const ul = $('log'); ul.replaceChildren();
     const items = (doc.log || []).slice(-8).reverse();
@@ -284,7 +708,7 @@
     if (LN) {
       const on = () => { btn.disabled = true; btn.textContent = 'Alerts are on'; note.textContent = 'You will be notified when a new CPI figure lands when you open the app or switch back to it.'; };
       const off = () => { btn.disabled = true; btn.textContent = 'Alerts blocked'; note.textContent = 'Allow notifications for Abraham Tracker Sword in your phone settings to turn alerts on.'; };
-      const sync = (st) => { if (st.display === 'granted') on(); else if (st.display === 'denied') off(); };
+      const sync = (st) => { if (st.display === 'granted') { on(); scheduleReminders(); } else if (st.display === 'denied') off(); };
       LN.checkPermissions().then(sync).catch(() => {});
       btn.onclick = () => LN.requestPermissions().then(sync).catch(() => {});
       return;
@@ -328,9 +752,13 @@
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { load(false); markSeenLater(); } });
   window.addEventListener('online', () => load(false));
   window.addEventListener('offline', () => { lastOk = 0; status(); });
-  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => doc && renderChart(), 150); });
+  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (doc) { renderChart(); const A = row(pair[0]), B = row(pair[1]); if (A && B) { renderPairBars(A, B); renderSpread(A, B); } rows5().length && renderReal(rows5()); } }, 150); });
+  const rows5 = () => CODES.map((c) => row(c)).filter(Boolean);
+  matchMedia('(prefers-color-scheme: light)').addEventListener?.('change', () => doc && renderTV());
+  window.addEventListener('online', () => doc && renderTV());
   function markSeenLater() { setTimeout(markSeen, 4000); }
-  setupNotify(); setupInstall();
+  setupNotify(); setupInstall(); setupAlertPrefs(); renderLooks();
+  if (news) renderNews();
   if (!NATIVE && 'serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(registerBackground).catch(() => {});
     navigator.serviceWorker.addEventListener('message', (e) => { if (e.data && e.data.type === 'data-updated') load(false); });
@@ -338,4 +766,5 @@
   load(false).then(() => { if (!store.get('ats:seen', null)) markSeen(); });
   startPolling();
   setInterval(status, 30 * 1000);
+  setInterval(tick, 1000);
 })();
