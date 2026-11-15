@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-14T21:49:52Z",
- "checked_at": "2026-11-14T21:57:26Z",
+ "updated_at": "2026-11-15T06:30:45Z",
+ "checked_at": "2026-11-15T06:30:45Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "‘Low fire, low hire’ job market hurts US and UK productivity",
+   "link": "https://www.ft.com/content/44c1fdc6-bc51-46e5-8a7c-c10096a25496?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-15T05:00:13Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Sluggish rates of hiring, resignations and job-switching may lead to long-term damage, say economists"
+  },
   {
    "title": "US Treasury bought nearly $500mn in yen during joint July forex intervention",
    "link": "https://asia.nikkei.com/business/markets/currencies/us-treasury-bought-nearly-500mn-in-yen-during-joint-july-forex-intervention",
