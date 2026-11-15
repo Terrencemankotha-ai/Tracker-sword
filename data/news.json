@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-15T06:30:45Z",
- "checked_at": "2026-11-15T06:30:45Z",
+ "updated_at": "2026-11-15T12:54:52Z",
+ "checked_at": "2026-11-15T12:54:52Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Gold and silver are supposed to protect against inflation. So why are both metals tumbling instead?",
+   "link": "https://www.marketwatch.com/story/gold-and-silver-are-supposed-to-protect-against-inflation-so-why-are-both-metals-tumbling-instead-1735eca7?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-15T12:30:00Z",
+   "codes": [
+    "XAU"
+   ],
+   "summary": "Charts show the potential for more pain ahead"
+  },
+  {
+   "title": "Bad jobs or benefits? Milburn should force employers to help the young | Richard Partington",
+   "link": "https://www.theguardian.com/business/2026/nov/15/firms-labour-youth-employment-push",
+   "source": "The Guardian",
+   "published": "2026-11-15T12:25:16Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "This week’s long-awaited review will call for benefit cuts but lack of entry-level jobs is also driving the crisis ‘I’m scared about my future’: young people on the stress and desperation of jobseeking A generation…"
+  },
   {
    "title": "‘Low fire, low hire’ job market hurts US and UK productivity",
    "link": "https://www.ft.com/content/44c1fdc6-bc51-46e5-8a7c-c10096a25496?syn-25a6b1a6=1",
