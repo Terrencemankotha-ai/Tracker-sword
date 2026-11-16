@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-16T18:28:35Z",
- "checked_at": "2026-11-16T18:28:35Z",
+ "updated_at": "2026-11-16T22:51:31Z",
+ "checked_at": "2026-11-16T22:51:31Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "SoftBank, Rakuten push Japan retail bond issuance to record high",
+   "link": "https://asia.nikkei.com/business/markets/bonds/softbank-rakuten-push-japan-retail-bond-issuance-to-record-high",
+   "source": "Nikkei Asia",
+   "published": "2026-11-16T22:51:30Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
   {
    "title": "Japan eyes two-pronged approach to cover tax cut, growth investments",
    "link": "https://asia.nikkei.com/politics/japan-eyes-two-pronged-approach-to-cover-tax-cut-growth-investments",
