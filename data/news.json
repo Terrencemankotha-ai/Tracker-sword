@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-16T05:54:19Z",
- "checked_at": "2026-11-16T05:54:19Z",
+ "updated_at": "2026-11-16T15:40:18Z",
+ "checked_at": "2026-11-16T15:40:18Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "British actor Robert Pattison named as the new James Bond",
+   "link": "https://www.abc.net.au/news/2026-11-17/brk-james-bond/107392892",
+   "source": "ABC News (AU)",
+   "published": "2026-11-16T15:39:07Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Pattinson, whose film credits this year include The Odyssey and Primetime, succeeds Daniel Craig, who bowed out of the role after 2021 movie No Time to Die."
+  },
   {
    "title": "Japan’s economy contracts for the first time in a year",
    "link": "https://www.ft.com/content/4eb7ff18-1ba3-4944-ad48-bdc9e5ddc84e?syn-25a6b1a6=1",
