@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-15T23:49:41Z",
- "checked_at": "2026-11-15T23:49:41Z",
+ "updated_at": "2026-11-16T01:26:25Z",
+ "checked_at": "2026-11-16T01:26:25Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Japan's Q3 GDP drops an annualized 0.1%, below market expectations",
+   "link": "https://asia.nikkei.com/economy/japan-s-q3-gdp-drops-an-annualized-0.1-below-market-expectations",
+   "source": "Nikkei Asia",
+   "published": "2026-11-16T01:26:25Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
+  {
+   "title": "Japan's economy unexpectedly contracts in third-quarter as elevated energy costs bite",
+   "link": "https://www.cnbc.com/2026/11/16/japan-q3-gdp-energy-oil-prices.html",
+   "source": "CNBC",
+   "published": "2026-11-16T01:02:48Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": "Energy subsidies for households had reportedly expired in September, exposing the economy to the higher energy prices brought about by the Iran war."
+  },
   {
    "title": "Data centres driving up inflation and community concerns",
    "link": "https://www.abc.net.au/news/2026-11-16/when-community-concerns-collide-in-data-centre-fight/107344810",
