@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-16T01:26:25Z",
- "checked_at": "2026-11-16T01:26:25Z",
+ "updated_at": "2026-11-16T05:54:19Z",
+ "checked_at": "2026-11-16T05:54:19Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Japan’s economy contracts for the first time in a year",
+   "link": "https://www.ft.com/content/4eb7ff18-1ba3-4944-ad48-bdc9e5ddc84e?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-16T04:59:28Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": "Weak consumer spending and record-breaking rains damp GDP growth and complicate interest rate plans"
+  },
   {
    "title": "Japan's Q3 GDP drops an annualized 0.1%, below market expectations",
    "link": "https://asia.nikkei.com/economy/japan-s-q3-gdp-drops-an-annualized-0.1-below-market-expectations",
