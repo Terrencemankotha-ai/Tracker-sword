@@ -1,10 +1,31 @@
 {
- "updated_at": "2026-11-17T18:28:36Z",
- "checked_at": "2026-11-17T18:28:36Z",
+ "updated_at": "2026-11-17T19:41:39Z",
+ "checked_at": "2026-11-17T19:41:39Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Japan bond market revival fuels record profits for Nomura, Daiwa",
+   "link": "https://asia.nikkei.com/business/markets/bonds/japan-bond-market-revival-fuels-record-profits-for-nomura-daiwa",
+   "source": "Nikkei Asia",
+   "published": "2026-11-17T19:41:39Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
+  {
+   "title": "These charts show investor fears run even deeper than the stock market’s decline suggests",
+   "link": "https://www.marketwatch.com/story/these-charts-show-investor-fears-run-even-deeper-than-the-stock-markets-decline-suggests-924e2647?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-17T19:22:00Z",
+   "codes": [
+    "JPY",
+    "AUD"
+   ],
+   "summary": "The yen’s recent strengthening, particularly against the Australian dollar, suggests investors are unwinding risky bets."
+  },
   {
    "title": "St. Louis Fed's Musalem says four more rate hikes may be needed in coming months",
    "link": "https://www.cnbc.com/2026/11/17/alberto-musalem-fed-interest-rates.html",
