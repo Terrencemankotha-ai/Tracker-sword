@@ -1,10 +1,31 @@
 {
- "updated_at": "2026-11-17T12:31:39Z",
- "checked_at": "2026-11-17T12:31:39Z",
+ "updated_at": "2026-11-17T13:52:52Z",
+ "checked_at": "2026-11-17T13:52:52Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "St. Louis Fed's Musalem says four more rate hikes may be needed in coming months",
+   "link": "https://www.cnbc.com/2026/11/17/alberto-musalem-fed-interest-rates.html",
+   "source": "CNBC",
+   "published": "2026-11-17T13:40:54Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The forecast represents one of the most hawkish views among policymakers."
+  },
+  {
+   "title": "A misty outlook for rates",
+   "link": "https://www.ft.com/content/c53ae58c-64b9-4d90-8a0b-d338e80f4614?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-17T12:30:05Z",
+   "codes": [
+    "USD",
+    "GBP"
+   ],
+   "summary": "Contrasting speeches from the Fed’s Christopher Waller and BoE’s Clare Lombardelli show that central bank communications still matter"
+  },
   {
    "title": "Can Nvidia sell investors on a future without Jensen Huang?",
    "link": "https://www.marketwatch.com/story/can-nvidia-sell-investors-on-a-future-without-jensen-huang-3fe4bb49?mod=mw_rss_topstories",
