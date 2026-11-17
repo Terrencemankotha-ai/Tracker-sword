@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-17T13:52:52Z",
- "checked_at": "2026-11-17T13:52:52Z",
+ "updated_at": "2026-11-17T14:57:56Z",
+ "checked_at": "2026-11-17T14:57:56Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -536,16 +536,6 @@
     "USD"
    ],
    "summary": "New data comes after Republicans’ midterms losses – which were largely seen as a rebuke of the party over high prices US inflation rose 0.4% from September to October, slightly above expectations but still a cooldown…"
-  },
-  {
-   "title": "US inflation higher than expected in October - here's what is happening with prices",
-   "link": "https://www.bbc.co.uk/news/articles/cwy8lx3pg4k2o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "published": "2026-11-10T14:45:46Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Prices rose by 0.4% over the month, driven by increases in shelter, food and energy costs."
   }
  ]
 }
