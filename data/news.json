@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-17T14:57:56Z",
- "checked_at": "2026-11-17T14:57:56Z",
+ "updated_at": "2026-11-17T15:59:52Z",
+ "checked_at": "2026-11-17T15:59:52Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -526,16 +526,6 @@
     "GBP"
    ],
    "summary": "Rolling coverage of the latest economic and financial news, including live coverage of the Bank of England Watchers conference in London Young people in UK hit by ‘low-gear economy’, warns Bank of England deputy The…"
-  },
-  {
-   "title": "US inflation rose 0.4% in October as price increases cooled and gas costs dipped",
-   "link": "https://www.theguardian.com/business/2026/nov/10/october-inflation-report",
-   "source": "The Guardian",
-   "published": "2026-11-10T15:38:48Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "New data comes after Republicans’ midterms losses – which were largely seen as a rebuke of the party over high prices US inflation rose 0.4% from September to October, slightly above expectations but still a cooldown…"
   }
  ]
 }
