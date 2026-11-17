@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-17T08:40:19Z",
- "checked_at": "2026-11-17T08:40:19Z",
+ "updated_at": "2026-11-17T11:25:36Z",
+ "checked_at": "2026-11-17T11:25:36Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Berlin picks ECB board nominee, paving way for Spanish presidency",
+   "link": "https://www.ft.com/content/10fd3d24-04b1-40a2-93d3-8b64023cc869?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-17T10:48:11Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "Choice of Markus Brunnermeier will consolidate deal with France in which Spain’s Pablo Hernández de Cos would lead central bank"
+  },
+  {
+   "title": "Brussels raises Eurozone growth forecasts as AI boom drives exports",
+   "link": "https://www.ft.com/content/ce0f66b9-703d-4e04-b046-bf04a3d9209a?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-17T10:06:29Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "But latest forecasts highlight diverging fortunes of bloc’s biggest economies, with GDP projections for France halved"
+  },
   {
    "title": "UK jobs market is a ‘mixed picture’ as wage growth slows and unemployment falls – business live",
    "link": "https://www.theguardian.com/business/live/2026/nov/17/uk-jobs-market-wage-growth-payrolls-unemployment-milburn-china-us-chips-latest-news-updates",
