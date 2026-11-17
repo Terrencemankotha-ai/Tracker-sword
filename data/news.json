@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-17T11:25:36Z",
- "checked_at": "2026-11-17T11:25:36Z",
+ "updated_at": "2026-11-17T12:31:39Z",
+ "checked_at": "2026-11-17T12:31:39Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Can Nvidia sell investors on a future without Jensen Huang?",
+   "link": "https://www.marketwatch.com/story/can-nvidia-sell-investors-on-a-future-without-jensen-huang-3fe4bb49?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-17T12:27:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Co-founder Huang is gone. Can Colette Kress ease market fears? Can a new board committee? Plus, the Fed weighs AI’s economic fallout, and parents confront their kids’ gambling problems."
+  },
   {
    "title": "Berlin picks ECB board nominee, paving way for Spanish presidency",
    "link": "https://www.ft.com/content/10fd3d24-04b1-40a2-93d3-8b64023cc869?syn-25a6b1a6=1",
