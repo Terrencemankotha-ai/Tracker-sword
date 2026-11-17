@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-16T22:51:31Z",
- "checked_at": "2026-11-16T22:51:31Z",
+ "updated_at": "2026-11-17T02:33:54Z",
+ "checked_at": "2026-11-17T02:33:54Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Analysis: The Fed's chairman sees an AI revolution coming. Now he has to figure out what it means",
+   "link": "https://www.cnbc.com/2026/11/16/kevin-warsh-fed-ai-jobs-productivity-interest-rateshtml.html",
+   "source": "CNBC",
+   "published": "2026-11-17T00:42:33Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Kevin Warsh sees AI at a turning point. He faces tough questions on jobs and interest rates."
+  },
   {
    "title": "SoftBank, Rakuten push Japan retail bond issuance to record high",
    "link": "https://asia.nikkei.com/business/markets/bonds/softbank-rakuten-push-japan-retail-bond-issuance-to-record-high",
