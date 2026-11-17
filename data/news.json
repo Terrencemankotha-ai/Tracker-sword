@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-17T15:59:52Z",
- "checked_at": "2026-11-17T15:59:52Z",
+ "updated_at": "2026-11-17T18:28:36Z",
+ "checked_at": "2026-11-17T18:28:36Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -505,27 +505,6 @@
     "USD"
    ],
    "summary": "The report comes at a critical juncture for the Federal Reserve as it considers its next move regarding interest rates."
-  },
-  {
-   "title": "Fed Governor Waller sees December hike likely, opens door to possible half-point increase",
-   "link": "https://www.cnbc.com/2026/11/10/fed-governor-waller-sees-december-hike-likely.html",
-   "source": "CNBC",
-   "published": "2026-11-10T17:13:44Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The policymaker said he \"is leaning toward\" a rate increase in December and could support a half-point hike depending on inflation data."
-  },
-  {
-   "title": "Inquiry launched into UK budget bank tax leak; Wall Street hit by US inflation data – as it happened",
-   "link": "https://www.theguardian.com/business/live/2026/nov/10/nvidia-shareholder-lawsuit-jensen-huang-relationship-suspected-chinese-spy-fbi-trump-bank-of-england-latest-news-updates",
-   "source": "The Guardian",
-   "published": "2026-11-10T17:12:54Z",
-   "codes": [
-    "USD",
-    "GBP"
-   ],
-   "summary": "Rolling coverage of the latest economic and financial news, including live coverage of the Bank of England Watchers conference in London Young people in UK hit by ‘low-gear economy’, warns Bank of England deputy The…"
   }
  ]
 }
