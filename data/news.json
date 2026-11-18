@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-18T14:22:21Z",
- "checked_at": "2026-11-18T14:22:21Z",
+ "updated_at": "2026-11-18T15:32:36Z",
+ "checked_at": "2026-11-18T15:32:36Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Fed’s Waller says interest-rate hikes may be needed to ‘shock’ inflation out of the system",
+   "link": "https://www.marketwatch.com/story/how-high-must-interest-rates-go-to-cool-inflation-possibly-100-basis-points-or-more-feds-waller-says-e7b41cf6?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-18T15:00:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The central bank might need to hike interest rates by a full percentage point or more to cool down inflation, Federal Reserve governor Christopher Waller said Wednesday."
+  },
   {
    "title": "Fed’s Waller says central bank may need to ‘shock people’ with half-point rate hike",
    "link": "https://www.cnbc.com/2026/11/18/federal-reserve-governor-christopher-waller.html",
@@ -596,16 +606,6 @@
     "GBP"
    ],
    "summary": "Figure underscores resilience despite surging energy prices and rising borrowing costs."
-  },
-  {
-   "title": "UK economy expands 0.7% in third quarter as AI provides 'extra engine of growth'",
-   "link": "https://www.cnbc.com/2026/11/12/uk-gdp-third-quarter-2026.html",
-   "source": "CNBC",
-   "published": "2026-11-12T08:02:15Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "The U.K. economy grew 0.7% in the third quarter of the year, in line with estimates."
   }
  ]
 }
