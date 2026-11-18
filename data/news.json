@@ -1,10 +1,40 @@
 {
- "updated_at": "2026-11-18T16:40:30Z",
- "checked_at": "2026-11-18T16:40:30Z",
+ "updated_at": "2026-11-18T20:02:17Z",
+ "checked_at": "2026-11-18T20:02:17Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Fed officials expect more rate hikes, worry about AI impact on inflation, minutes show",
+   "link": "https://www.cnbc.com/2026/11/18/fed-minutes-october-2026.html",
+   "source": "CNBC",
+   "published": "2026-11-18T19:41:59Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The Federal Reserve on Wednesday released minutes from its October policy meeting at which it voted to hold its benchmark interest rate in a range between 3.75%-4%."
+  },
+  {
+   "title": "Fed minutes show growing unease about the outlook for inflation",
+   "link": "https://www.marketwatch.com/story/fed-minutes-show-growing-unease-about-the-outlook-for-inflation-59e3c13d?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-18T19:38:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The minutes of the Federal Reserve’s October policy meeting showed growing unease among officials about the outlook for inflation, even as they decided to hold interest rates steady."
+  },
+  {
+   "title": "How high is UK inflation and how will you be affected?",
+   "link": "https://www.bbc.co.uk/news/videos/cxp80q5pv4q5o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "published": "2026-11-18T19:37:27Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Prices rose 3.6% in the year to October, mainly because of higher petrol and diesel prices, official figures show."
+  },
   {
    "title": "Toyota, Suzuki rely on weak yen to keep profits growing",
    "link": "https://asia.nikkei.com/business/automobiles/toyota-suzuki-rely-on-weak-yen-to-keep-profits-growing",
@@ -576,36 +606,6 @@
     "GBP"
    ],
    "summary": "﻿The UK economy grew by 0.7% in the three months to September, according to official figures."
-  },
-  {
-   "title": "FirstFT: Nvidia board weighs Jensen Huang’s future as scandal deepens",
-   "link": "https://www.ft.com/content/64198d59-7a03-4f1c-89c6-81ed8bdc5448?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-12T11:17:46Z",
-   "codes": [
-    "EUR"
-   ],
-   "summary": "Also in today’s newsletter: Jamie Raskin interview and the race for ECB president"
-  },
-  {
-   "title": "AI helps UK economy grow at fastest pace for more than two years",
-   "link": "https://www.theguardian.com/business/2026/nov/12/uk-economy-grows-third-quarter-oil-price-ons-gdp",
-   "source": "The Guardian",
-   "published": "2026-11-12T09:12:52Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "GDP ‘grew robustly’ by 0.7% in third quarter and by 0.2% month on month in September despite high oil prices AI helped the UK defy expectations – but will Britain’s resilience fizzle out? The UK economy grew by 0.7%…"
-  },
-  {
-   "title": "Solid UK growth will not by itself push BoE to move in December",
-   "link": "https://www.ft.com/content/f92f05b4-0d1a-4bdb-8759-4d71f1cf58af",
-   "source": "Financial Times",
-   "published": "2026-11-12T08:43:32Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Third-quarter growth figures showed a tentative economic rebound under way as AI trends pick up"
   }
  ]
 }
