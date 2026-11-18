@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-17T19:41:39Z",
- "checked_at": "2026-11-17T19:41:39Z",
+ "updated_at": "2026-11-18T01:17:57Z",
+ "checked_at": "2026-11-18T01:17:57Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -506,26 +506,6 @@
     "USD"
    ],
    "summary": "The consumer price index rose more than expected in October, raising alarm among Federal Reserve officials."
-  },
-  {
-   "title": "Bank of England’s inflation response ‘risks higher interest rates for longer’",
-   "link": "https://www.theguardian.com/business/2026/nov/11/bank-of-england-inflation-response-risks-higher-interest-rates-for-longer",
-   "source": "The Guardian",
-   "published": "2026-11-11T00:01:23Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Thinktank Niesr says timid rate rise last week likely to make inflation more persistent feature of UK economy The Bank of England is risking higher interest rates for longer after a hesitant response to rising…"
-  },
-  {
-   "title": "Consumer prices rose 0.4% in October, more than expected, complicating Fed's inflation fight",
-   "link": "https://www.cnbc.com/2026/11/10/cpi-inflation-report-october-2026.html",
-   "source": "CNBC",
-   "published": "2026-11-10T23:53:58Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The report comes at a critical juncture for the Federal Reserve as it considers its next move regarding interest rates."
   }
  ]
 }
