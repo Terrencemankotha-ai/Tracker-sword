@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-18T01:17:57Z",
- "checked_at": "2026-11-18T01:17:57Z",
+ "updated_at": "2026-11-18T04:39:24Z",
+ "checked_at": "2026-11-18T04:39:24Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Wages grow at fastest pace since 2023 – but prices are climbing even more quickly",
+   "link": "https://www.theguardian.com/australia-news/2026/nov/18/wages-grow-at-fastest-pace-since-2023-but-prices-are-climbing-even-more-quickly",
+   "source": "The Guardian",
+   "published": "2026-11-18T04:33:40Z",
+   "codes": [
+    "AUD"
+   ],
+   "summary": "Wage rates climb about 1 percentage point faster than before pandemic, triggering warnings of a sixth RBA rate rise Wages grew at their fastest pace since late 2023 over the three months to September, buoyed by this…"
+  },
   {
    "title": "Japan bond market revival fuels record profits for Nomura, Daiwa",
    "link": "https://asia.nikkei.com/business/markets/bonds/japan-bond-market-revival-fuels-record-profits-for-nomura-daiwa",
