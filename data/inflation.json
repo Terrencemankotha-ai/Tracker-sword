@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-18T06:08:31Z",
- "checked_at": "2026-11-18T06:08:31Z",
+ "updated_at": "2026-11-18T07:54:01Z",
+ "checked_at": "2026-11-18T07:54:01Z",
  "latest": [
   {
    "code": "USD",
@@ -70,22 +70,23 @@
    "code": "GBP",
    "economy": "United Kingdom",
    "measure": "CPI, all items",
-   "period": "2026-09",
-   "headline": 3.5,
-   "previous": 3.1,
+   "period": "2026-10",
+   "headline": 3.6,
+   "previous": 3.5,
    "core": 2.8,
    "core_label": "Core CPI (ex energy, food, alcohol & tobacco)",
    "target_low": 2.0,
    "target_high": 2.0,
    "target_note": "BoE 2%",
-   "released": "2026-10-21",
-   "next_release": "2026-11-18",
-   "next_period": "2026-10",
+   "released": "2026-11-18",
+   "next_release": "2026-12-16",
+   "next_period": "2026-11",
    "agency": "Office for National Statistics",
    "source_url": "https://www.ons.gov.uk/economy/inflationandpriceindices",
    "status": "Final",
    "note": "",
-   "source_of_update": "official"
+   "source_of_update": "official",
+   "next_release_estimated": false
   },
   {
    "code": "AUD",
@@ -164,8 +165,8 @@
    "2026-07": 2.9,
    "2026-08": 3.1,
    "2026-09": 3.5,
-   "2025-09": 3.8,
-   "2025-10": 3.6
+   "2025-10": 3.6,
+   "2026-10": 3.6
   },
   "AUD": {
    "2025-11": 3.4,
@@ -190,6 +191,13 @@
    "period": "2026-10",
    "headline": 4.0,
    "msg": "USD 2026-10: 4.0%"
+  },
+  {
+   "at": "2026-11-18T07:54:01Z",
+   "code": "GBP",
+   "period": "2026-10",
+   "headline": 3.6,
+   "msg": "GBP 2026-10: 3.6%"
   }
  ],
  "problems": [
