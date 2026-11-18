@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-18T15:32:36Z",
- "checked_at": "2026-11-18T15:32:36Z",
+ "updated_at": "2026-11-18T16:40:30Z",
+ "checked_at": "2026-11-18T16:40:30Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Toyota, Suzuki rely on weak yen to keep profits growing",
+   "link": "https://asia.nikkei.com/business/automobiles/toyota-suzuki-rely-on-weak-yen-to-keep-profits-growing",
+   "source": "Nikkei Asia",
+   "published": "2026-11-18T16:40:30Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
   {
    "title": "Fed’s Waller says interest-rate hikes may be needed to ‘shock’ inflation out of the system",
    "link": "https://www.marketwatch.com/story/how-high-must-interest-rates-go-to-cool-inflation-possibly-100-basis-points-or-more-feds-waller-says-e7b41cf6?mod=mw_rss_topstories",
@@ -596,16 +606,6 @@
     "GBP"
    ],
    "summary": "Third-quarter growth figures showed a tentative economic rebound under way as AI trends pick up"
-  },
-  {
-   "title": "UK economy expanded by 0.7% in third quarter",
-   "link": "https://www.ft.com/content/94f3ad1c-a186-4893-ae97-5f129690d121?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-12T08:23:17Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Figure underscores resilience despite surging energy prices and rising borrowing costs."
   }
  ]
 }
