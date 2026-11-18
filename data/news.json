@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-18T10:36:27Z",
- "checked_at": "2026-11-18T10:36:27Z",
+ "updated_at": "2026-11-18T12:38:59Z",
+ "checked_at": "2026-11-18T12:38:59Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "UK plans to resist EU request to match tariffs on Chinese goods",
+   "link": "https://www.ft.com/content/6b278daf-6fdf-4951-af8a-227f25c4e0b7?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-18T11:52:06Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Move in draft communiqué reduces chance Britain will be able to access subsidies and contracts under ‘made in Europe’ rules"
+  },
+  {
+   "title": "The Fed is tightening, the economy is slowing — and that’s the perfect setup to buy bonds, this trader argues",
+   "link": "https://www.marketwatch.com/story/the-fed-is-tightening-the-economy-is-slowing-and-thats-the-perfect-setup-to-buy-bonds-this-trader-argues-b1c88b23?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-18T11:38:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Having missed the rally in U.S. Treasurys that statrted in mid-October, Macro Tourist commentator Kevin Muir is taking advantage of a renewed weakness in bonds to buy."
+  },
   {
    "title": "AI borrowing binge has ‘historic parallels’ with subprime bubble, says ECB",
    "link": "https://www.ft.com/content/d16475ce-efce-4dc1-b5a3-2f7c79e9dea9?syn-25a6b1a6=1",
@@ -586,16 +606,6 @@
     "USD"
    ],
    "summary": "World’s largest economy fires on all cylinders — but technology sell-off underlines precarious nature of AI-driven boom"
-  },
-  {
-   "title": "Fed's Goolsbee calls inflation report 'borderline disturbing' as central bank weighs more hikes",
-   "link": "https://www.cnbc.com/2026/11/11/goolsbee-october-inflation-fed-rates-disturbing-distressing.html",
-   "source": "CNBC",
-   "published": "2026-11-11T16:49:02Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The consumer price index rose more than expected in October, raising alarm among Federal Reserve officials."
   }
  ]
 }
