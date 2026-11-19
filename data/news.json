@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-19T10:10:37Z",
- "checked_at": "2026-11-19T10:10:37Z",
+ "updated_at": "2026-11-19T14:24:38Z",
+ "checked_at": "2026-11-19T14:24:38Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "If the AI trade unwinds, other pillars holding up the U.S. economy are ‘irrelevant,’ says Barclays",
+   "link": "https://www.marketwatch.com/story/if-the-ai-trade-unwinds-other-pillars-holding-up-the-u-s-economy-are-irrelevant-says-barclays-b6f1bdca?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-19T12:45:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The bank does not hold that the artificial-intelligence trade is collapsing, viewing today’s slowdown as a correction that can selectively be bought into."
+  },
+  {
+   "title": "Fed’s October minutes confirm December increase and float faster tightening",
+   "link": "https://www.ft.com/content/470d7273-7356-48d5-9709-d9d8169d1d94",
+   "source": "Financial Times",
+   "published": "2026-11-19T11:53:40Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Policymakers worried about inflation risks from AI build-out at latest meeting"
+  },
   {
    "title": "Government in emergency talks after 'crushed' transmission towers cut power",
    "link": "https://www.abc.net.au/news/2026-11-19/transmission-towers-brought-down-cutting-eyre-peninsula-power/107405826",
@@ -586,26 +606,6 @@
     "AUD"
    ],
    "summary": "A US trade panel reviewing lamb imports is unable to agree on whether Australian meat imports have hurt the American industry, leaving Donald Trump to rule on tariffs."
-  },
-  {
-   "title": "German coalition disagreements hold up ECB jobs deal",
-   "link": "https://www.ft.com/content/bcfa33cc-535a-4692-ae5f-39e144b78799?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-13T16:15:25Z",
-   "codes": [
-    "EUR"
-   ],
-   "summary": "Chancellor and his finance minister have yet to agree on a candidate for one of three central bank executive board vacancies"
-  },
-  {
-   "title": "Chicago Fed's Goolsbee says central bank 'has definitely got work to do' on inflation",
-   "link": "https://www.cnbc.com/2026/11/13/chicago-feds-goolsbee-says-central-bank-has-definitely-got-work-to-do-on-inflation.html",
-   "source": "CNBC",
-   "published": "2026-11-13T14:22:07Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The policymaker expressed concern about the latest inflation data, telling CNBC that the central bank likely will need to take action."
   }
  ]
 }
