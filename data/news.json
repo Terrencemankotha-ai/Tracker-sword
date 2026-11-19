@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-18T23:54:07Z",
- "checked_at": "2026-11-18T23:54:07Z",
+ "updated_at": "2026-11-19T03:31:37Z",
+ "checked_at": "2026-11-19T03:31:37Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Rising costs make Australia 'uncompetitive' for cruise industry",
+   "link": "https://www.abc.net.au/news/2026-11-19/australia-cruise-industry-economic-loss-rising-costs/107402518",
+   "source": "ABC News (AU)",
+   "published": "2026-11-19T02:54:15Z",
+   "codes": [
+    "AUD"
+   ],
+   "summary": "Australia's cruise industry is in decline, with more than $1 billion wiped from its input to the country's economy as major international cruise lines head overseas."
+  },
   {
    "title": "Gilts v kilts: What is happening with Scottish government bonds?",
    "link": "https://www.bbc.co.uk/news/articles/cmwy8pgj2z8vo?at_medium=RSS&at_campaign=rss",
@@ -596,16 +606,6 @@
     "GBP"
    ],
    "summary": "The UK is seeing impressive growth, but will it last?"
-  },
-  {
-   "title": "AI helped UK defy expectations – but will economy’s resilience fizzle out?",
-   "link": "https://www.theguardian.com/business/2026/nov/12/ai-uk-economy-john-healey",
-   "source": "The Guardian",
-   "published": "2026-11-12T13:08:12Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Despite John Healey’s defiance, the economy faces threats from a tech slowdown and energy bills this winter AI helps UK economy grow at fastest pace for more than two years The forecasters were clear when John Healey…"
   }
  ]
 }
