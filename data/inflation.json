@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-19T20:08:18Z",
- "checked_at": "2026-11-19T20:08:18Z",
+ "updated_at": "2026-11-19T21:28:15Z",
+ "checked_at": "2026-11-19T21:28:15Z",
  "latest": [
   {
    "code": "USD",
@@ -202,7 +202,7 @@
   }
  ],
  "problems": [
-  "AUD primary is behind (2025-09); using OECD (2026-09)"
+  "AUD primary: https://data.api.abs.gov.au/rest/data/ABS,CPI_M/all?startPeriod=2025-08&format=csvfilewithlabels: HTTP Error 504: Gateway Time-out"
  ],
  "policy": {
   "as_of": "2026-11-14",
