@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-19T14:24:38Z",
- "checked_at": "2026-11-19T14:24:38Z",
+ "updated_at": "2026-11-19T17:58:05Z",
+ "checked_at": "2026-11-19T17:58:05Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Japan weighs raising new-drug prices closer to overseas levels",
+   "link": "https://asia.nikkei.com/business/pharmaceuticals/japan-weighs-raising-new-drug-prices-closer-to-overseas-levels",
+   "source": "Nikkei Asia",
+   "published": "2026-11-19T17:58:05Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
   {
    "title": "If the AI trade unwinds, other pillars holding up the U.S. economy are ‘irrelevant,’ says Barclays",
    "link": "https://www.marketwatch.com/story/if-the-ai-trade-unwinds-other-pillars-holding-up-the-u-s-economy-are-irrelevant-says-barclays-b6f1bdca?mod=mw_rss_topstories",
@@ -596,16 +606,6 @@
     "USD"
    ],
    "summary": "The report comes with Wall Street on edge over high-flying AI hyperscalers, while communities are on alert for the rapid spread of data centers."
-  },
-  {
-   "title": "Trump to rule on tariffs for Australian lamb after trade commissioners disagree",
-   "link": "https://www.abc.net.au/news/2026-11-14/us-trade-investigation-into-lamb-imports-decision-handed-down/107385510",
-   "source": "ABC News (AU)",
-   "published": "2026-11-13T20:07:43Z",
-   "codes": [
-    "AUD"
-   ],
-   "summary": "A US trade panel reviewing lamb imports is unable to agree on whether Australian meat imports have hurt the American industry, leaving Donald Trump to rule on tariffs."
   }
  ]
 }
