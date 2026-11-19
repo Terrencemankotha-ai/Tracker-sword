@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-19T03:31:37Z",
- "checked_at": "2026-11-19T03:31:37Z",
+ "updated_at": "2026-11-19T06:07:12Z",
+ "checked_at": "2026-11-19T06:07:12Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -24,6 +24,16 @@
     "GBP"
    ],
    "summary": "MSPs have heard both the pros and cons of the government's plan to launch its first ever bond to the market?"
+  },
+  {
+   "title": "Economists warn Australia getting close to recession as unemployment spikes",
+   "link": "https://www.abc.net.au/news/2026-11-19/asx-markets-business-news-live-updates-thursday-19-november/107401802",
+   "source": "ABC News (AU)",
+   "published": "2026-11-18T20:31:18Z",
+   "codes": [
+    "AUD"
+   ],
+   "summary": "Economists say Australia risks slipping into recession after the latest unemployment data."
   },
   {
    "title": "Fed officials expect more rate hikes, worry about AI impact on inflation, minutes show",
@@ -596,16 +606,6 @@
     "USD"
    ],
    "summary": "There will be seven voting meetings next year, with the October session set up as extra time for policy deliberation without a formal vote or post-meeting statement."
-  },
-  {
-   "title": "Faisal Islam: Why the UK economy is surprisingly resilient",
-   "link": "https://www.bbc.co.uk/news/articles/cj62p32k90wyo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "published": "2026-11-12T13:27:09Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "The UK is seeing impressive growth, but will it last?"
   }
  ]
 }
