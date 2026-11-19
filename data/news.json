@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-19T20:08:19Z",
- "checked_at": "2026-11-19T20:08:19Z",
+ "updated_at": "2026-11-19T22:28:27Z",
+ "checked_at": "2026-11-19T22:28:27Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "International students in Japan face language hurdles when seeking jobs",
+   "link": "https://asia.nikkei.com/spotlight/japan-immigration/international-students-in-japan-face-language-hurdles-when-seeking-jobs",
+   "source": "Nikkei Asia",
+   "published": "2026-11-19T22:28:27Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
   {
    "title": "The surprising reason the U.S. economy is speeding up — and might have more room to run",
    "link": "https://www.marketwatch.com/story/the-surprising-reason-the-u-s-economy-is-speeding-up-and-might-have-more-room-to-run-9016c8db?mod=mw_rss_topstories",
@@ -596,16 +606,6 @@
     "GBP"
    ],
    "summary": "Huw Pill calls last week’s quarter-point increase to 4% a ‘significant step’ but that there was ‘further to go’ with borrowing costs"
-  },
-  {
-   "title": "US Treasuries record worst week since Trump’s ‘liberation day’",
-   "link": "https://www.ft.com/content/7bebace2-dc87-410a-ae29-ffd9f3176def?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-13T22:12:03Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Higher than expected inflation and hawkish remarks by Fed officials have stung investors who bet a global bond rout was over"
   }
  ]
 }
