@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-18T23:54:05Z",
- "checked_at": "2026-11-18T23:54:05Z",
+ "updated_at": "2026-11-19T01:14:50Z",
+ "checked_at": "2026-11-19T01:14:50Z",
  "latest": [
   {
    "code": "USD",
@@ -37,13 +37,14 @@
    "target_high": 2.0,
    "target_note": "ECB 2%",
    "released": "2026-11-04",
-   "next_release": "2026-11-18",
+   "next_release": "2026-12-18",
    "next_period": "2026-10",
    "agency": "Eurostat",
    "source_url": "https://ec.europa.eu/eurostat/web/hicp",
    "status": "Flash estimate",
    "note": "Flash estimate; Eurostat confirms October on 18 Nov.",
-   "source_of_update": "seed"
+   "source_of_update": "seed",
+   "next_release_estimated": true
   },
   {
    "code": "JPY",
