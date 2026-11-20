@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-19T22:28:27Z",
- "checked_at": "2026-11-19T22:28:27Z",
+ "updated_at": "2026-11-20T00:23:26Z",
+ "checked_at": "2026-11-20T00:23:26Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Singapore banks put tokenization to practical use with gold, bonds",
+   "link": "https://asia.nikkei.com/business/finance/singapore-banks-put-tokenization-to-practical-use-with-gold-bonds",
+   "source": "Nikkei Asia",
+   "published": "2026-11-20T00:23:26Z",
+   "codes": [
+    "XAU"
+   ],
+   "summary": ""
+  },
+  {
+   "title": "Japan core inflation soars to highest this year as energy subsidy expiry pushes up consumer prices",
+   "link": "https://www.cnbc.com/2026/11/20/japan-inflation-cpi-october.html",
+   "source": "CNBC",
+   "published": "2026-11-19T23:59:29Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": "The core inflation figure — which strips out prices of food — was lower than the 2.3% expected by Reuters-polled economists."
+  },
   {
    "title": "International students in Japan face language hurdles when seeking jobs",
    "link": "https://asia.nikkei.com/spotlight/japan-immigration/international-students-in-japan-face-language-hurdles-when-seeking-jobs",
@@ -586,26 +606,6 @@
     "USD"
    ],
    "summary": "Federal Reserve policymakers have floated the idea of a bigger rate increase in December following strong jobs, growth and inflation data"
-  },
-  {
-   "title": "Transcript of an interview with Huw Pill",
-   "link": "https://www.ft.com/content/014fae08-ab39-4fa2-b9d3-f0c961a6710f",
-   "source": "Financial Times",
-   "published": "2026-11-14T05:00:46Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Bank of England chief economist talks to the FT"
-  },
-  {
-   "title": "BoE chief economist says further rate rises needed to combat inflation",
-   "link": "https://www.ft.com/content/806b0158-41c5-4db2-ac33-93621f72297b?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-14T05:00:46Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Huw Pill calls last week’s quarter-point increase to 4% a ‘significant step’ but that there was ‘further to go’ with borrowing costs"
   }
  ]
 }
