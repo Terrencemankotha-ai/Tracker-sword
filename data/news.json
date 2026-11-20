@@ -1,10 +1,40 @@
 {
- "updated_at": "2026-11-20T00:23:26Z",
- "checked_at": "2026-11-20T00:23:26Z",
+ "updated_at": "2026-11-20T06:10:38Z",
+ "checked_at": "2026-11-20T06:10:38Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "FirstFT: UK and EU poised to finalise deal to ‘reset’ ties",
+   "link": "https://www.ft.com/content/5fbbe806-37d7-42e4-8235-ce9cbb3f2cdb?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-20T05:31:18Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Also in today’s newsletter: Anthropic IPO and oil-bonds correlation unwinds"
+  },
+  {
+   "title": "Why Britons can feel smugger than the French",
+   "link": "https://www.ft.com/content/b9b16f2f-f88e-454e-aa85-c131256310fe?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-20T05:00:17Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "It’s not a competition, but if it were, the UK economy would be winning"
+  },
+  {
+   "title": "Rejoining the EU would boost UK economy twice as much as Swiss-style deal",
+   "link": "https://www.ft.com/content/22c052bf-a9dc-49f3-a18b-02b5dc490635?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-20T05:00:17Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Much of the benefit would come from a rebound in business investment, which was damaged by Brexit-related uncertainty"
+  },
   {
    "title": "Singapore banks put tokenization to practical use with gold, bonds",
    "link": "https://asia.nikkei.com/business/finance/singapore-banks-put-tokenization-to-practical-use-with-gold-bonds",
@@ -576,36 +606,6 @@
     "JPY"
    ],
    "summary": ""
-  },
-  {
-   "title": "A rapid interest rate rise seems inevitable – and households are expected to pick up the tab",
-   "link": "https://www.theguardian.com/business/2026/nov/14/interest-rate-rise-phillip-inman-inflation-economy",
-   "source": "The Guardian",
-   "published": "2026-11-14T16:00:48Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Raising borrowing costs too far risks laying waste to whatever growth there is in the economy A head of steam is building up behind the Bank of England raising interest rates again. With the latest forecasts by the…"
-  },
-  {
-   "title": "Interest rate rises likely in coming months, Bank of England’s chief economist says",
-   "link": "https://www.theguardian.com/business/2026/nov/14/interest-rate-rises-inflation-bank-of-england-chief-economist",
-   "source": "The Guardian",
-   "published": "2026-11-14T14:42:27Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "‘We have further to go,’ says Huw Pill after increase to 4% this month as Bank seeks to tackle rising inflation The Bank of England will probably need to raise interest rates next month and again in early 2027 to…"
-  },
-  {
-   "title": "Hawkward timing",
-   "link": "https://www.ft.com/content/8c2639dc-e5d5-430d-a641-11776ac26f9c",
-   "source": "Financial Times",
-   "published": "2026-11-14T10:05:05Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Federal Reserve policymakers have floated the idea of a bigger rate increase in December following strong jobs, growth and inflation data"
   }
  ]
 }
