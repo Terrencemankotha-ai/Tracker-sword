@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-20T06:10:38Z",
- "checked_at": "2026-11-20T06:10:38Z",
+ "updated_at": "2026-11-20T07:54:24Z",
+ "checked_at": "2026-11-20T07:54:24Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "UK government borrowing rises less than forecast in surprise boost for chancellor John Healey",
+   "link": "https://www.theguardian.com/business/2026/nov/20/uk-government-borrowing-rises-less-than-forecast-in-surprise-boost-for-chancellor-john-healey",
+   "source": "The Guardian",
+   "published": "2026-11-20T07:25:31Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "UK economy defies City predictions and Iran war fallout, with gap between spending and income about £1bn lower than expected in October, at £17bn The UK government borrowed less than expected in October despite a…"
+  },
+  {
+   "title": "What impact has Brexit had on the UK and EU economies?",
+   "link": "https://www.theguardian.com/business/2026/nov/20/what-impact-brexit-uk-eu-economies",
+   "source": "The Guardian",
+   "published": "2026-11-20T07:00:26Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "As talks are held in Brussels over closer relations, we examine the economic context and the challenges ahead The UK and EU will hold the second summit since Brexit on Friday against a volatile economic backdrop.…"
+  },
   {
    "title": "FirstFT: UK and EU poised to finalise deal to ‘reset’ ties",
    "link": "https://www.ft.com/content/5fbbe806-37d7-42e4-8235-ce9cbb3f2cdb?syn-25a6b1a6=1",
@@ -586,26 +606,6 @@
     "GBP"
    ],
    "summary": "This week’s long-awaited review will call for benefit cuts but lack of entry-level jobs is also driving the crisis ‘I’m scared about my future’: young people on the stress and desperation of jobseeking A generation…"
-  },
-  {
-   "title": "‘Low fire, low hire’ job market hurts US and UK productivity",
-   "link": "https://www.ft.com/content/44c1fdc6-bc51-46e5-8a7c-c10096a25496?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-15T05:00:13Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Sluggish rates of hiring, resignations and job-switching may lead to long-term damage, say economists"
-  },
-  {
-   "title": "US Treasury bought nearly $500mn in yen during joint July forex intervention",
-   "link": "https://asia.nikkei.com/business/markets/currencies/us-treasury-bought-nearly-500mn-in-yen-during-joint-july-forex-intervention",
-   "source": "Nikkei Asia",
-   "published": "2026-11-14T21:49:52Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": ""
   }
  ]
 }
