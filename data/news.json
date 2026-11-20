@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-20T15:59:39Z",
- "checked_at": "2026-11-20T15:59:39Z",
+ "updated_at": "2026-11-20T17:01:46Z",
+ "checked_at": "2026-11-20T17:01:46Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Faisal Islam: This cost-cutting UK-EU deal doesn't mean lower prices will follow",
+   "link": "https://www.bbc.co.uk/news/articles/cm1wr029evnqo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "published": "2026-11-20T16:41:52Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "The trade deal is unlikely lower food prices for shoppers, but should boost the economy more than other post-Brexit agreements."
+  },
   {
    "title": "Warsh wants Fed officials to talk less. Instead, they’re talking more",
    "link": "https://www.cnbc.com/2026/11/20/warsh-fed-forward-guidance-rate-hikes.html",
@@ -596,16 +606,6 @@
     "GBP"
    ],
    "summary": "Two-year gilt yield breaches 5% on strong economic data and hawkish messaging from Bank of England"
-  },
-  {
-   "title": "Japan’s economy contracts for the first time in a year",
-   "link": "https://www.ft.com/content/4eb7ff18-1ba3-4944-ad48-bdc9e5ddc84e?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-16T04:59:28Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": "Weak consumer spending and record-breaking rains damp GDP growth and complicate interest rate plans"
   }
  ]
 }
