@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-20T14:58:40Z",
- "checked_at": "2026-11-20T14:58:40Z",
+ "updated_at": "2026-11-20T15:59:39Z",
+ "checked_at": "2026-11-20T15:59:39Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Warsh wants Fed officials to talk less. Instead, they’re talking more",
+   "link": "https://www.cnbc.com/2026/11/20/warsh-fed-forward-guidance-rate-hikes.html",
+   "source": "CNBC",
+   "published": "2026-11-20T15:20:54Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Fed officials have been rushing to the microphones lately while the Fed chairman stays on the sidelines."
+  },
   {
    "title": "Bank of America strategist warns doom loop could hit stocks with Wall Street underpricing hard-landing risks",
    "link": "https://www.marketwatch.com/story/bank-of-america-strategist-warns-doom-loop-could-hit-stocks-with-wall-street-underpricing-hard-landing-risks-c3181e57?mod=mw_rss_topstories",
@@ -596,16 +606,6 @@
     "JPY"
    ],
    "summary": "Weak consumer spending and record-breaking rains damp GDP growth and complicate interest rate plans"
-  },
-  {
-   "title": "Japan's economy unexpectedly contracts in third-quarter as elevated energy costs bite",
-   "link": "https://www.cnbc.com/2026/11/16/japan-q3-gdp-energy-oil-prices.html",
-   "source": "CNBC",
-   "published": "2026-11-16T02:56:24Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": "Energy subsidies for households had reportedly expired in September, exposing the economy to the higher energy prices brought about by the Iran war."
   }
  ]
 }
