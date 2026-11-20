@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-20T10:12:56Z",
- "checked_at": "2026-11-20T10:12:56Z",
+ "updated_at": "2026-11-20T13:55:54Z",
+ "checked_at": "2026-11-20T13:55:54Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Bank of America strategist warns doom loop could hit stocks with Wall Street underpricing hard-landing risks",
+   "link": "https://www.marketwatch.com/story/bank-of-america-strategist-warns-doom-loop-could-hit-stocks-with-wall-street-underpricing-hard-landing-risks-c3181e57?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-20T12:43:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The S&P 500 is nearing a level worth buying if the U.S. avoids a recession, but one strategist warns Wall Street is underpricing the hard-landing risk as he said investors should wait before buying risky assets."
+  },
   {
    "title": "October inflation data keeps BoJ on course for further tightening",
    "link": "https://www.ft.com/content/c95feb1a-f197-4942-bba8-672087f6be74",
@@ -596,16 +606,6 @@
     "JPY"
    ],
    "summary": ""
-  },
-  {
-   "title": "Japan's economy unexpectedly contracts in third-quarter as elevated energy costs bite",
-   "link": "https://www.cnbc.com/2026/11/16/japan-q3-gdp-energy-oil-prices.html",
-   "source": "CNBC",
-   "published": "2026-11-16T01:02:48Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": "Energy subsidies for households had reportedly expired in September, exposing the economy to the higher energy prices brought about by the Iran war."
   }
  ]
 }
