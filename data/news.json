@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-20T19:02:11Z",
- "checked_at": "2026-11-20T19:02:11Z",
+ "updated_at": "2026-11-20T20:04:09Z",
+ "checked_at": "2026-11-20T20:04:09Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "The Fed is too busy fighting inflation to rescue the stock market",
+   "link": "https://www.marketwatch.com/story/the-fed-is-too-busy-fighting-inflation-to-rescue-the-stock-market-11dda598?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-20T19:53:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Federal Reserve officials will continue to raise interest rates, despite the recent selloff in the stock market, as equity-market gains over the past four years dwarf the recent declines, economists said Friday."
+  },
   {
    "title": "Japan sovereign AI project faces $5bn cost surge on chip prices, weak yen",
    "link": "https://asia.nikkei.com/business/technology/artificial-intelligence/japan-sovereign-ai-project-faces-5bn-cost-surge-on-chip-prices-weak-yen",
@@ -590,16 +600,6 @@
   {
    "title": "British actor Robert Pattison named as the new James Bond",
    "link": "https://www.abc.net.au/news/2026-11-17/brk-james-bond/107392892",
-   "source": "ABC News (AU)",
-   "published": "2026-11-16T15:39:07Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Pattinson, whose film credits this year include The Odyssey and Primetime, succeeds Daniel Craig, who bowed out of the role after 2021 movie No Time to Die."
-  },
-  {
-   "title": "British actor Robert Pattinson named as the new James Bond",
-   "link": "https://www.abc.net.au/news/2026-11-17/james-bond-robert-pattinson/107392892",
    "source": "ABC News (AU)",
    "published": "2026-11-16T15:39:07Z",
    "codes": [
