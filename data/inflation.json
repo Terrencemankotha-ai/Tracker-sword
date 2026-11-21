@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-21T19:50:57Z",
- "checked_at": "2026-11-21T19:50:57Z",
+ "updated_at": "2026-11-21T20:47:50Z",
+ "checked_at": "2026-11-21T20:47:50Z",
  "latest": [
   {
    "code": "USD",
@@ -203,6 +203,7 @@
   }
  ],
  "problems": [
+  "USD primary: https://api.bls.gov/publicAPI/v1/timeseries/data/: The read operation timed out",
   "AUD primary is behind (2025-09); using OECD (2026-09)"
  ],
  "policy": {
