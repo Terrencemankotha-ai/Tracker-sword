@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-21T22:48:11Z",
- "checked_at": "2026-11-21T22:48:11Z",
+ "updated_at": "2026-11-21T23:43:36Z",
+ "checked_at": "2026-11-21T23:43:36Z",
  "latest": [
   {
    "code": "USD",
@@ -203,7 +203,6 @@
   }
  ],
  "problems": [
-  "USD primary: https://api.bls.gov/publicAPI/v1/timeseries/data/: HTTP Error 503: Service Unavailable",
   "AUD primary is behind (2025-09); using OECD (2026-09)"
  ],
  "policy": {
