@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-20T23:52:18Z",
- "checked_at": "2026-11-20T23:52:18Z",
+ "updated_at": "2026-11-21T01:12:20Z",
+ "checked_at": "2026-11-21T01:12:20Z",
  "latest": [
   {
    "code": "USD",
@@ -59,13 +59,14 @@
    "target_high": 2.0,
    "target_note": "BoJ 2%",
    "released": "2026-10-23",
-   "next_release": "2026-11-20",
+   "next_release": "2026-12-20",
    "next_period": "2026-10",
    "agency": "Statistics Bureau of Japan",
    "source_url": "https://www.stat.go.jp/english/data/cpi/",
    "status": "Final",
    "note": "One secondary source reported 2.2%; 2.1% is the figure most outlets cite.",
-   "source_of_update": "seed"
+   "source_of_update": "seed",
+   "next_release_estimated": true
   },
   {
    "code": "GBP",
