@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-20T20:55:48Z",
- "checked_at": "2026-11-20T20:55:48Z",
+ "updated_at": "2026-11-22T12:23:50Z",
+ "checked_at": "2026-11-22T12:23:50Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "The looming UK winter may spawn a double headache for Andy Burnham | Richard Partington",
+   "link": "https://www.theguardian.com/business/2026/nov/22/looming-uk-winter-spawns-double-headache-for-andy-burnham",
+   "source": "The Guardian",
+   "published": "2026-11-22T11:24:22Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "‘Raising growth in every postcode’ has been the PM’s rallying cry but deep regional disparities and rising energy bills pose problems this winter Andy Burnham faces two, related problems: Britain faces deep regional…"
+  },
   {
    "title": "The Fed is too busy fighting inflation to rescue the stock market",
    "link": "https://www.marketwatch.com/story/the-fed-is-too-busy-fighting-inflation-to-rescue-the-stock-market-11dda598?mod=mw_rss_topstories",
@@ -596,16 +606,6 @@
     "USD"
    ],
    "summary": "Innovation sparked by the technology has potential to support level of GDP above long-run average without stoking inflation"
-  },
-  {
-   "title": "Japan's wagyu prices hit record high on ranch closures, overseas demand",
-   "link": "https://asia.nikkei.com/business/food-beverage/japan-s-wagyu-prices-hit-record-high-on-ranch-closures-overseas-demand",
-   "source": "Nikkei Asia",
-   "published": "2026-11-16T17:18:27Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": ""
   }
  ]
 }
