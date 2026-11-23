@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-23T21:56:13Z",
- "checked_at": "2026-11-23T21:56:13Z",
+ "updated_at": "2026-11-23T22:57:22Z",
+ "checked_at": "2026-11-23T22:57:22Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -548,6 +548,16 @@
    "summary": "The yen’s recent strengthening, particularly against the Australian dollar, suggests investors are unwinding risky bets."
   },
   {
+   "title": "UK unemployment unexpectedly eases to 4.6% as government releases Milburn report",
+   "link": "https://www.theguardian.com/business/2026/nov/17/uk-unemployment-wage-growth-milburn-report",
+   "source": "The Guardian",
+   "published": "2026-11-17T13:44:09Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Wage growth falls to 3.5% in September, as ministers examine how best to get young people into work Milburn urges Burnham to spend billions on young people Who are the Neets? UK youth job crisis in five charts The UK…"
+  },
+  {
    "title": "St. Louis Fed's Musalem says four more rate hikes may be needed in coming months",
    "link": "https://www.cnbc.com/2026/11/17/alberto-musalem-fed-interest-rates.html",
    "source": "CNBC",
@@ -597,16 +607,6 @@
     "EUR"
    ],
    "summary": "But latest forecasts highlight diverging fortunes of bloc’s biggest economies, with GDP projections for France halved"
-  },
-  {
-   "title": "UK jobs market is a ‘mixed picture’ as wage growth slows and unemployment falls – business live",
-   "link": "https://www.theguardian.com/business/live/2026/nov/17/uk-jobs-market-wage-growth-payrolls-unemployment-milburn-china-us-chips-latest-news-updates",
-   "source": "The Guardian",
-   "published": "2026-11-17T08:28:08Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Rolling coverage of the latest economic and financial news Shares in Deutsche Bank have dropped by more than 5% in early trading, following a leak of more than 15 million internal documents. The leak has led to some…"
   }
  ]
 }
