@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-23T20:56:05Z",
- "checked_at": "2026-11-23T20:56:05Z",
+ "updated_at": "2026-11-23T21:56:13Z",
+ "checked_at": "2026-11-23T21:56:13Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Fed's John Williams indicates higher interest rates likely 'over time' to address inflation",
+   "link": "https://www.cnbc.com/2026/11/23/john-williams-fed-inflation-rate-hikes.html",
+   "source": "CNBC",
+   "published": "2026-11-23T21:02:17Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The influential central banker expressed confidence that inflation will get closer to the Fed's 2% target in 2027."
+  },
   {
    "title": "Japan's defense spending pitted against sales tax cut in budget tug-of-war",
    "link": "https://asia.nikkei.com/politics/japan-s-defense-spending-pitted-against-sales-tax-cut-in-budget-tug-of-war",
@@ -75,6 +85,16 @@
     "GBP"
    ],
    "summary": "‘Raising growth in every postcode’ has been the PM’s rallying cry but deep regional disparities and rising energy bills pose problems this winter Andy Burnham faces two, related problems: Britain faces deep regional…"
+  },
+  {
+   "title": "Peterson: The Fed's chairman sees an AI revolution coming. Now he has to figure out what it means",
+   "link": "https://www.cnbc.com/2026/11/16/kevin-warsh-fed-ai-jobs-productivity-interest-rateshtml.html",
+   "source": "CNBC",
+   "published": "2026-11-20T21:07:08Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Kevin Warsh sees AI at a turning point. He faces tough questions on jobs and interest rates."
   },
   {
    "title": "The Fed is too busy fighting inflation to rescue the stock market",
@@ -587,26 +607,6 @@
     "GBP"
    ],
    "summary": "Rolling coverage of the latest economic and financial news Shares in Deutsche Bank have dropped by more than 5% in early trading, following a leak of more than 15 million internal documents. The leak has led to some…"
-  },
-  {
-   "title": "UK jobs market stalled ahead of October Budget",
-   "link": "https://www.ft.com/content/8f2b2b32-2b63-4651-8cbf-f79007f4f5ea?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-17T07:50:26Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Economists say recent upswing in economic growth has not led to new job creation"
-  },
-  {
-   "title": "UK unemployment unexpectedly eases to 4.6%, as government prepares to release Milburn report",
-   "link": "https://www.theguardian.com/business/2026/nov/17/uk-unemployment-wage-growth-milburn-report",
-   "source": "The Guardian",
-   "published": "2026-11-17T07:16:33Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Wage growth falls to to 3.5% in September, as ministers examine how best to get young people into work Milburn urges Burnham to spend billions on young people Who are the Neets? UK youth job crisis in five charts The…"
   }
  ]
 }
