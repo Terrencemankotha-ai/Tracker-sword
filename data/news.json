@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-23T16:11:56Z",
- "checked_at": "2026-11-23T16:11:56Z",
+ "updated_at": "2026-11-23T20:56:05Z",
+ "checked_at": "2026-11-23T20:56:05Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Japan's defense spending pitted against sales tax cut in budget tug-of-war",
+   "link": "https://asia.nikkei.com/politics/japan-s-defense-spending-pitted-against-sales-tax-cut-in-budget-tug-of-war",
+   "source": "Nikkei Asia",
+   "published": "2026-11-23T20:56:04Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
   {
    "title": "The surprising reason businesses can’t keep up with customer demand. Hint: It’s not just a strong U.S. economy.",
    "link": "https://www.marketwatch.com/story/the-surprising-reason-businesses-cant-keep-up-with-customer-demand-hint-its-not-just-a-strong-u-s-economy-70be4a01?mod=mw_rss_topstories",
@@ -597,16 +607,6 @@
     "GBP"
    ],
    "summary": "Wage growth falls to to 3.5% in September, as ministers examine how best to get young people into work Milburn urges Burnham to spend billions on young people Who are the Neets? UK youth job crisis in five charts The…"
-  },
-  {
-   "title": "Analysis: The Fed's chairman sees an AI revolution coming. Now he has to figure out what it means",
-   "link": "https://www.cnbc.com/2026/11/16/kevin-warsh-fed-ai-jobs-productivity-interest-rateshtml.html",
-   "source": "CNBC",
-   "published": "2026-11-17T00:42:33Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Kevin Warsh sees AI at a turning point. He faces tough questions on jobs and interest rates."
   }
  ]
 }
