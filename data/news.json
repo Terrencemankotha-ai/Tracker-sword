@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-23T11:58:44Z",
- "checked_at": "2026-11-23T11:58:44Z",
+ "updated_at": "2026-11-23T14:43:38Z",
+ "checked_at": "2026-11-23T14:43:38Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Joining the EU won’t save the UK economy by itself",
+   "link": "https://www.ft.com/content/e5a85fb7-d980-4c34-9857-c57eff52c3c7?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-23T12:31:02Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Andy Burnham is good at short-term politics but needs a long-term economic strategy"
+  },
   {
    "title": "The U.S. may enter a recession if the Fed raises rates, hedge-fund manager Bill Ackman says",
    "link": "https://www.marketwatch.com/story/the-u-s-may-enter-a-recession-if-the-fed-raises-rates-hedge-fund-manager-bill-ackman-says-16738971?mod=mw_rss_topstories",
@@ -595,16 +605,6 @@
    "published": "2026-11-16T22:51:30Z",
    "codes": [
     "JPY"
-   ],
-   "summary": ""
-  },
-  {
-   "title": "Fed Chairman Kevin Warsh stresses importance of AI to economy, but says it could ‘disappoint’",
-   "link": "https://www.cnbc.com/2026/11/16/fed-ai-task-force-kevin-warsh.html",
-   "source": "CNBC",
-   "published": "2026-11-16T18:46:07Z",
-   "codes": [
-    "USD"
    ],
    "summary": ""
   }
