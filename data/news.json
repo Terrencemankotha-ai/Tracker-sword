@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-23T07:38:27Z",
- "checked_at": "2026-11-23T07:38:27Z",
+ "updated_at": "2026-11-23T09:28:10Z",
+ "checked_at": "2026-11-23T09:28:10Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -589,6 +589,16 @@
    "summary": ""
   },
   {
+   "title": "Fed Chairman Kevin Warsh stresses importance of AI to economy, but says it could ‘disappoint’",
+   "link": "https://www.cnbc.com/2026/11/16/fed-ai-task-force-kevin-warsh.html",
+   "source": "CNBC",
+   "published": "2026-11-16T18:46:07Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": ""
+  },
+  {
    "title": "Japan eyes two-pronged approach to cover tax cut, growth investments",
    "link": "https://asia.nikkei.com/politics/japan-eyes-two-pronged-approach-to-cover-tax-cut-growth-investments",
    "source": "Nikkei Asia",
@@ -597,16 +607,6 @@
     "JPY"
    ],
    "summary": ""
-  },
-  {
-   "title": "How will AI shake up the economy? Warsh says the Fed is starting to figure that out.",
-   "link": "https://www.marketwatch.com/story/how-will-ai-shake-up-the-economy-warsh-says-the-fed-is-starting-to-figure-that-out-a72f80c4?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-11-16T17:53:00Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The Federal Reserve staff is in the early days of developing various scenarios of how artificial intelligence’s growing role in business and daily life will impact the economy, Fed Chairman Kevin Warsh said Monday."
   }
  ]
 }
