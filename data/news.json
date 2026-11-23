@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-23T09:28:10Z",
- "checked_at": "2026-11-23T09:28:10Z",
+ "updated_at": "2026-11-23T11:58:44Z",
+ "checked_at": "2026-11-23T11:58:44Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "The U.S. may enter a recession if the Fed raises rates, hedge-fund manager Bill Ackman says",
+   "link": "https://www.marketwatch.com/story/the-u-s-may-enter-a-recession-if-the-fed-raises-rates-hedge-fund-manager-bill-ackman-says-16738971?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-23T10:57:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The Pershing Square Capital Management CEO wrote in a post on X that he thinks financial conditions have already considerably tightened."
+  },
   {
    "title": "Man swaps Australia for south Wales over 'unreal' house prices as locals struggle to buy",
    "link": "https://www.bbc.co.uk/news/articles/cjkgkdppk1nwo?at_medium=RSS&at_campaign=rss",
@@ -595,16 +605,6 @@
    "published": "2026-11-16T18:46:07Z",
    "codes": [
     "USD"
-   ],
-   "summary": ""
-  },
-  {
-   "title": "Japan eyes two-pronged approach to cover tax cut, growth investments",
-   "link": "https://asia.nikkei.com/politics/japan-eyes-two-pronged-approach-to-cover-tax-cut-growth-investments",
-   "source": "Nikkei Asia",
-   "published": "2026-11-16T18:28:35Z",
-   "codes": [
-    "JPY"
    ],
    "summary": ""
   }
