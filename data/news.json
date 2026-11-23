@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-22T18:51:51Z",
- "checked_at": "2026-11-22T18:51:51Z",
+ "updated_at": "2026-11-23T07:38:27Z",
+ "checked_at": "2026-11-23T07:38:27Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Man swaps Australia for south Wales over 'unreal' house prices as locals struggle to buy",
+   "link": "https://www.bbc.co.uk/news/articles/cjkgkdppk1nwo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "published": "2026-11-23T06:03:32Z",
+   "codes": [
+    "AUD"
+   ],
+   "summary": "The area has attracted investors and even a buyer from Australia, but locals struggle to afford homes."
+  },
   {
    "title": "Australia may be headed for recession, former Federal Reserve economist says",
    "link": "https://www.abc.net.au/news/2026-11-23/sahm-rule-recession-indicator-australia-november-2026/107408750",
@@ -597,16 +607,6 @@
     "USD"
    ],
    "summary": "The Federal Reserve staff is in the early days of developing various scenarios of how artificial intelligence’s growing role in business and daily life will impact the economy, Fed Chairman Kevin Warsh said Monday."
-  },
-  {
-   "title": "Fed Chairman Kevin Warsh stresses importance of AI to economy, but says it could ‘disappoint’",
-   "link": "https://www.cnbc.com/2026/11/16/fed-ai-task-force-kevin-warsh.html",
-   "source": "CNBC",
-   "published": "2026-11-16T17:29:04Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": ""
   }
  ]
 }
