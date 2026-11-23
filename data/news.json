@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-23T14:43:38Z",
- "checked_at": "2026-11-23T14:43:38Z",
+ "updated_at": "2026-11-23T16:11:56Z",
+ "checked_at": "2026-11-23T16:11:56Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "The surprising reason businesses can’t keep up with customer demand. Hint: It’s not just a strong U.S. economy.",
+   "link": "https://www.marketwatch.com/story/the-surprising-reason-businesses-cant-keep-up-with-customer-demand-hint-its-not-just-a-strong-u-s-economy-70be4a01?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-23T16:03:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The economy is on track to grow 3% in the final three months of 2026, a pair of S&P surveys showed, aided by rising customer demand and the hope for more political stabilityafter the U.S. elections."
+  },
   {
    "title": "Joining the EU won’t save the UK economy by itself",
    "link": "https://www.ft.com/content/e5a85fb7-d980-4c34-9857-c57eff52c3c7?syn-25a6b1a6=1",
@@ -597,16 +607,6 @@
     "USD"
    ],
    "summary": "Kevin Warsh sees AI at a turning point. He faces tough questions on jobs and interest rates."
-  },
-  {
-   "title": "SoftBank, Rakuten push Japan retail bond issuance to record high",
-   "link": "https://asia.nikkei.com/business/markets/bonds/softbank-rakuten-push-japan-retail-bond-issuance-to-record-high",
-   "source": "Nikkei Asia",
-   "published": "2026-11-16T22:51:30Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": ""
   }
  ]
 }
