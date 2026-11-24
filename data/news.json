@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-24T02:37:51Z",
- "checked_at": "2026-11-24T02:37:51Z",
+ "updated_at": "2026-11-24T08:00:11Z",
+ "checked_at": "2026-11-24T08:00:11Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Asia-Pacific markets rally as Huang’s return to Nvidia reignites AI trade, despite US political backlash – business live",
+   "link": "https://www.theguardian.com/business/live/2026/nov/24/jensen-huang-nvidia-stock-markets-ai-trade-us-political-backlash-donald-trump-latest-news-updates",
+   "source": "The Guardian",
+   "published": "2026-11-24T07:56:47Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Rolling coverage of the latest economic and financial news Republican senators criticize Nvidia’s decision to reinstate Jensen Huang The surge in stock markets since Jensen Huang’s return to Nvidia was announced…"
+  },
+  {
+   "title": "Why France is at risk of recession — and what could keep it out of one",
+   "link": "https://www.cnbc.com/2026/11/24/france-recession-risk-pmi.html",
+   "source": "CNBC",
+   "published": "2026-11-24T06:55:36Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "Bank of France Governor Emmanuel Moulin told CNBC he still expects growth, pointing to resilience in sectors including defense, aerospace and electricity."
+  },
   {
    "title": "A slash-and-burn budget update could push Australia into a recession. Jim Chalmers has a fine line to tread | Patrick Commins",
    "link": "https://www.theguardian.com/business/2026/nov/24/mid-year-budget-cuts-recession-inflation-unemployment-australia-jim-chalmers",
@@ -587,26 +607,6 @@
     "GBP"
    ],
    "summary": "Contrasting speeches from the Fed’s Christopher Waller and BoE’s Clare Lombardelli show that central bank communications still matter"
-  },
-  {
-   "title": "Can Nvidia sell investors on a future without Jensen Huang?",
-   "link": "https://www.marketwatch.com/story/can-nvidia-sell-investors-on-a-future-without-jensen-huang-3fe4bb49?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-11-17T12:27:00Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Co-founder Huang is gone. Can Colette Kress ease market fears? Can a new board committee? Plus, the Fed weighs AI’s economic fallout, and parents confront their kids’ gambling problems."
-  },
-  {
-   "title": "Berlin picks ECB board nominee, paving way for Spanish presidency",
-   "link": "https://www.ft.com/content/10fd3d24-04b1-40a2-93d3-8b64023cc869?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-17T10:48:11Z",
-   "codes": [
-    "EUR"
-   ],
-   "summary": "Choice of Markus Brunnermeier will consolidate deal with France in which Spain’s Pablo Hernández de Cos would lead central bank"
   }
  ]
 }
