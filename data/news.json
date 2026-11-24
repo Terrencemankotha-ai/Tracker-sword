@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-24T19:39:58Z",
- "checked_at": "2026-11-24T19:39:58Z",
+ "updated_at": "2026-11-24T20:58:05Z",
+ "checked_at": "2026-11-24T20:58:05Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Corporate Japan logs record first-half profit on AI demand, soft yen",
+   "link": "https://asia.nikkei.com/business/companies/corporate-japan-logs-record-first-half-profit-on-ai-demand-soft-yen",
+   "source": "Nikkei Asia",
+   "published": "2026-11-24T20:58:05Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
   {
    "title": "Why Harry Styles isn't coming to your city on his Australian tour",
    "link": "https://www.abc.net.au/news/2026-11-25/harry-styles-concert-residencies-sydney-melbourne-tours/107390508",
@@ -585,16 +595,6 @@
     "AUD"
    ],
    "summary": "Wage rates climb about 1 percentage point faster than before pandemic, triggering warnings of a sixth RBA rate rise Wages grew at their fastest pace since late 2023 over the three months to September, buoyed by this…"
-  },
-  {
-   "title": "Japan bond market revival fuels record profits for Nomura, Daiwa",
-   "link": "https://asia.nikkei.com/business/markets/bonds/japan-bond-market-revival-fuels-record-profits-for-nomura-daiwa",
-   "source": "Nikkei Asia",
-   "published": "2026-11-17T19:41:39Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": ""
   }
  ]
 }
