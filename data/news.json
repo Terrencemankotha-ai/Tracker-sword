@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-23T22:57:22Z",
- "checked_at": "2026-11-23T22:57:22Z",
+ "updated_at": "2026-11-24T02:37:51Z",
+ "checked_at": "2026-11-24T02:37:51Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "A slash-and-burn budget update could push Australia into a recession. Jim Chalmers has a fine line to tread | Patrick Commins",
+   "link": "https://www.theguardian.com/business/2026/nov/24/mid-year-budget-cuts-recession-inflation-unemployment-australia-jim-chalmers",
+   "source": "The Guardian",
+   "published": "2026-11-24T01:51:56Z",
+   "codes": [
+    "AUD"
+   ],
+   "summary": "Labor has been complacent. But deep cuts designed to kill inflation would come at least six months too late A pivot towards austerity in next month’s mid-year budget would come far too late in the battle against…"
+  },
   {
    "title": "Fed's John Williams indicates higher interest rates likely 'over time' to address inflation",
    "link": "https://www.cnbc.com/2026/11/23/john-williams-fed-inflation-rate-hikes.html",
@@ -597,16 +607,6 @@
     "EUR"
    ],
    "summary": "Choice of Markus Brunnermeier will consolidate deal with France in which Spain’s Pablo Hernández de Cos would lead central bank"
-  },
-  {
-   "title": "Brussels raises Eurozone growth forecasts as AI boom drives exports",
-   "link": "https://www.ft.com/content/ce0f66b9-703d-4e04-b046-bf04a3d9209a?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-17T10:06:29Z",
-   "codes": [
-    "EUR"
-   ],
-   "summary": "But latest forecasts highlight diverging fortunes of bloc’s biggest economies, with GDP projections for France halved"
   }
  ]
 }
