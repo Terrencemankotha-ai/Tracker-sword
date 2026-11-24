@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-24T12:40:20Z",
- "checked_at": "2026-11-24T12:40:20Z",
+ "updated_at": "2026-11-24T14:25:11Z",
+ "checked_at": "2026-11-24T14:25:11Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -576,26 +576,6 @@
     "AUD"
    ],
    "summary": "The yen’s recent strengthening, particularly against the Australian dollar, suggests investors are unwinding risky bets."
-  },
-  {
-   "title": "UK unemployment unexpectedly eases to 4.6% as government releases Milburn report",
-   "link": "https://www.theguardian.com/business/2026/nov/17/uk-unemployment-wage-growth-milburn-report",
-   "source": "The Guardian",
-   "published": "2026-11-17T13:44:09Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Wage growth falls to 3.5% in September, as ministers examine how best to get young people into work Milburn urges Burnham to spend billions on young people Who are the Neets? UK youth job crisis in five charts The UK…"
-  },
-  {
-   "title": "St. Louis Fed's Musalem says four more rate hikes may be needed in coming months",
-   "link": "https://www.cnbc.com/2026/11/17/alberto-musalem-fed-interest-rates.html",
-   "source": "CNBC",
-   "published": "2026-11-17T13:40:54Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The forecast represents one of the most hawkish views among policymakers."
   }
  ]
 }
