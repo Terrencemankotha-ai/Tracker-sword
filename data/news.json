@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-25T14:45:54Z",
- "checked_at": "2026-11-25T14:45:54Z",
+ "updated_at": "2026-11-25T16:14:31Z",
+ "checked_at": "2026-11-25T16:14:31Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "US PCE inflation keeps Fed on course for more tightening",
+   "link": "https://www.ft.com/content/b1246731-9cc9-4d72-a619-bd520ada464d",
+   "source": "Financial Times",
+   "published": "2026-11-25T15:12:01Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Headline and core PCE slightly firmer than expected, setting Fed up for further tightening"
+  },
   {
    "title": "Fed’s preferred inflation gauge accelerated to 3.8% in October, raising the 2027 stakes for the central bank",
    "link": "https://www.cnbc.com/2026/11/25/pce-inflation-report-october-2026.html",
@@ -535,26 +545,6 @@
     "JPY"
    ],
    "summary": ""
-  },
-  {
-   "title": "Fed’s Waller says central bank may need to ‘shock people’ with half-point rate hike",
-   "link": "https://www.cnbc.com/2026/11/18/federal-reserve-governor-christopher-waller.html",
-   "source": "CNBC",
-   "published": "2026-11-18T15:13:39Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Continued inflation above the Fed's 2% target is pushing central bank officials into a more aggressive stance."
-  },
-  {
-   "title": "Fed’s Waller says interest-rate hikes may be needed to ‘shock’ inflation out of the system",
-   "link": "https://www.marketwatch.com/story/how-high-must-interest-rates-go-to-cool-inflation-possibly-100-basis-points-or-more-feds-waller-says-e7b41cf6?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-11-18T15:00:00Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The central bank might need to hike interest rates by a full percentage point or more to cool down inflation, Federal Reserve governor Christopher Waller said Wednesday."
   }
  ]
 }
