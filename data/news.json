@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-25T12:08:13Z",
- "checked_at": "2026-11-25T12:08:13Z",
+ "updated_at": "2026-11-25T13:33:06Z",
+ "checked_at": "2026-11-25T13:33:06Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Liesman: Nvidia whiplash tests Kevin Warsh’s push to read market signals",
+   "link": "https://www.cnbc.com/2026/11/25/nvidia-kevin-warsh-fed-market-signals.html",
+   "source": "CNBC",
+   "published": "2026-11-25T12:26:41Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The extreme market gyrations and the drama surrounding Nvidia this past week have highlighted the dilemma facing Federal Reserve Chairman Kevin Warsh."
+  },
   {
    "title": "This strategist’s bond-trading model is outperforming by a wide margin. The Fed slowing the economy is a good thing, he argues",
    "link": "https://www.marketwatch.com/story/this-strategists-bond-trading-model-is-outperforming-by-a-wide-margin-the-fed-slowing-the-economy-is-a-good-thing-he-argues-f39dfc5f?mod=mw_rss_topstories",
@@ -515,26 +525,6 @@
     "USD"
    ],
    "summary": "The central bank might need to hike interest rates by a full percentage point or more to cool down inflation, Federal Reserve governor Christopher Waller said Wednesday."
-  },
-  {
-   "title": "Fed’s Waller says central bank may need to ‘shock people’ with half-point rate hike",
-   "link": "https://www.cnbc.com/2026/11/18/federal-reserve-governor-christopher-waller.html",
-   "source": "CNBC",
-   "published": "2026-11-18T13:32:33Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Continued inflation above the Fed's 2% target is pushing central bank officials into a more aggressive stance."
-  },
-  {
-   "title": "Heating bills, chocolate and cat food: What the inflation figures mean for you",
-   "link": "https://www.bbc.co.uk/news/articles/ckq6eg55n221o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "published": "2026-11-18T13:10:01Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Prices are rising at their fastest pace for a year in the UK, and higher energy costs are on the way."
   }
  ]
 }
