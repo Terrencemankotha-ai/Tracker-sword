@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-25T18:24:01Z",
- "checked_at": "2026-11-25T18:24:01Z",
+ "updated_at": "2026-11-25T19:35:52Z",
+ "checked_at": "2026-11-25T19:35:52Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "UK food inflation could hit 5% next year, Bank of England says",
+   "link": "https://www.theguardian.com/business/2026/nov/25/uk-food-inflation-sharp-rise-next-year-mounting-cost-pressures-bank-of-england",
+   "source": "The Guardian",
+   "published": "2026-11-25T19:25:57Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Sharp rise expected as cost pressures mount, with experts factoring in energy price cap hike and potential impact of El Niño Food price inflation in the UK could hit 5% next year, the Bank of England has said,…"
+  },
+  {
+   "title": "Why macro investor Raoul Pal says the dollar is the signal to watch for stocks and crypto",
+   "link": "https://www.marketwatch.com/story/why-macro-investor-raoul-pal-says-the-dollar-is-the-signal-to-watch-for-stocks-and-crypto-d36f3c49?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-25T19:16:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Real Vision CEO Raoul Pal explains how liquidity moves stocks and crypto, why he does not expect a recession in 2027 and how emotion cost him in 2009"
+  },
   {
    "title": "Trump rebuilds tariff wall with new duties on China, Japan and others",
    "link": "https://asia.nikkei.com/economy/trade-war/trump-tariffs/trump-rebuilds-tariff-wall-with-new-duties-on-china-japan-and-others",
