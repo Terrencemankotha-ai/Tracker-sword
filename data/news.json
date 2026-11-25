@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-25T11:02:12Z",
- "checked_at": "2026-11-25T11:02:12Z",
+ "updated_at": "2026-11-25T12:08:13Z",
+ "checked_at": "2026-11-25T12:08:13Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -535,26 +535,6 @@
     "GBP"
    ],
    "summary": "Prices are rising at their fastest pace for a year in the UK, and higher energy costs are on the way."
-  },
-  {
-   "title": "UK plans to resist EU request to match tariffs on Chinese goods",
-   "link": "https://www.ft.com/content/6b278daf-6fdf-4951-af8a-227f25c4e0b7?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-18T11:52:06Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Move in draft communiqué reduces chance Britain will be able to access subsidies and contracts under ‘made in Europe’ rules"
-  },
-  {
-   "title": "The Fed is tightening, the economy is slowing — and that’s the perfect setup to buy bonds, this trader argues",
-   "link": "https://www.marketwatch.com/story/the-fed-is-tightening-the-economy-is-slowing-and-thats-the-perfect-setup-to-buy-bonds-this-trader-argues-b1c88b23?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-11-18T11:38:00Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Having missed the rally in U.S. Treasurys that statrted in mid-October, Macro Tourist commentator Kevin Muir is taking advantage of a renewed weakness in bonds to buy."
   }
  ]
 }
