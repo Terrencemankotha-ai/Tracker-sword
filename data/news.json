@@ -1,10 +1,40 @@
 {
- "updated_at": "2026-11-25T17:27:23Z",
- "checked_at": "2026-11-25T17:27:23Z",
+ "updated_at": "2026-11-25T18:24:01Z",
+ "checked_at": "2026-11-25T18:24:01Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Trump rebuilds tariff wall with new duties on China, Japan and others",
+   "link": "https://asia.nikkei.com/economy/trade-war/trump-tariffs/trump-rebuilds-tariff-wall-with-new-duties-on-china-japan-and-others",
+   "source": "Nikkei Asia",
+   "published": "2026-11-25T18:24:01Z",
+   "codes": [
+    "JPY"
+   ],
+   "summary": ""
+  },
+  {
+   "title": "UK inflation may peak at lower rate than BoE forecast, says governor",
+   "link": "https://www.ft.com/content/402e640b-8933-4b3c-bb4c-ce12a7994ac6?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-25T17:55:48Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "But Andrew Bailey refuses to rule out another interest rate increase next month"
+  },
+  {
+   "title": "Upgrade to US GDP figures keeps December rate rise in play for Fed",
+   "link": "https://www.ft.com/content/a1aaf5be-176c-4c4c-99d6-00875f6933f3?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-25T16:07:13Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Bureau of Economic Analysis said economy grew at annualised rate of 4.3% in third quarter, up from initial estimate of 3.4%"
+  },
   {
    "title": "US PCE inflation keeps Fed on course for more tightening",
    "link": "https://www.ft.com/content/b1246731-9cc9-4d72-a619-bd520ada464d",
