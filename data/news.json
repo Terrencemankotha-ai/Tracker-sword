@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-25T13:33:06Z",
- "checked_at": "2026-11-25T13:33:06Z",
+ "updated_at": "2026-11-25T14:45:54Z",
+ "checked_at": "2026-11-25T14:45:54Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Fed’s preferred inflation gauge accelerated to 3.8% in October, raising the 2027 stakes for the central bank",
+   "link": "https://www.cnbc.com/2026/11/25/pce-inflation-report-october-2026.html",
+   "source": "CNBC",
+   "published": "2026-11-25T14:18:45Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The personal consumption expenditures price index was expected to show an annual inflation rate of 3.8% in October, according to the Dow Jones consensus."
+  },
+  {
+   "title": "Inflation gets worse. Now the Fed no choice but to raise U.S. interest rates.",
+   "link": "https://www.marketwatch.com/story/inflation-gets-worse-now-the-fed-no-choice-but-to-raise-u-s-interest-rates-8b0c2c1f?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-25T13:34:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The measure of inflation used by the Federal Reserve to influence U.S. interest rates rose again in October at an accelerated rate, virtually assuring the central bank will increase borrowing costs next month."
+  },
   {
    "title": "Liesman: Nvidia whiplash tests Kevin Warsh’s push to read market signals",
    "link": "https://www.cnbc.com/2026/11/25/nvidia-kevin-warsh-fed-market-signals.html",
@@ -515,6 +535,16 @@
     "JPY"
    ],
    "summary": ""
+  },
+  {
+   "title": "Fed’s Waller says central bank may need to ‘shock people’ with half-point rate hike",
+   "link": "https://www.cnbc.com/2026/11/18/federal-reserve-governor-christopher-waller.html",
+   "source": "CNBC",
+   "published": "2026-11-18T15:13:39Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Continued inflation above the Fed's 2% target is pushing central bank officials into a more aggressive stance."
   },
   {
    "title": "Fed’s Waller says interest-rate hikes may be needed to ‘shock’ inflation out of the system",
