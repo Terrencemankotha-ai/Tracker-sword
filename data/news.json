@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-24T20:58:05Z",
- "checked_at": "2026-11-24T20:58:05Z",
+ "updated_at": "2026-11-25T02:40:24Z",
+ "checked_at": "2026-11-25T02:40:24Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Inflation rises more than expected in 'RBA's worst nightmare'",
+   "link": "https://www.abc.net.au/news/2026-11-25/abs-october-cpi-inflation-rises-year-/107424668",
+   "source": "ABC News (AU)",
+   "published": "2026-11-25T00:42:21Z",
+   "codes": [
+    "AUD"
+   ],
+   "summary": "The consumer price index has come in hotter than expected and underlying inflation has also risen, leaving Australia grappling with accelerating price rises and increasing unemployment."
+  },
   {
    "title": "Corporate Japan logs record first-half profit on AI demand, soft yen",
    "link": "https://asia.nikkei.com/business/companies/corporate-japan-logs-record-first-half-profit-on-ai-demand-soft-yen",
