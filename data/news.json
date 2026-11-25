@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-25T19:35:52Z",
- "checked_at": "2026-11-25T19:35:52Z",
+ "updated_at": "2026-11-25T20:33:45Z",
+ "checked_at": "2026-11-25T20:33:45Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "The Fed says inflation hasn’t gotten any better ahead of its key December vote to raise rates",
+   "link": "https://www.marketwatch.com/story/the-fed-says-inflation-hasnt-gotten-any-better-ahead-of-its-key-december-vote-to-raise-rates-65024d33?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-25T19:39:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Just ahead of pivotal December vote to raise U.S. interest rates, the Federal Reserve on Wednesday said stubborn inflation remains a thorn in the side of an expanding economy."
+  },
   {
    "title": "UK food inflation could hit 5% next year, Bank of England says",
    "link": "https://www.theguardian.com/business/2026/nov/25/uk-food-inflation-sharp-rise-next-year-mounting-cost-pressures-bank-of-england",
@@ -545,46 +555,6 @@
     "GBP"
    ],
    "summary": "MSPs have heard both the pros and cons of the government's plan to launch its first ever bond to the market?"
-  },
-  {
-   "title": "Economists warn Australia getting close to recession as unemployment spikes",
-   "link": "https://www.abc.net.au/news/2026-11-19/asx-markets-business-news-live-updates-thursday-19-november/107401802",
-   "source": "ABC News (AU)",
-   "published": "2026-11-18T20:31:18Z",
-   "codes": [
-    "AUD"
-   ],
-   "summary": "Economists say Australia risks slipping into recession after the latest unemployment data."
-  },
-  {
-   "title": "Fed officials expect more rate hikes, worry about AI impact on inflation, minutes show",
-   "link": "https://www.cnbc.com/2026/11/18/fed-minutes-october-2026.html",
-   "source": "CNBC",
-   "published": "2026-11-18T19:41:59Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The Federal Reserve on Wednesday released minutes from its October policy meeting at which it voted to hold its benchmark interest rate in a range between 3.75%-4%."
-  },
-  {
-   "title": "Fed minutes show growing unease about the outlook for inflation",
-   "link": "https://www.marketwatch.com/story/fed-minutes-show-growing-unease-about-the-outlook-for-inflation-59e3c13d?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-11-18T19:38:00Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The minutes of the Federal Reserve’s October policy meeting showed growing unease among officials about the outlook for inflation, even as they decided to hold interest rates steady."
-  },
-  {
-   "title": "How high is UK inflation and how will you be affected?",
-   "link": "https://www.bbc.co.uk/news/videos/cxp80q5pv4q5o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "published": "2026-11-18T19:37:27Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Prices rose 3.6% in the year to October, mainly because of higher petrol and diesel prices, official figures show."
   }
  ]
 }
