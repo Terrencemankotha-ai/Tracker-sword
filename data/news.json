@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-25T05:37:19Z",
- "checked_at": "2026-11-25T05:37:19Z",
+ "updated_at": "2026-11-25T06:40:06Z",
+ "checked_at": "2026-11-25T06:40:06Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -595,16 +595,6 @@
     "GBP"
    ],
    "summary": "Figure underscores pressure on Bank of England to raise interest rates further"
-  },
-  {
-   "title": "How important are Nvidia and Jensen Huang to the US economy?",
-   "link": "https://www.bbc.co.uk/news/articles/c68798vdprwpo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "published": "2026-11-18T06:04:21Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The former Nvidia chief executive has been at the centre of the artificial intelligence boom."
   }
  ]
 }
