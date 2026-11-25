@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-25T09:52:45Z",
- "checked_at": "2026-11-25T09:52:45Z",
+ "updated_at": "2026-11-25T11:02:12Z",
+ "checked_at": "2026-11-25T11:02:12Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "This strategist’s bond-trading model is outperforming by a wide margin. The Fed slowing the economy is a good thing, he argues",
+   "link": "https://www.marketwatch.com/story/this-strategists-bond-trading-model-is-outperforming-by-a-wide-margin-the-fed-slowing-the-economy-is-a-good-thing-he-argues-f39dfc5f?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-11-25T10:12:00Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Inflation and nominal growth have been way too high for too long, argues Michael Darda. Rather than criticizing the Fed for being hawkish, markets should applaud it and recommend it goes as far as necessary to slow…"
+  },
   {
    "title": "Further tightening to come from the ECB to prevent inflation persistence",
    "link": "https://www.ft.com/content/f805c4ef-be16-4c10-9d62-47a7c6675b5f",
@@ -545,16 +555,6 @@
     "USD"
    ],
    "summary": "Having missed the rally in U.S. Treasurys that statrted in mid-October, Macro Tourist commentator Kevin Muir is taking advantage of a renewed weakness in bonds to buy."
-  },
-  {
-   "title": "UK inflation rises to 3.6% after petrol and diesel prices hit record high",
-   "link": "https://www.theguardian.com/business/2026/nov/18/uk-inflation-rises-energy-prices-iran-war-oil",
-   "source": "The Guardian",
-   "published": "2026-11-18T10:14:26Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Increase in October piles pressure on households as Iran war pushes up oil cost and rattles global economy Energy bills in Great Britain forecast to rise by 26% to £2,166 from January Inflation in the UK rose to 3.6%…"
   }
  ]
 }
