@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-25T08:36:28Z",
- "checked_at": "2026-11-25T08:36:28Z",
+ "updated_at": "2026-11-25T09:52:45Z",
+ "checked_at": "2026-11-25T09:52:45Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -547,34 +547,14 @@
    "summary": "Having missed the rally in U.S. Treasurys that statrted in mid-October, Macro Tourist commentator Kevin Muir is taking advantage of a renewed weakness in bonds to buy."
   },
   {
-   "title": "AI borrowing binge has ‘historic parallels’ with subprime bubble, says ECB",
-   "link": "https://www.ft.com/content/d16475ce-efce-4dc1-b5a3-2f7c79e9dea9?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-18T09:00:07Z",
-   "codes": [
-    "EUR"
-   ],
-   "summary": "Concerns raised that hyperscalers are building up trillions of dollars in off-balance sheet commitments through contracts with other tech groups"
-  },
-  {
-   "title": "British energy price cap set to increase to over £2,000 in January",
-   "link": "https://www.ft.com/content/c22b7eeb-96ce-4d4a-87ed-2b17901255be?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-18T08:50:59Z",
+   "title": "UK inflation rises to 3.6% after petrol and diesel prices hit record high",
+   "link": "https://www.theguardian.com/business/2026/nov/18/uk-inflation-rises-energy-prices-iran-war-oil",
+   "source": "The Guardian",
+   "published": "2026-11-18T10:14:26Z",
    "codes": [
     "GBP"
    ],
-   "summary": "Lower levels of government support will see households paying more for energy in real terms than during Ukraine inflation shock"
-  },
-  {
-   "title": "UK’s October inflation rise remains largely energy related",
-   "link": "https://www.ft.com/content/7e21a3af-94eb-4f89-8549-71f032b2215b",
-   "source": "Financial Times",
-   "published": "2026-11-18T08:39:08Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "The BoE will need to decide how quickly it wants to raise rates to a position that allows it to wait for signs of inflation persistence"
+   "summary": "Increase in October piles pressure on households as Iran war pushes up oil cost and rattles global economy Energy bills in Great Britain forecast to rise by 26% to £2,166 from January Inflation in the UK rose to 3.6%…"
   }
  ]
 }
