@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-25T20:33:45Z",
- "checked_at": "2026-11-25T20:33:45Z",
+ "updated_at": "2026-11-25T22:59:03Z",
+ "checked_at": "2026-11-25T22:59:03Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Liesman: Why Greenspan could bet on productivity — and Warsh needs to hike",
+   "link": "https://www.cnbc.com/2026/11/25/kevin-warsh-greenspan-fed-rates-ai-inflation.html",
+   "source": "CNBC",
+   "published": "2026-11-25T21:56:43Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Alan Greenspan famously held the line on interest rates because he believed in the productivity promise of the internet boom. Why can't Kevin Warsh do the same?"
+  },
   {
    "title": "The Fed says inflation hasn’t gotten any better ahead of its key December vote to raise rates",
    "link": "https://www.marketwatch.com/story/the-fed-says-inflation-hasnt-gotten-any-better-ahead-of-its-key-december-vote-to-raise-rates-65024d33?mod=mw_rss_topstories",
