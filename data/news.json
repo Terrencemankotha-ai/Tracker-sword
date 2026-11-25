@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-25T02:40:24Z",
- "checked_at": "2026-11-25T02:40:24Z",
+ "updated_at": "2026-11-25T05:37:19Z",
+ "checked_at": "2026-11-25T05:37:19Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Eurozone capitals seek consolation prize for Knot to avoid ECB vote",
+   "link": "https://www.ft.com/content/d55a0dcf-ce3d-41e0-bdc9-6cb7267f6e1d?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-25T05:00:32Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "Leaders try to find alternative role for Dutch contender as they prepare to endorse his Spanish rival to head central bank"
+  },
   {
    "title": "Inflation rises more than expected in 'RBA's worst nightmare'",
    "link": "https://www.abc.net.au/news/2026-11-25/abs-october-cpi-inflation-rises-year-/107424668",
@@ -595,16 +605,6 @@
     "USD"
    ],
    "summary": "The former Nvidia chief executive has been at the centre of the artificial intelligence boom."
-  },
-  {
-   "title": "Wages grow at fastest pace since 2023 – but prices are climbing even more quickly",
-   "link": "https://www.theguardian.com/australia-news/2026/nov/18/wages-grow-at-fastest-pace-since-2023-but-prices-are-climbing-even-more-quickly",
-   "source": "The Guardian",
-   "published": "2026-11-18T04:33:40Z",
-   "codes": [
-    "AUD"
-   ],
-   "summary": "Wage rates climb about 1 percentage point faster than before pandemic, triggering warnings of a sixth RBA rate rise Wages grew at their fastest pace since late 2023 over the three months to September, buoyed by this…"
   }
  ]
 }
