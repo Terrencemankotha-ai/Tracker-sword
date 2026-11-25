@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-25T16:14:31Z",
- "checked_at": "2026-11-25T16:14:31Z",
+ "updated_at": "2026-11-25T17:27:23Z",
+ "checked_at": "2026-11-25T17:27:23Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -535,16 +535,6 @@
     "GBP"
    ],
    "summary": "Prices rose 3.6% in the year to October, mainly because of higher petrol and diesel prices, official figures show."
-  },
-  {
-   "title": "Toyota, Suzuki rely on weak yen to keep profits growing",
-   "link": "https://asia.nikkei.com/business/automobiles/toyota-suzuki-rely-on-weak-yen-to-keep-profits-growing",
-   "source": "Nikkei Asia",
-   "published": "2026-11-18T16:40:30Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": ""
   }
  ]
 }
