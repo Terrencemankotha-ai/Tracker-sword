@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-25T22:59:03Z",
- "checked_at": "2026-11-25T22:59:03Z",
+ "updated_at": "2026-11-25T23:54:31Z",
+ "checked_at": "2026-11-25T23:54:31Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -555,16 +555,6 @@
     "AUD"
    ],
    "summary": "Australia's cruise industry is in decline, with more than $1 billion wiped from its input to the country's economy as major international cruise lines head overseas."
-  },
-  {
-   "title": "Gilts v kilts: What is happening with Scottish government bonds?",
-   "link": "https://www.bbc.co.uk/news/articles/cmwy8pgj2z8vo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "published": "2026-11-18T23:01:09Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "MSPs have heard both the pros and cons of the government's plan to launch its first ever bond to the market?"
   }
  ]
 }
