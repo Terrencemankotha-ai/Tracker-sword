@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-26T13:24:43Z",
- "checked_at": "2026-11-26T13:24:43Z",
+ "updated_at": "2026-11-26T14:41:45Z",
+ "checked_at": "2026-11-26T14:41:45Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Spain’s Pablo Hernández de Cos set to lead European Central Bank",
+   "link": "https://www.cnbc.com/2026/11/26/pablo-hernandez-de-cos-ecb-president.html",
+   "source": "CNBC",
+   "published": "2026-11-26T14:20:44Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "De Cos will lead the ECB into a period of political uncertainty and choppy growth, after winning the backing needed to succeed Christine Lagarde next year."
+  },
+  {
+   "title": "The new ECB team is set for a baptism of fire",
+   "link": "https://www.ft.com/content/441dbda3-38be-48b9-9603-3b68f1ed3a48",
+   "source": "Financial Times",
+   "published": "2026-11-26T14:11:40Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "The tail-end of the ECB’s tightening cycle and the fallout of a consequential election in France will provide an early test"
+  },
   {
    "title": "430,000 UK homeowners face £500-plus jump in monthly mortgage payments",
    "link": "https://www.theguardian.com/money/2026/nov/26/430000-uk-homeowners-500-jump-monthly-mortgage-payments-bank-of-england-interest-rates",
