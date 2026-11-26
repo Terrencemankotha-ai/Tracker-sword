@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-25T23:54:31Z",
- "checked_at": "2026-11-25T23:54:31Z",
+ "updated_at": "2026-11-26T01:18:29Z",
+ "checked_at": "2026-11-26T01:18:29Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Beige Book confirms hot US economy and signs of wage pressure building",
+   "link": "https://www.ft.com/content/fb4f6707-274e-4f93-bcfb-7cce28d4a4ea",
+   "source": "Financial Times",
+   "published": "2026-11-25T22:17:53Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "The report will help cement the coming December Federal Reserve interest rate rise"
+  },
   {
    "title": "Liesman: Why Greenspan could bet on productivity — and Warsh needs to hike",
    "link": "https://www.cnbc.com/2026/11/25/kevin-warsh-greenspan-fed-rates-ai-inflation.html",

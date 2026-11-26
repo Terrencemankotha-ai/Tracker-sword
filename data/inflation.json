@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-25T23:54:29Z",
- "checked_at": "2026-11-25T23:54:29Z",
+ "updated_at": "2026-11-26T01:18:28Z",
+ "checked_at": "2026-11-26T01:18:28Z",
  "latest": [
   {
    "code": "USD",
@@ -103,13 +103,14 @@
    "target_high": 3.0,
    "target_note": "RBA 2–3% band",
    "released": "2026-10-28",
-   "next_release": "2026-11-25",
+   "next_release": "2026-12-25",
    "next_period": "2026-10",
    "agency": "Australian Bureau of Statistics",
    "source_url": "https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/latest-release",
    "status": "Final",
    "note": "",
-   "source_of_update": "oecd"
+   "source_of_update": "oecd",
+   "next_release_estimated": true
   }
  ],
  "history": {
