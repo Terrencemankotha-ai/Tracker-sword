@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-26T08:04:32Z",
- "checked_at": "2026-11-26T08:04:32Z",
+ "updated_at": "2026-11-26T13:24:43Z",
+ "checked_at": "2026-11-26T13:24:43Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "430,000 UK homeowners face £500-plus jump in monthly mortgage payments",
+   "link": "https://www.theguardian.com/money/2026/nov/26/430000-uk-homeowners-500-jump-monthly-mortgage-payments-bank-of-england-interest-rates",
+   "source": "The Guardian",
+   "published": "2026-11-26T12:44:46Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Bank of England warns of increases for millions coming off fixed deals over next three years as interest rates rise Business live – latest updates More than 400,000 UK homeowners will face a £500-a-month increase in…"
+  },
   {
    "title": "A Fed tightening to allow subsequent loosening",
    "link": "https://www.ft.com/content/7283900d-43e6-4d9f-8ecd-d0b975d192dd",
@@ -535,26 +545,6 @@
     "JPY"
    ],
    "summary": ""
-  },
-  {
-   "title": "If the AI trade unwinds, other pillars holding up the U.S. economy are ‘irrelevant,’ says Barclays",
-   "link": "https://www.marketwatch.com/story/if-the-ai-trade-unwinds-other-pillars-holding-up-the-u-s-economy-are-irrelevant-says-barclays-b6f1bdca?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-11-19T12:45:00Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The bank does not hold that the artificial-intelligence trade is collapsing, viewing today’s slowdown as a correction that can selectively be bought into."
-  },
-  {
-   "title": "Fed’s October minutes confirm December increase and float faster tightening",
-   "link": "https://www.ft.com/content/470d7273-7356-48d5-9709-d9d8169d1d94",
-   "source": "Financial Times",
-   "published": "2026-11-19T11:53:40Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Policymakers worried about inflation risks from AI build-out at latest meeting"
   }
  ]
 }
