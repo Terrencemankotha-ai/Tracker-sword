@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-26T06:33:50Z",
- "checked_at": "2026-11-26T06:33:50Z",
+ "updated_at": "2026-11-26T08:04:32Z",
+ "checked_at": "2026-11-26T08:04:32Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -555,16 +555,6 @@
     "USD"
    ],
    "summary": "Policymakers worried about inflation risks from AI build-out at latest meeting"
-  },
-  {
-   "title": "Government in emergency talks after 'crushed' transmission towers cut power",
-   "link": "https://www.abc.net.au/news/2026-11-19/transmission-towers-brought-down-cutting-eyre-peninsula-power/107405826",
-   "source": "ABC News (AU)",
-   "published": "2026-11-19T06:59:07Z",
-   "codes": [
-    "AUD"
-   ],
-   "summary": "Electricity transmission towers have been brought down by storms, as ElectraNet says power is \"unlikely to be restored in the immediate term\" to more than 20,000 properties on South Australia's Eyre Peninsula."
   }
  ]
 }
