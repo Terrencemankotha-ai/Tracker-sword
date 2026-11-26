@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-26T19:42:20Z",
- "checked_at": "2026-11-26T19:42:20Z",
+ "updated_at": "2026-11-26T23:01:54Z",
+ "checked_at": "2026-11-26T23:01:54Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -565,16 +565,6 @@
     "JPY"
    ],
    "summary": "The core inflation figure — which strips out prices of food — was lower than the 2.3% expected by Reuters-polled economists."
-  },
-  {
-   "title": "International students in Japan face language hurdles when seeking jobs",
-   "link": "https://asia.nikkei.com/spotlight/japan-immigration/international-students-in-japan-face-language-hurdles-when-seeking-jobs",
-   "source": "Nikkei Asia",
-   "published": "2026-11-19T22:28:27Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": ""
   }
  ]
 }
