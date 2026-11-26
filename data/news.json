@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-26T18:26:27Z",
- "checked_at": "2026-11-26T18:26:27Z",
+ "updated_at": "2026-11-26T19:42:20Z",
+ "checked_at": "2026-11-26T19:42:20Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -575,16 +575,6 @@
     "JPY"
    ],
    "summary": ""
-  },
-  {
-   "title": "The surprising reason the U.S. economy is speeding up — and might have more room to run",
-   "link": "https://www.marketwatch.com/story/the-surprising-reason-the-u-s-economy-is-speeding-up-and-might-have-more-room-to-run-9016c8db?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-11-19T19:13:00Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "The main engine of U.S. growth is in overdrive."
   }
  ]
 }
