@@ -1,10 +1,30 @@
 {
- "updated_at": "2026-11-26T14:41:45Z",
- "checked_at": "2026-11-26T14:41:45Z",
+ "updated_at": "2026-11-26T17:31:41Z",
+ "checked_at": "2026-11-26T17:31:41Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Pablo Hernández de Cos: the ‘consensus-builder’ taking over the ECB",
+   "link": "https://www.ft.com/content/1fda901a-222a-4b3e-8e20-ea80c3fbf1d2?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-26T16:02:36Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "Spanish economist is seen as a skilled diplomat with a ‘unique blend of diplomatic finesse and academic rigour’"
+  },
+  {
+   "title": "Hawkish Fed poised to raise rates despite stock market turmoil",
+   "link": "https://www.ft.com/content/3890f725-66dd-4613-8a60-d9e3ea38d25a?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-26T14:58:45Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Inflation is top concern for US central bank officials even as tech-led sell-off triggers fears for economy"
+  },
   {
    "title": "Spain’s Pablo Hernández de Cos set to lead European Central Bank",
    "link": "https://www.cnbc.com/2026/11/26/pablo-hernandez-de-cos-ecb-president.html",
