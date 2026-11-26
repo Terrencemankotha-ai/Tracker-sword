@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-26T17:31:41Z",
- "checked_at": "2026-11-26T17:31:41Z",
+ "updated_at": "2026-11-26T18:26:27Z",
+ "checked_at": "2026-11-26T18:26:27Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Spain’s Pablo Hernández de Cos wins race to be next ECB president",
+   "link": "https://www.theguardian.com/business/2026/nov/26/spain-pablo-hernandez-de-cos-next-ecb-president",
+   "source": "The Guardian",
+   "published": "2026-11-26T17:50:54Z",
+   "codes": [
+    "EUR"
+   ],
+   "summary": "Former Bank of Spain governor chosen to succeed Christine Lagarde after winning support of EU’s biggest countries Spain’s Pablo Hernández de Cos has been chosen as the next president of the European Central Bank, to…"
+  },
   {
    "title": "Pablo Hernández de Cos: the ‘consensus-builder’ taking over the ECB",
    "link": "https://www.ft.com/content/1fda901a-222a-4b3e-8e20-ea80c3fbf1d2?syn-25a6b1a6=1",
@@ -575,16 +585,6 @@
     "USD"
    ],
    "summary": "The main engine of U.S. growth is in overdrive."
-  },
-  {
-   "title": "Japan weighs raising new-drug prices closer to overseas levels",
-   "link": "https://asia.nikkei.com/business/pharmaceuticals/japan-weighs-raising-new-drug-prices-closer-to-overseas-levels",
-   "source": "Nikkei Asia",
-   "published": "2026-11-19T17:58:05Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": ""
   }
  ]
 }
