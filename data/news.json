@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-26T04:05:55Z",
- "checked_at": "2026-11-26T04:05:55Z",
+ "updated_at": "2026-11-26T06:33:50Z",
+ "checked_at": "2026-11-26T06:33:50Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "A Fed tightening to allow subsequent loosening",
+   "link": "https://www.ft.com/content/7283900d-43e6-4d9f-8ecd-d0b975d192dd",
+   "source": "Financial Times",
+   "published": "2026-11-26T05:30:09Z",
+   "codes": [
+    "USD"
+   ],
+   "summary": "Read the Monetary Policy Radar team’s November scenario for the Federal Reserve"
+  },
   {
    "title": "Beige Book confirms hot US economy and signs of wage pressure building",
    "link": "https://www.ft.com/content/fb4f6707-274e-4f93-bcfb-7cce28d4a4ea",
