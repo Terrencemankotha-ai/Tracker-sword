@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-26T10:37:00Z",
- "checked_at": "2026-11-26T10:37:00Z",
+ "updated_at": "2026-11-26T11:37:22Z",
+ "checked_at": "2026-11-26T11:37:22Z",
  "latest": [
   {
    "code": "USD",
@@ -94,17 +94,17 @@
    "code": "AUD",
    "economy": "Australia",
    "measure": "Monthly CPI, all groups",
-   "period": "2026-09",
-   "headline": 4.3,
-   "previous": 4.0,
-   "core": 3.6,
+   "period": "2026-10",
+   "headline": 4.9,
+   "previous": 4.3,
+   "core": null,
    "core_label": "Trimmed mean",
    "target_low": 2.0,
    "target_high": 3.0,
    "target_note": "RBA 2–3% band",
-   "released": "2026-10-28",
-   "next_release": "2026-12-25",
-   "next_period": "2026-10",
+   "released": "2026-11-26",
+   "next_release": "2026-12-26",
+   "next_period": "2026-11",
    "agency": "Australian Bureau of Statistics",
    "source_url": "https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/latest-release",
    "status": "Final",
@@ -183,8 +183,8 @@
    "2026-07": 3.5,
    "2026-08": 4.0,
    "2026-09": 4.3,
-   "2025-09": 3.6,
-   "2025-10": 3.8
+   "2025-10": 3.8,
+   "2026-10": 4.9
   }
  },
  "log": [
@@ -201,10 +201,17 @@
    "period": "2026-10",
    "headline": 3.6,
    "msg": "GBP 2026-10: 3.6%"
+  },
+  {
+   "at": "2026-11-26T11:37:22Z",
+   "code": "AUD",
+   "period": "2026-10",
+   "headline": 4.9,
+   "msg": "AUD 2026-10: 4.9%"
   }
  ],
  "problems": [
-  "AUD primary is behind (2025-09); using OECD (2026-09)"
+  "AUD primary is behind (2025-09); using OECD (2026-10)"
  ],
  "policy": {
   "as_of": "2026-11-14",
