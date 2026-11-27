@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-27T07:23:49Z",
- "checked_at": "2026-11-27T07:23:49Z",
+ "updated_at": "2026-11-27T08:47:29Z",
+ "checked_at": "2026-11-27T08:47:29Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -24,6 +24,16 @@
     "GBP"
    ],
    "summary": "Also in today’s newsletter: tech sell-off and Meloni’s rebuke"
+  },
+  {
+   "title": "Bank of England to defy market pricing and stick with gradual tightening",
+   "link": "https://www.ft.com/content/e5d08f5e-3f0a-43af-a6d7-06f2ad93370e",
+   "source": "Financial Times",
+   "published": "2026-11-27T05:30:02Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "Read the BoE’s November forecast from the FT’s Monetary Policy Radar team"
   },
   {
    "title": "Is the Fed ready for its next fight?",
@@ -495,46 +505,6 @@
     "USD"
    ],
    "summary": "The S&P 500 is nearing a level worth buying if the U.S. avoids a recession, but one strategist warns Wall Street is underpricing the hard-landing risk as he said investors should wait before buying risky assets."
-  },
-  {
-   "title": "October inflation data keeps BoJ on course for further tightening",
-   "link": "https://www.ft.com/content/c95feb1a-f197-4942-bba8-672087f6be74",
-   "source": "Financial Times",
-   "published": "2026-11-20T08:37:22Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": "Headline price pressures accelerated as government fuel and energy subsidies were phased out"
-  },
-  {
-   "title": "Household rush to stockpile emergency supplies sends British retail sales soaring",
-   "link": "https://www.theguardian.com/world/2026/nov/20/rush-stockpile-emergency-supplies-sends-british-retail-sales-soaring",
-   "source": "The Guardian",
-   "published": "2026-11-20T08:36:13Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Surge fuelled by ‘preppers’ heeding Be Ready campaign’s call for households to have three days of food and water for emergencies Business live – latest updates Retail sales in Great Britain surged last month as the…"
-  },
-  {
-   "title": "Andy Burnham to agree Brexit ‘reset’ deal in push for closer EU ties",
-   "link": "https://www.ft.com/content/8515b514-2067-43eb-a7f5-b5aa20ec4cc3",
-   "source": "Financial Times",
-   "published": "2026-11-20T07:49:41Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Agreement would lead to closer ties but Brussels insists implementation rests on UK agreeing to cut tuition fees for EU students"
-  },
-  {
-   "title": "UK government borrowing rises less than forecast in surprise boost for chancellor John Healey",
-   "link": "https://www.theguardian.com/business/2026/nov/20/uk-government-borrowing-rises-less-than-forecast-in-surprise-boost-for-chancellor-john-healey",
-   "source": "The Guardian",
-   "published": "2026-11-20T07:25:31Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "UK economy defies City predictions and Iran war fallout, with gap between spending and income about £1bn lower than expected in October, at £17bn The UK government borrowed less than expected in October despite a…"
   }
  ]
 }
