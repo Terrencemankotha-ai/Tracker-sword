@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-27T19:01:46Z",
- "checked_at": "2026-11-27T19:01:46Z",
+ "updated_at": "2026-11-27T19:30:02Z",
+ "checked_at": "2026-11-27T19:30:02Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -465,16 +465,6 @@
     "USD"
    ],
    "summary": "Federal Reserve officials will continue to raise interest rates, despite the recent selloff in the stock market, as equity-market gains over the past four years dwarf the recent declines, economists said Friday."
-  },
-  {
-   "title": "Japan sovereign AI project faces $5bn cost surge on chip prices, weak yen",
-   "link": "https://asia.nikkei.com/business/technology/artificial-intelligence/japan-sovereign-ai-project-faces-5bn-cost-surge-on-chip-prices-weak-yen",
-   "source": "Nikkei Asia",
-   "published": "2026-11-20T19:02:11Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": ""
   }
  ]
 }
