@@ -1,6 +1,6 @@
 /* Abraham Sword Tracker - service worker
    App shell: cache-first (works offline). Data: network-first, falls back to the last saved copy. */
-const VERSION = 'ats-v4';
+const VERSION = 'ats-v5';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/badge-96.png', 'icons/apple-touch-icon.png'];
 const DATA = 'data/inflation.json';

@@ -212,6 +212,7 @@
     renderCalendar(rows);
     renderNews();
     renderLog();
+    if (view === 'watch') updateWatchContext();
     scheduleReminders();
     const notes = $('notes'); notes.replaceChildren();
     rows.filter((r) => r.note).forEach((r) => notes.append(el('li', '', r.code + ': ' + r.note)));
@@ -304,7 +305,7 @@
       } else q.append(el('div', 'note', 'Live gold price needs a connection.'));
       const dl = el('dl'); dl.className = 'gold-dl';
       const btn = el('button', 'btn ghost small', 'Open XAU/USD chart'); btn.type = 'button';
-      btn.onclick = () => { pair = GOLD; store.set('ats:pair', pair); renderPairs(); if (newsFilter === 'pair') renderNews(); $('pairs').scrollIntoView({ behavior: 'smooth' }); };
+      btn.onclick = () => { pair = GOLD; store.set('ats:pair', pair); if (newsFilter === 'pair') renderNews(); go('markets', 'pairs'); };
       goldEl.append(q, dl, btn);
     }
     const dl = goldEl.querySelector('.gold-dl'); dl.replaceChildren();
@@ -355,6 +356,7 @@
   }
 
   function renderTV() {
+    if (view !== 'markets') return; // built when the Markets tab is opened
     const box = $('tv'); const key = pairName(pair) + theme + (isLight() ? 'l' : 'd');
     if (!navigator.onLine) { box.replaceChildren(el('div', 'tv-off', 'Live chart needs a connection.')); tvKey = ''; return; }
     if (key === tvKey && box.childElementCount) return;
@@ -466,7 +468,7 @@
       w.append(el('span', '', 'Widest pressure gap: '), el('b', '', pairName(p)),
         el('span', '', ` (${top} most pressure, ${bot} least).`));
       const btn = el('button', 'btn ghost small', 'Open in pair view'); btn.type = 'button';
-      btn.onclick = () => { pair = p; store.set('ats:pair', pair); renderPairs(); $('pairs').scrollIntoView({ behavior: 'smooth' }); };
+      btn.onclick = () => { pair = p; store.set('ats:pair', pair); go('markets', 'pairs'); };
       w.append(btn);
     }
   }
@@ -613,6 +615,7 @@
     const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = t.bg;
     renderLooks();
     if (doc) render([]);
+    onShow(view);
   }
   function renderLooks() {
     const box = $('looks'); box.replaceChildren();
@@ -637,6 +640,7 @@
     }
     const ul = $('news-list'); ul.replaceChildren();
     const items = (news && news.items) || [];
+    renderHomeNews(items);
     const match = (it) => newsFilter === 'all' ? true : newsFilter === 'pair' ? it.codes.some((c) => pair.includes(c)) : it.codes.includes(newsFilter);
     const shown = items.filter(match).slice(0, 25);
     const note = $('news-note');
@@ -791,6 +795,294 @@
     timer = setInterval(() => { if (document.visibilityState === 'visible') load(false); else status(); }, POLL_MS);
   }
 
+  // =====================================================================
+  // v2.0: tabs (Home · Markets · News · Watchlist · More)
+  // =====================================================================
+  const VIEWS = ['home', 'markets', 'news', 'watch', 'more'];
+  let view = 'home';
+  function go(v, target) {
+    if (!VIEWS.includes(v)) v = 'home';
+    const same = v === view;
+    view = v;
+    VIEWS.forEach((x) => { $('v-' + x).hidden = x !== v; });
+    document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-current', b.dataset.view === v ? 'page' : 'false'));
+    try { history.replaceState(null, '', '#' + v); } catch { /* file: urls */ }
+    onShow(v);
+    if (target && $(target)) requestAnimationFrame(() => $(target).scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    else window.scrollTo({ top: 0, behavior: same ? 'smooth' : 'auto' });
+  }
+  function onShow(v) {
+    if (v === 'home') renderTape();
+    if (v === 'markets') {
+      if (doc) { renderPairs(); renderChart(); renderReal(rows5()); }
+      renderMarkets();
+    }
+    if (v === 'news') renderSeg();
+    if (v === 'watch') renderWatch();
+  }
+  function setupTabs() {
+    document.querySelectorAll('#tabs button').forEach((b) => { b.onclick = () => go(b.dataset.view); });
+    document.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
+    document.querySelectorAll('[data-scroll]').forEach((a) => { a.onclick = (e) => { e.preventDefault(); $(a.dataset.scroll).scrollIntoView({ behavior: 'smooth', block: 'start' }); }; });
+    $('brand').onclick = () => go('home');
+    $('check-now').onclick = () => load(true);
+  }
+
+  // ---------- TradingView widgets (built only when their tab is open)
+  const tvTheme = () => (isLight() ? 'light' : 'dark');
+  const tz = () => Intl.DateTimeFormat().resolvedOptions().timeZone || 'Etc/UTC';
+  function tvWidget(box, file, cfg) {
+    if (!navigator.onLine) { box.replaceChildren(el('div', 'tv-off', 'Live data needs a connection.')); box.dataset.k = ''; return; }
+    const k = file + JSON.stringify(cfg);
+    if (box.dataset.k === k && box.childElementCount) return;
+    box.dataset.k = k;
+    const w = el('div', 'tradingview-widget-container'); w.style.height = '100%';
+    const inner = el('div', 'tradingview-widget-container__widget'); inner.style.height = '100%';
+    const sc = document.createElement('script'); sc.async = true;
+    sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-' + file + '.js';
+    sc.textContent = JSON.stringify(cfg);
+    w.append(inner, sc); box.replaceChildren(w);
+  }
+
+  // ---------- markets
+  const MKT = [
+    { title: 'Forex', symbols: [['FX:EURUSD', 'EUR/USD'], ['FX:GBPUSD', 'GBP/USD'], ['FX:USDJPY', 'USD/JPY'], ['FX:AUDUSD', 'AUD/USD'], ['FX:USDCAD', 'USD/CAD'], ['FX:USDCHF', 'USD/CHF'], ['FX:GBPJPY', 'GBP/JPY'], ['FX:EURJPY', 'EUR/JPY']] },
+    { title: 'Metals & energy', symbols: [['OANDA:XAUUSD', 'Gold'], ['OANDA:XAGUSD', 'Silver'], ['TVC:USOIL', 'WTI oil'], ['TVC:UKOIL', 'Brent oil']] },
+    { title: 'Indices', symbols: [['TVC:DXY', 'US dollar index'], ['FOREXCOM:SPXUSD', 'S&P 500'], ['FOREXCOM:NSXUSD', 'Nasdaq 100'], ['FOREXCOM:DJI', 'Dow 30'], ['INDEX:DEU40', 'DAX 40'], ['INDEX:NKY', 'Nikkei 225']] },
+    { title: 'Crypto', symbols: [['BITSTAMP:BTCUSD', 'Bitcoin'], ['BITSTAMP:ETHUSD', 'Ether']] },
+  ];
+  function renderMarkets() {
+    tvWidget($('mkt'), 'market-overview', {
+      colorTheme: tvTheme(), dateRange: '1D', showChart: true, locale: 'en', width: '100%', height: '100%', isTransparent: true,
+      showSymbolLogo: true, showFloatingTooltip: true,
+      tabs: MKT.map((t) => ({ title: t.title, originalTitle: t.title, symbols: t.symbols.map(([sy, d]) => ({ s: sy, d })) })),
+    });
+    tvWidget($('heat'), 'forex-heat-map', {
+      width: '100%', height: '100%', currencies: ['EUR', 'USD', 'JPY', 'GBP', 'AUD', 'CAD', 'CHF', 'NZD'],
+      isTransparent: true, colorTheme: tvTheme(), locale: 'en',
+    });
+  }
+
+  // ---------- news sections
+  let seg = store.get('ats:newsSeg', 'head');
+  function renderSeg() {
+    if (!['head', 'wire', 'cal'].includes(seg)) seg = 'head';
+    document.querySelectorAll('#news-seg button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.seg === seg)));
+    ['head', 'wire', 'cal'].forEach((k) => { $('seg-' + k).hidden = k !== seg; });
+    if (seg === 'wire') tvWidget($('wire'), 'timeline', { feedMode: 'market', market: 'forex', isTransparent: true, displayMode: 'regular', width: '100%', height: '100%', colorTheme: tvTheme(), locale: 'en' });
+    if (seg === 'cal') tvWidget($('evcal'), 'events', { colorTheme: tvTheme(), isTransparent: true, width: '100%', height: '100%', locale: 'en', importanceFilter: '0,1', countryFilter: 'us,eu,jp,gb,au' });
+  }
+  function setupNewsSeg() {
+    document.querySelectorAll('#news-seg button').forEach((b) => { b.onclick = () => { seg = b.dataset.seg; store.set('ats:newsSeg', seg); renderSeg(); }; });
+  }
+  function renderHomeNews(items) {
+    const ul = $('home-news'); if (!ul) return; ul.replaceChildren();
+    const top = items.slice(0, 3);
+    if (!top.length) { ul.append(el('li', 'empty', 'Headlines appear here after the next update run.')); return; }
+    for (const it of top) {
+      const li = el('li');
+      const a = el('a', '', it.title); a.href = it.link; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      const meta = el('div', 'meta');
+      it.codes.forEach((c) => { const t = el('span', 'tag', c === 'XAU' ? 'GOLD' : c); t.style.borderColor = COLORS[c]; t.style.color = COLORS[c]; meta.append(t); });
+      meta.append(el('span', '', it.source + ' · ' + ago(it.published)));
+      li.append(a, meta); ul.append(li);
+    }
+  }
+
+  // ---------- watchlist
+  const CATALOG = [
+    ['Forex', [['FX:EURUSD', 'EUR/USD'], ['FX:GBPUSD', 'GBP/USD'], ['FX:USDJPY', 'USD/JPY'], ['FX:AUDUSD', 'AUD/USD'], ['FX:USDCAD', 'USD/CAD'], ['FX:USDCHF', 'USD/CHF'], ['FX:NZDUSD', 'NZD/USD'],
+      ['FX:EURJPY', 'EUR/JPY'], ['FX:GBPJPY', 'GBP/JPY'], ['FX:EURGBP', 'EUR/GBP'], ['FX:AUDJPY', 'AUD/JPY'], ['FX:EURAUD', 'EUR/AUD'], ['FX:GBPAUD', 'GBP/AUD']]],
+    ['Metals & energy', [['OANDA:XAUUSD', 'Gold'], ['OANDA:XAGUSD', 'Silver'], ['TVC:USOIL', 'WTI oil'], ['TVC:UKOIL', 'Brent oil']]],
+    ['Indices', [['TVC:DXY', 'US dollar index'], ['FOREXCOM:SPXUSD', 'S&P 500'], ['FOREXCOM:NSXUSD', 'Nasdaq 100'], ['FOREXCOM:DJI', 'Dow 30'], ['INDEX:DEU40', 'DAX 40'], ['INDEX:NKY', 'Nikkei 225']]],
+    ['Crypto', [['BITSTAMP:BTCUSD', 'Bitcoin'], ['BITSTAMP:ETHUSD', 'Ether']]],
+  ];
+  const catName = (sy) => { for (const [, l] of CATALOG) for (const [x, n] of l) if (x === sy) return n; return null; };
+  const DEFAULT_WATCH = ['FX:EURUSD', 'FX:GBPUSD', 'FX:USDJPY', 'OANDA:XAUUSD', 'FX:AUDUSD'].map((sy) => ({ s: sy, n: catName(sy) }));
+  let watch = store.get('ats:watch', null);
+  if (!Array.isArray(watch) || !watch.every((w) => w && typeof w.s === 'string')) watch = DEFAULT_WATCH.slice();
+  let wlEdit = false;
+  const wlEls = new Map();
+  const saveWatch = () => { store.set('ats:watch', watch); tapeKey = ''; };
+  // FX:EURUSD → ['EUR','USD'] when both are tracked currencies; gold → GOLD
+  const fxOf = (sy) => {
+    const t = sy.split(':').pop().replace('/', '');
+    if (/^XAUUSD$/.test(t)) return GOLD;
+    const a = t.slice(0, 3), b = t.slice(3, 6);
+    return t.length === 6 && CODES.includes(a) && CODES.includes(b) ? [a, b] : null;
+  };
+  function ctxFor(w) {
+    const p = fxOf(w.s); if (!p || !doc) return null;
+    const box = el('div', 'wl-ctx'); const bb = (t) => el('b', '', t);
+    if (isGold(p)) {
+      const us = row('USD'); const rv = us ? realRate(us) : null;
+      if (rv === null) return null;
+      box.append('US real rate ', bb(sgn(rv)), ' · US CPI ', bb(pct(us.headline)), '.');
+      return { box, p };
+    }
+    const A = row(p[0]), B = row(p[1]); if (!A || !B) return null;
+    const d = r1(A.headline - B.headline);
+    box.append('Inflation spread ', bb((d > 0 ? '+' : d < 0 ? '−' : '') + Math.abs(d).toFixed(1) + ' pts'));
+    const ra = realRate(A), rb = realRate(B);
+    if (ra !== null && rb !== null) box.append(' · real-rate gap ', bb(sgn(Math.round((ra - rb) * 100) / 100).replace('%', ' pts')));
+    const pa = pressure(A).score, pb = pressure(B).score;
+    box.append(' · pressure ', bb(pa > pb ? 'higher in ' + A.code : pa < pb ? 'higher in ' + B.code : 'level'), '.');
+    return { box, p };
+  }
+  function wlItem(w) {
+    let li = wlEls.get(w.s);
+    if (!li) {
+      li = el('li', 'wl-item');
+      const top = el('div', 'wl-top'); const nm = el('div', 'nm');
+      nm.append(el('b', '', w.n || w.s.split(':').pop()), el('small', '', w.s));
+      const acts = el('div', 'wl-acts');
+      top.append(nm, acts);
+      const box = el('div', 'wl-box');
+      const ctx = el('div', 'wl-ctxw');
+      li.append(top, box, ctx);
+      wlEls.set(w.s, li);
+    }
+    return li;
+  }
+  function drawActs(li, w, i) {
+    const acts = li.querySelector('.wl-acts'); acts.replaceChildren();
+    if (wlEdit) {
+      const up = el('button', 'mini-btn', '▲'); up.type = 'button'; up.disabled = i === 0; up.setAttribute('aria-label', 'Move up');
+      up.onclick = () => { [watch[i - 1], watch[i]] = [watch[i], watch[i - 1]]; saveWatch(); renderWatch(); };
+      const dn = el('button', 'mini-btn', '▼'); dn.type = 'button'; dn.disabled = i === watch.length - 1; dn.setAttribute('aria-label', 'Move down');
+      dn.onclick = () => { [watch[i + 1], watch[i]] = [watch[i], watch[i + 1]]; saveWatch(); renderWatch(); };
+      const rm = el('button', 'mini-btn danger', 'Remove'); rm.type = 'button';
+      rm.onclick = () => { watch.splice(i, 1); wlEls.delete(w.s); saveWatch(); renderWatch(); toast('Removed ' + (w.n || w.s)); };
+      acts.append(up, dn, rm);
+    } else {
+      const ch = el('button', 'mini-btn primary', 'Chart'); ch.type = 'button';
+      ch.onclick = () => openChart(w.s, w.n || w.s);
+      acts.append(ch);
+    }
+  }
+  function updateWatchContext() {
+    watch.forEach((w) => {
+      const li = wlEls.get(w.s); if (!li) return;
+      const wrap = li.querySelector('.wl-ctxw'); wrap.replaceChildren();
+      const c = ctxFor(w); if (!c) return;
+      const btn = el('button', 'mini-btn', isGold(c.p) ? 'Gold in pair view' : 'Inflation pair view'); btn.type = 'button';
+      btn.onclick = () => { pair = c.p; store.set('ats:pair', pair); go('markets', 'pairs'); };
+      wrap.append(c.box, btn); wrap.className = 'wl-ctxw';
+      wrap.style.display = 'grid'; wrap.style.gap = '6px'; wrap.style.justifyItems = 'start';
+    });
+  }
+  function renderWatch() {
+    const ul = $('wl-list');
+    $('wl-edit').textContent = wlEdit ? 'Done' : 'Edit';
+    if (!watch.length) { ul.replaceChildren(el('li', 'empty', 'Your watchlist is empty. Add symbols below.')); }
+    else {
+      const items = watch.map((w, i) => { const li = wlItem(w); drawActs(li, w, i); return li; });
+      // only re-order the DOM when the order changed (moving a chart reloads it)
+      const cur = [...ul.children];
+      if (cur.length !== items.length || cur.some((n, i) => n !== items[i])) ul.replaceChildren(...items);
+      watch.forEach((w) => {
+        tvWidget(wlEls.get(w.s).querySelector('.wl-box'), 'mini-symbol-overview', {
+          symbol: w.s, width: '100%', height: '100%', locale: 'en', dateRange: '1D', colorTheme: tvTheme(), isTransparent: true, autosize: true, largeChartUrl: '',
+        });
+      });
+      updateWatchContext();
+    }
+    renderCats();
+  }
+  function renderCats() {
+    const box = $('wl-cats'); box.replaceChildren();
+    const on = new Set(watch.map((w) => w.s));
+    for (const [cat, list] of CATALOG) {
+      box.append(el('div', 'cat', cat));
+      const chips = el('div', 'chips');
+      for (const [sy, n] of list) {
+        const b = el('button', '', n); b.type = 'button'; b.setAttribute('aria-pressed', String(on.has(sy)));
+        b.onclick = () => { on.has(sy) ? removeSym(sy) : addSym(sy, n); };
+        chips.append(b);
+      }
+      box.append(chips);
+    }
+  }
+  function addSym(sy, n) {
+    if (watch.some((w) => w.s === sy)) { toast((n || sy) + ' is already on your watchlist'); return false; }
+    if (watch.length >= 20) { toast('Watchlist is full (20). Remove one first.'); return false; }
+    watch.push({ s: sy, n: n || catName(sy) }); saveWatch(); renderWatch(); toast('Added ' + (n || sy));
+    return true;
+  }
+  function removeSym(sy) {
+    const i = watch.findIndex((w) => w.s === sy); if (i < 0) return;
+    const w = watch[i]; watch.splice(i, 1); wlEls.delete(sy); saveWatch(); renderWatch(); toast('Removed ' + (w.n || sy));
+  }
+  function setupWatch() {
+    $('wl-edit').onclick = () => { wlEdit = !wlEdit; renderWatch(); };
+    $('wl-form').onsubmit = (e) => {
+      e.preventDefault();
+      const inp = $('wl-input'), msg = $('wl-msg');
+      let v = inp.value.trim().toUpperCase().replace(/\s+/g, '');
+      if (/^[A-Z]{6}$/.test(v)) v = 'FX:' + v; // EURUSD → FX:EURUSD
+      if (!/^[A-Z0-9_.!-]{1,20}:[A-Z0-9_.!\/-]{1,24}$/.test(v)) {
+        msg.textContent = 'That does not look like a symbol. Try something like FX:USDCAD, OANDA:XAUUSD or NASDAQ:AAPL.'; msg.className = 'note err'; return;
+      }
+      msg.textContent = 'Use TradingView’s format: exchange, a colon, then the symbol.'; msg.className = 'note';
+      if (addSym(v, catName(v))) inp.value = '';
+    };
+  }
+
+  // ---------- live ticker on Home (your watchlist)
+  let tapeKey = '';
+  function renderTape() {
+    const box = $('tape');
+    if (!watch.length) { box.hidden = true; return; }
+    box.hidden = false;
+    tvWidget(box, 'ticker-tape', {
+      symbols: watch.map((w) => ({ proName: w.s, title: w.n || w.s.split(':').pop() })),
+      showSymbolLogo: true, isTransparent: true, displayMode: 'adaptive', colorTheme: tvTheme(), locale: 'en',
+    });
+  }
+
+  // ---------- full-screen chart
+  function openChart(sym, title) {
+    $('sheet-title').textContent = title;
+    $('sheet').hidden = false; document.body.classList.add('locked');
+    tvWidget($('sheet-chart'), 'advanced-chart', {
+      autosize: true, symbol: sym, interval: '15', timezone: tz(), theme: tvTheme(), style: '1', locale: 'en',
+      allow_symbol_change: true, save_image: false, calendar: false, hide_side_toolbar: false,
+      backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#0f1115',
+      support_host: 'https://www.tradingview.com',
+    });
+  }
+  function closeChart() {
+    $('sheet').hidden = true; document.body.classList.remove('locked');
+    const b = $('sheet-chart'); b.replaceChildren(); b.dataset.k = '';
+  }
+  function setupSheet() {
+    $('sheet-close').onclick = closeChart;
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('sheet').hidden) closeChart(); });
+  }
+
+  // ---------- position size calculator
+  function setupCalc() {
+    const f = { bal: $('ps-bal'), risk: $('ps-risk'), sl: $('ps-sl'), pv: $('ps-pv') };
+    const saved = store.get('ats:calc', { bal: '', risk: '1', sl: '', pv: '10' });
+    Object.keys(f).forEach((k) => { f[k].value = saved[k] != null ? saved[k] : ''; });
+    const out = $('ps-out');
+    const calc = () => {
+      const v = {}; Object.keys(f).forEach((k) => { v[k] = f[k].value; });
+      store.set('ats:calc', v);
+      const bal = parseFloat(v.bal), risk = parseFloat(v.risk), sl = parseFloat(v.sl), pv = parseFloat(v.pv);
+      out.replaceChildren();
+      if (!(bal > 0 && risk > 0 && sl > 0 && pv > 0)) { out.append('Fill in all four boxes to see your lot size.'); return; }
+      const cash = bal * risk / 100, lots = cash / (sl * pv);
+      const n2 = (x) => x.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      out.append(el('span', 'lots', lots.toFixed(2) + ' lots'));
+      out.append('Risking ', el('b', '', n2(cash)), ' (' + n2(risk) + '% of ' + n2(bal) + ') over a ' + n2(sl) + '-pip stop. That is ',
+        el('b', '', (lots * 10).toFixed(1) + ' mini'), ' or ', el('b', '', Math.round(lots * 100) + ' micro'), ' lots.');
+      if (risk > 5) out.append(el('div', 'note', 'Heads up: that is a large share of the account on one trade.'));
+    };
+    Object.values(f).forEach((i) => { i.oninput = calc; });
+    calc();
+  }
+
   // ---------- boot
   if (doc) { render([]); }
   status();
@@ -800,10 +1092,12 @@
   window.addEventListener('offline', () => { lastOk = 0; status(); });
   let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (doc) { renderChart(); const A = row(pair[0]), B = row(pair[1]); if (A && B && !isGold(pair)) { renderPairBars(A, B); renderSpread(A, B); } rows5().length && renderReal(rows5()); } }, 150); });
   const rows5 = () => CODES.map((c) => row(c)).filter(Boolean);
-  matchMedia('(prefers-color-scheme: light)').addEventListener?.('change', () => doc && renderTV());
-  window.addEventListener('online', () => doc && renderTV());
+  matchMedia('(prefers-color-scheme: light)').addEventListener?.('change', () => { if (doc) renderTV(); onShow(view); });
+  window.addEventListener('online', () => { if (doc) renderTV(); onShow(view); });
   function markSeenLater() { setTimeout(markSeen, 4000); }
   setupNotify(); setupInstall(); setupAlertPrefs(); renderLooks();
+  setupTabs(); setupNewsSeg(); setupWatch(); setupSheet(); setupCalc();
+  go(VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'home');
   if (news) renderNews();
   if (!NATIVE && 'serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(registerBackground).catch(() => {});
