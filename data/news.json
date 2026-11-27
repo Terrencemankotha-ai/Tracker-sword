@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-27T01:23:27Z",
- "checked_at": "2026-11-27T01:23:27Z",
+ "updated_at": "2026-11-27T02:40:41Z",
+ "checked_at": "2026-11-27T02:40:41Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -545,16 +545,6 @@
     "GBP"
    ],
    "summary": "Much of the benefit would come from a rebound in business investment, which was damaged by Brexit-related uncertainty"
-  },
-  {
-   "title": "Japan core inflation soars to highest this year as energy subsidy expiry pushes up consumer prices",
-   "link": "https://www.cnbc.com/2026/11/20/japan-inflation-cpi-october.html",
-   "source": "CNBC",
-   "published": "2026-11-20T01:49:03Z",
-   "codes": [
-    "JPY"
-   ],
-   "summary": "The core inflation figure — which strips out prices of food — was lower than the 2.3% expected by Reuters-polled economists."
   }
  ]
 }
