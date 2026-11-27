@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-27T20:03:29Z",
- "checked_at": "2026-11-27T20:03:29Z",
+ "updated_at": "2026-11-27T21:59:36Z",
+ "checked_at": "2026-11-27T21:59:36Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -435,26 +435,6 @@
     "GBP"
    ],
    "summary": "‘Raising growth in every postcode’ has been the PM’s rallying cry but deep regional disparities and rising energy bills pose problems this winter Andy Burnham faces two, related problems: Britain faces deep regional…"
-  },
-  {
-   "title": "Warsh wants Fed officials to talk less. Instead, they’re talking more",
-   "link": "https://www.cnbc.com/2026/11/20/warsh-fed-forward-guidance-rate-hikes.html",
-   "source": "CNBC",
-   "published": "2026-11-20T21:10:48Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Fed officials have been rushing to the microphones lately while the Fed chairman stays on the sidelines."
-  },
-  {
-   "title": "Peterson: The Fed's chairman sees an AI revolution coming. Now he has to figure out what it means",
-   "link": "https://www.cnbc.com/2026/11/16/kevin-warsh-fed-ai-jobs-productivity-interest-rateshtml.html",
-   "source": "CNBC",
-   "published": "2026-11-20T21:07:08Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Kevin Warsh sees AI at a turning point. He faces tough questions on jobs and interest rates."
   }
  ]
 }
