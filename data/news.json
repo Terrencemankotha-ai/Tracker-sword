@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-27T05:38:18Z",
- "checked_at": "2026-11-27T05:38:18Z",
+ "updated_at": "2026-11-27T07:23:49Z",
+ "checked_at": "2026-11-27T07:23:49Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "Australian LNG exporters must reserve some supply to lower domestic prices",
+   "link": "https://asia.nikkei.com/business/energy/australian-lng-exporters-must-reserve-some-supply-to-lower-domestic-prices",
+   "source": "Nikkei Asia",
+   "published": "2026-11-27T07:23:49Z",
+   "codes": [
+    "AUD"
+   ],
+   "summary": ""
+  },
   {
    "title": "FirstFT: BoE’s Bailey warns of AI threat to encrypted financial data",
    "link": "https://www.ft.com/content/f1669703-4e86-4ab0-b4d8-f43a40cb0294?syn-25a6b1a6=1",
@@ -525,16 +535,6 @@
     "GBP"
    ],
    "summary": "UK economy defies City predictions and Iran war fallout, with gap between spending and income about £1bn lower than expected in October, at £17bn The UK government borrowed less than expected in October despite a…"
-  },
-  {
-   "title": "What impact has Brexit had on the UK and EU economies?",
-   "link": "https://www.theguardian.com/business/2026/nov/20/what-impact-brexit-uk-eu-economies",
-   "source": "The Guardian",
-   "published": "2026-11-20T07:00:26Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "As talks are held in Brussels over closer relations, we examine the economic context and the challenges ahead The UK and EU will hold the second summit since Brexit on Friday against a volatile economic backdrop.…"
   }
  ]
 }
