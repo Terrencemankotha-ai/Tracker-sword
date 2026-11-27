@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-27T10:12:47Z",
- "checked_at": "2026-11-27T10:12:47Z",
+ "updated_at": "2026-11-27T12:38:33Z",
+ "checked_at": "2026-11-27T12:38:33Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -505,16 +505,6 @@
     "USD"
    ],
    "summary": "The S&P 500 is nearing a level worth buying if the U.S. avoids a recession, but one strategist warns Wall Street is underpricing the hard-landing risk as he said investors should wait before buying risky assets."
-  },
-  {
-   "title": "Household rush to stockpile emergency supplies sends British retail sales soaring",
-   "link": "https://www.theguardian.com/world/2026/nov/20/rush-stockpile-emergency-supplies-sends-british-retail-sales-soaring",
-   "source": "The Guardian",
-   "published": "2026-11-20T12:28:12Z",
-   "codes": [
-    "GBP"
-   ],
-   "summary": "Surge fuelled by ‘preppers’ heeding Be Ready campaign’s call for households to have three days of food and water for emergencies Retail sales in Great Britain surged last month as the public rushed to buy products…"
   }
  ]
 }
