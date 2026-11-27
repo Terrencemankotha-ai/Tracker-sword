@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-27T14:23:56Z",
- "checked_at": "2026-11-27T14:23:56Z",
+ "updated_at": "2026-11-27T15:36:19Z",
+ "checked_at": "2026-11-27T15:36:19Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -485,16 +485,6 @@
     "GBP"
    ],
    "summary": "The trade deal is unlikely lower food prices for shoppers, but should boost the economy more than other post-Brexit agreements."
-  },
-  {
-   "title": "Warsh wants Fed officials to talk less. Instead, they’re talking more",
-   "link": "https://www.cnbc.com/2026/11/20/warsh-fed-forward-guidance-rate-hikes.html",
-   "source": "CNBC",
-   "published": "2026-11-20T15:20:54Z",
-   "codes": [
-    "USD"
-   ],
-   "summary": "Fed officials have been rushing to the microphones lately while the Fed chairman stays on the sidelines."
   }
  ]
 }
