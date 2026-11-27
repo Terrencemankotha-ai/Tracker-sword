@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-27T20:03:27Z",
- "checked_at": "2026-11-27T20:03:27Z",
+ "updated_at": "2026-11-27T21:00:42Z",
+ "checked_at": "2026-11-27T21:00:42Z",
  "latest": [
   {
    "code": "USD",
@@ -211,7 +211,7 @@
   }
  ],
  "problems": [
-  "AUD primary is behind (2025-09); using OECD (2026-09)"
+  "AUD primary is behind (2025-09); using OECD (2026-10)"
  ],
  "policy": {
   "as_of": "2026-11-14",
