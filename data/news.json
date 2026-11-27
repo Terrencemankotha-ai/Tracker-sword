@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-27T16:46:24Z",
- "checked_at": "2026-11-27T16:46:24Z",
+ "updated_at": "2026-11-27T19:01:46Z",
+ "checked_at": "2026-11-27T19:01:46Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -475,16 +475,6 @@
     "JPY"
    ],
    "summary": ""
-  },
-  {
-   "title": "Questions over future for Australian workers as mass lay-offs hit",
-   "link": "https://www.abc.net.au/news/2026-11-21/australians-lose-jobs-recession-fears-some-forced-to-sell-homes/107408374",
-   "source": "ABC News (AU)",
-   "published": "2026-11-20T18:00:00Z",
-   "codes": [
-    "AUD"
-   ],
-   "summary": "Laid-off white-collar workers are being forced to sell their homes to make ends meet, amid mounting concerns the country is heading into a recession."
   }
  ]
 }
