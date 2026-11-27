@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-26T23:59:45Z",
- "checked_at": "2026-11-26T23:59:45Z",
+ "updated_at": "2026-11-27T01:23:27Z",
+ "checked_at": "2026-11-27T01:23:27Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
@@ -547,14 +547,14 @@
    "summary": "Much of the benefit would come from a rebound in business investment, which was damaged by Brexit-related uncertainty"
   },
   {
-   "title": "Singapore banks put tokenization to practical use with gold, bonds",
-   "link": "https://asia.nikkei.com/business/finance/singapore-banks-put-tokenization-to-practical-use-with-gold-bonds",
-   "source": "Nikkei Asia",
-   "published": "2026-11-20T00:23:26Z",
+   "title": "Japan core inflation soars to highest this year as energy subsidy expiry pushes up consumer prices",
+   "link": "https://www.cnbc.com/2026/11/20/japan-inflation-cpi-october.html",
+   "source": "CNBC",
+   "published": "2026-11-20T01:49:03Z",
    "codes": [
-    "XAU"
+    "JPY"
    ],
-   "summary": ""
+   "summary": "The core inflation figure — which strips out prices of food — was lower than the 2.3% expected by Reuters-polled economists."
   }
  ]
 }
