@@ -226,3 +226,76 @@ html[data-theme=aurora] { --metal: #ffd37a; }
 #pair-chips button:first-child { border-color: var(--metal); }
 #pair-chips button:first-child[aria-pressed=true] { background: var(--metal); }
 [hidden] { display: none !important; }
+
+/* =========================================================================
+   v2.0: tab bar, views, markets, news segments, watchlist, more
+   ========================================================================= */
+body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
+.brand { background: none; border: 0; color: var(--fg); font: inherit; font-weight: 650; padding: 0; cursor: pointer; text-align: left; }
+.view { display: grid; gap: 16px; min-width: 0; }
+.view > * { min-width: 0; }
+.view-h { font-size: 26px; font-weight: 700; margin: 2px 0 -6px; letter-spacing: -.3px; }
+html[data-theme=signal] .view-h { text-transform: uppercase; letter-spacing: 2px; font-size: 18px; }
+.toast { bottom: calc(86px + env(safe-area-inset-bottom)); }
+
+.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 8; display: grid; grid-template-columns: repeat(5, 1fr);
+  background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line); padding: 6px 4px calc(6px + env(safe-area-inset-bottom)); }
+.tabs button { position: relative; background: none; border: 0; color: var(--muted); display: grid; justify-items: center; gap: 3px;
+  font: 600 10.5px var(--font); padding: 4px 0; cursor: pointer; }
+.tabs svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tabs button[aria-current=page] { color: var(--gold); }
+.tabs button[aria-current=page] svg { stroke-width: 2.2; }
+.tabs button[aria-current=page]::before { content: ""; position: absolute; top: -7px; width: 26px; height: 3px; border-radius: 0 0 3px 3px; background: var(--gold); }
+html[data-theme=ledger] .tabs { border-top: 2px solid var(--fg); }
+html[data-theme=forge] .tabs { border-top-color: var(--gold); }
+
+.tvbox { border-radius: calc(var(--r) - 4px); overflow: hidden; }
+.tape { height: 46px; margin: -4px -16px 0; overflow: hidden; border-bottom: 1px solid var(--line); }
+.tape .tv-off { font-size: 12.5px; }
+
+.quick { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.quick button { text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; color: var(--fg); font-family: inherit; cursor: pointer; display: grid; gap: 4px; }
+.quick b { font-size: 15px; color: var(--gold); } .quick small { color: var(--muted); font-size: 12px; }
+#home-news-panel .panel-head .btn.small { margin-left: 0; }
+#home-news { margin-top: 6px; }
+
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 3px; gap: 3px; }
+.seg button { border: 0; background: none; color: var(--muted); padding: 8px 4px; border-radius: 9px; font: 600 13px var(--font); cursor: pointer; }
+.seg button[aria-selected=true] { background: var(--gold); color: var(--on-accent, #111); }
+html[data-theme=signal] .seg, html[data-theme=signal] .seg button { border-radius: 2px; }
+
+.wl-bar { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
+.wl-bar .btn.small { margin: 0; }
+.wl-intro { margin: -6px 0 0; }
+.wl { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.wl-item { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; display: grid; gap: 8px; min-width: 0; }
+html[data-theme=aurora] .wl-item { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.wl-top { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.wl-top .nm { display: grid; flex: 1; min-width: 0; }
+.wl-top b { font-size: 15px; } .wl-top small { color: var(--muted); font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wl-box { height: 150px; margin: 0 -4px; }
+.wl-ctx { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.wl-ctx b { color: var(--gold); font-weight: 650; }
+.wl-acts { display: flex; gap: 6px; flex-wrap: wrap; }
+.mini-btn { border: 1px solid var(--line); background: none; color: var(--fg); border-radius: 8px; padding: 6px 10px; font: 600 12.5px var(--font); cursor: pointer; }
+.mini-btn.primary { border-color: var(--gold); color: var(--gold); }
+.mini-btn.danger { color: var(--up); }
+.mini-btn[disabled] { opacity: .35; }
+.wl .empty { color: var(--muted); font-size: 14px; padding: 10px 0; }
+#wl-cats .cat { margin: 10px 0 4px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; font-weight: 600; }
+.add-row { display: flex; gap: 8px; }
+.add-row input { flex: 1; min-width: 0; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 11px; font: 14px var(--font); }
+#wl-msg.err { color: var(--up); }
+
+.calc { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.calc label { display: grid; gap: 5px; font-size: 13px; color: var(--muted); }
+.calc input { background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 11px; font: 16px var(--font); font-variant-numeric: tabular-nums; }
+.calc-out { border: 1px solid var(--gold); border-radius: calc(var(--r) - 4px); padding: 12px 14px; background: color-mix(in srgb, var(--gold) 7%, transparent); font-size: 14px; line-height: 1.5; }
+.calc-out .lots { font-size: 30px; font-weight: 300; font-variant-numeric: tabular-nums; display: block; }
+.calc-out b { color: var(--gold); }
+
+.sheet { position: fixed; inset: 0; z-index: 20; background: var(--bg); display: flex; flex-direction: column; padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom); }
+.sheet-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid var(--line); font-weight: 650; }
+.sheet-chart { flex: 1; min-height: 0; }
+body.locked { overflow: hidden; }
