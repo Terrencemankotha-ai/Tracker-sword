@@ -1,10 +1,20 @@
 {
- "updated_at": "2026-11-27T21:59:36Z",
- "checked_at": "2026-11-27T21:59:36Z",
+ "updated_at": "2026-11-28T07:17:07Z",
+ "checked_at": "2026-11-28T07:17:07Z",
  "feeds_ok": 8,
  "feeds_total": 8,
  "problems": [],
  "items": [
+  {
+   "title": "‘The key is pricing realistically’: how to sell your home in a falling market",
+   "link": "https://www.theguardian.com/money/2026/nov/28/how-to-sell-your-home-in-a-falling-market-house-prices",
+   "source": "The Guardian",
+   "published": "2026-11-28T07:00:32Z",
+   "codes": [
+    "GBP"
+   ],
+   "summary": "From small fixes such as decluttering to taking your property off the market for a break, there are ways to seal the deal Selling your home is always a big task, but when the headlines are telling you prices are…"
+  },
   {
    "title": "Australian LNG exporters must reserve some supply to lower domestic prices",
    "link": "https://asia.nikkei.com/business/energy/australian-lng-exporters-must-reserve-some-supply-to-lower-domestic-prices",
